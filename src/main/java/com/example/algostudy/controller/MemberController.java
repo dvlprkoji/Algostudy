@@ -18,18 +18,6 @@ import javax.validation.Valid;
 public class MemberController {
     private final RegisterService registerService;
 
-//    @GetMapping("/login")
-//    public String login(Model model) {
-//        model.addAttribute("form", new MemberLoginForm());
-//        return "login";
-//    }
-
-    @PostMapping("/login_proc")
-    public String login(@Valid @ModelAttribute("form") MemberLoginForm form) {
-        System.out.println("login");
-        return "redirect:/";
-    }
-
     @GetMapping("/register")
     public String register(Model model) {
         model.addAttribute("form", new MemberRegisterForm());

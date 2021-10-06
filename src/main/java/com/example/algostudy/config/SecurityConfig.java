@@ -1,5 +1,7 @@
 package com.example.algostudy.config;
 
+import com.example.algostudy.security.authentication.handler.AuthenticationFailureHandler;
+import com.example.algostudy.security.authentication.handler.AuthenticationSuccessHandler;
 import com.example.algostudy.security.authentication.provider.FormAuthenticationProvider;
 import com.example.algostudy.security.authorize.filter.PermitAllFilter;
 import com.example.algostudy.security.authorize.metadata.UrlFilterInvocationSecurityMetadataSource;
@@ -37,11 +39,17 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private String[] ignoredMatcherPattern = {"/images/**","/vendor/**","/fonts/**","/img/**","/scss/**","/static/**", "/css/**", "/js/**", "/static/css/images/**", "/webjars/**", "/**/favicon.ico"};
+    private String[] ignoredMatcherPattern = {"/error", "/images/**","/vendor/**","/fonts/**","/img/**","/scss/**","/static/**", "/css/**", "/js/**", "/static/css/images/**", "/webjars/**", "/**/favicon.ico"};
     private String[] permitAllPattern = {"/","/login","/register"};
 
     @Autowired
     private FormAuthenticationProvider formAuthenticationProvider;
+
+    @Autowired
+    private AuthenticationSuccessHandler authenticationSuccessHandler;
+
+    @Autowired
+    private AuthenticationFailureHandler authenticationFailureHandler;
 
 //    @Autowired
 //    private FilterInvocationSecurityMetadataSource filterInvocationSecurityMetadataSource;
@@ -52,7 +60,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(ignoredMatcherPattern);
+        web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations()).antMatchers(ignoredMatcherPattern);
     }
 
     @Override
@@ -68,13 +76,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .disable()
                 // 모든 요청에 인증 요구
                 .authorizeRequests()
-                .antMatchers("/", "/login", "/logout").permitAll()
+                .antMatchers("/", "/login**", "/logout", "/register").permitAll()
                 .anyRequest().authenticated()
             .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login_proc")
                 .defaultSuccessUrl("/")
+                .successHandler(authenticationSuccessHandler)
+                .failureHandler(authenticationFailureHandler)
                 .usernameParameter("email")
                 .passwordParameter("password")
             .and()

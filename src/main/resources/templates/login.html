@@ -4,7 +4,7 @@
 
 <head>
 
-    <title>SB Admin 2 - Login</title>
+    <title>Algostudy :: 로그인</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -20,6 +20,22 @@
 
 
 </head>
+<style>
+    .failure-message{
+        min-height: 28px;
+        padding: 6px 12px;
+        margin-bottom: 10px;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: -.6px;
+        text-align: center;
+        color: #fff;
+        background-color: #ff6060;
+    }
+    .card-custom{
+        margin-top: 8rem !important;
+    }
+</style>
 
 <script th:inline="javascript">
     $(function(){
@@ -42,7 +58,7 @@
 
             <div class="col-xl-6 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card o-hidden border-0 shadow-lg my-5 card-custom">
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">
@@ -51,6 +67,7 @@
                                     <div class="text-center">
                                         <h1 class="h4 text-gray-900 mb-4">로그인</h1>
                                     </div>
+                                    <p th:if="${error != null}" th:text="${exception}" class="failure-message" style="display: block;"></p>
                                     <form  action="/login_proc" method="POST" class="user">
                                         <div class="form-group">
                                             <input name="email" type="text" class="form-control form-control-user"
@@ -63,7 +80,7 @@
                                         </div>
                                         <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <input name="remember-me" type="checkbox" class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">로그인 유지</label>
                                             </div>
                                         </div>
