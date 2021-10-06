@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Register</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Jquery -->
+    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+
+</head>
+<style>
+    .form-error{
+        margin-left: 10px;
+        margin-top: 0px;
+        color: #bd2130;
+        font-size: small;
+    }
+    .form{
+        margin-top: 1rem;
+    }
+    .error-div{
+        height: 6px;
+    }
+</style>
+
+
+<body>
+    <script th:inline="javascript">
+        $(function(){
+            /*<![CDATA[*/
+            var duplicate = /*[[ ${duplicateError} ]]*/;
+            /*]]*/
+
+            if (duplicate != null) {
+                alert(duplicate);
+            }
+        });
+    </script>
+
+
+    <div class="container" style="max-width: 600px">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">회원가입</h1>
+                            </div>
+                            <form class="user" method="post" th:object="${form}">
+                                <div class="form row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input th:field="*{username}" type="text" class="form-control form-control-user" id="exampleFirstName"
+                                            placeholder="이름">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input th:field="*{bojId}" type="text" class="form-control form-control-user" id="exampleLastName"
+                                            placeholder="백준 ID">
+                                    </div>
+                                </div>
+                                <div th:if="${#fields.hasErrors('username') or #fields.hasErrors('bojId')}" class="row error-div">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <p th:if="${#fields.hasErrors('username')}" class="form-error" th:errors="*{username}">error message</p>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <p th:if="${#fields.hasErrors('bojId')}" class="form-error" th:errors="*{bojId}">error message</p>
+                                    </div>
+                                </div>
+                                <div class="form">
+                                    <input th:field="*{email}" type="email" class="form-control form-control-user" id="exampleInputEmail"
+                                        placeholder="이메일">
+                                </div>
+                                <p th:if="${#fields.hasErrors('email')}" class="form-error error-div" th:errors="*{email}">error message</p>
+                                <div class="form row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        <input th:field="*{password}" type="password" class="form-control form-control-user"
+                                            id="exampleInputPassword" placeholder="비밀번호">
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <input type="password" class="form-control form-control-user"
+                                            id="exampleRepeatPassword" placeholder="비밀번호 확인">
+                                    </div>
+                                </div>
+                                <p th:if="${#fields.hasErrors('password')}"class="form-error error-div" th:errors="*{password}">error message</p>
+                                <button type="submit" href="/register" class="btn btn-primary btn-user btn-block form">
+                                    회원가입
+                                </button>
+                            </form>
+                            <hr>
+                            <div class="text-center">
+                                <a class="small" href="forgot-password.html">비밀번호 찾기</a>
+                            </div>
+                            <div class="text-center">
+                                <a class="small" href="login.html">계정이 이미 있으신가요? 로그인</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="static/js/sb-admin-2.min.js"></script>
+
+</body>
+
+</html>
