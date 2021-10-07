@@ -14,7 +14,7 @@
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
+    <li th:classappend="${#httpServletRequest.requestURI == '/' ? 'active' : ''}" class="nav-item">
         <a class="nav-link" href="/">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>대시보드</span></a>
@@ -29,14 +29,14 @@
     </div>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    <li th:classappend="${#httpServletRequest.requestURI == '/study/new' ? 'active' : ''}"  class="nav-item">
         <a class="nav-link" href="/study/new">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>스터디 만들기</span></a>
     </li>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    <li th:classappend="${#httpServletRequest.requestURI == '/study/search' ? 'active' : ''}"  class="nav-item">
         <a class="nav-link" href="/study/search">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>스터디 찾기</span></a>
@@ -51,7 +51,7 @@
     </div>
 
     <!-- Nav Item - Charts -->
-    <li class="nav-item">
+    <li th:classappend="${#httpServletRequest.requestURI == '/board/posting' ? 'active' : ''}" class="nav-item">
         <a class="nav-link" href="/board/posting">
             <i class="fas fa-fw fa-chart-area"></i>
             <span>포스팅</span></a>

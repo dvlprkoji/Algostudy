@@ -20,6 +20,9 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
     boolean alreadySetup = false;
 
     @Autowired
+    private MissionRepository missionRepository;
+
+    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Autowired
@@ -48,7 +51,19 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         }
 
         setupSecurityResources();
+        setupMission();
+
+
         alreadySetup = true;
+    }
+
+    private void setupMission() {
+        Mission mission = new Mission();
+        mission.setMissionName("1일 1백준 챌린지");
+        mission.setMissionDesc("알고리즘은 꾸준함이 생명! 매일 백준 알고리즘 사이트(acmicpc.net)에서 한문제씩 풀기");
+        mission.setImagePath("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/boj210.png");
+
+        Mission save = missionRepository.save(mission);
     }
 
     private void setupSecurityResources() {
@@ -73,6 +88,10 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
         Member adminMember = newMember(adminRole, "admin", "admin", passwordEncoder.encode("admin"), "koji4321");
         Member normalMember1 = newMember(memberRole, "member1", "member1", passwordEncoder.encode("member1"), "koji4321");
+        Member normalMember2 = newMember(memberRole, "member2", "member2", passwordEncoder.encode("member2"), "koji4321");
+        Member normalMember3 = newMember(memberRole, "member3", "member3", passwordEncoder.encode("member3"), "koji4321");
+
+
 
 
 

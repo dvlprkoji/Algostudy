@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head>
+
+    <title>Algostudy</title>
+
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+            rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
+
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <!-- Tagify -->
+    <script src="https://unpkg.com/@yaireo/tagify"></script>
+    <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
+    <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
+
+
+
+</head>
+<style>
+    .index-image {
+        width: 100%;
+        height: 100%;
+        /*text-align: center;*/
+        /*max-width: 1170px;*/
+        /*margin-left: auto;*/
+        /*margin-right: auto;*/
+    }
+    .index-description{
+        padding-top: 60px;
+        padding-bottom: 60px;
+        width: 1170px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .index-description-div{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .container.createRoom {
+        width: 800px;
+    }
+    .createForm {
+        padding: 20px 0 40px;
+    }
+    .formGroup:first-child {
+        border: 0;
+    }
+    .formGroup {
+        position: relative;
+        padding: 20px 0;
+        border-top: 1px dashed rgba(0,0,0,0.1);
+    }
+    .formLabel.input-field-label {
+        line-height: 44px;
+    }
+    .formLabel {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 140px;
+        margin: 0;
+        font-size: .95rem;
+        font-weight: 500;
+        color: #333;
+        line-height: 1.1;
+    }
+    .formContent {
+        position: relative;
+        padding-left: 140px;
+    }
+    .createForm input[type="text"], .createForm textarea {
+        border-color: #ccc;
+    }
+    .input-md {
+        height: 44px;
+        border-color: #d5dce3;
+    }
+    .formContent .url-front-tx {
+        padding-bottom: 10px;
+        font-size: .85rem;
+        color: #9fa6ad;
+        letter-spacing: 0;
+        line-height: 1.4;
+        user-select: none;
+    }
+    .detailInfoBtnRec {
+        margin-top: 30px;
+        text-align: center;
+        border-top: 1px solid rgba(0,0,0,0.06);
+        line-height: 1;
+    }
+    .createBtnRec {
+        margin-top: 20px;
+    }
+    .createForm input[type="text"]:focus, .createForm textarea:focus {
+        border-color: #1f90ff;
+        box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+    }
+    .createForm input[type="text"], .createForm textarea {
+        border-color: #ccc;
+    }
+    .formContent .inputDate {
+        width: 48%;
+        max-width: 150px;
+        text-align: center;
+        color: #333;
+    }
+    .formContent .inputField, .formContent .inputDate, .formContent .dateDivision, .formContent .selectBox {
+        float: left;
+        background-color: white;
+    }
+    .form-control:hover, .form-control:focus, .form-control:active {
+        border-color: #51a9fe;
+    }
+    .date-division{
+        width: 4%;
+        text-align: center;
+        line-height: 44px;
+    }
+    .create-button{
+        background-color: #4e73df;
+        font-size: medium;
+        color: white;
+    }
+    .create-button:hover {
+        background-color: dodgerblue;
+        font-size: medium;
+        color: white;
+    }
+    .formContent .limit-length {
+        padding-top: 8px;
+        font-size: 12px;
+        color: #999;
+        line-height: 1;
+    }
+    .imgEditBtnRec {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding-top: 16px;
+        background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.2));
+        line-height: 0;
+    }
+    .imgEditBtnRec .imgEditBtn {
+        margin-bottom: 0px;
+        border: none;
+        height: 30px;
+        padding: 0 10px 0 32px;
+        background: rgba(0,0,0,0.3) url(https://findicons.com/files/icons/2778/maki/36/camera_18_2x.png) 5px 6px no-repeat;
+        background-size: auto 70%;
+        border-top-right-radius: 4px;
+        font-size: .8rem;
+        color: white;
+        overflow: hidden;
+        transition: 200ms ease-out;
+        line-height: 30px;
+    }
+    .imgEditBtnRec .imgEditBtn:hover {
+        margin-bottom: 0px;
+        border: none;
+        height: 30px;
+        padding: 0 10px 0 32px;
+        background: #4e73df url(https://findicons.com/files/icons/2778/maki/36/camera_18_2x.png) 5px 6px no-repeat;
+        background-size: auto 70%;
+        border-top-right-radius: 4px;
+        font-size: .8rem;
+        color: white;
+        overflow: hidden;
+        transition: 200ms ease-out;
+        line-height: 30px;
+    }
+    .create-room-img-area {
+        position: relative;
+        width: 210px;
+        height: 210px;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .date-div {
+        display: flex;
+
+    }
+    .tagify__input::before {
+        content: attr(data-placeholder);
+        height: 1em;
+        line-height: 1.5rem;
+        margin: auto 0;
+        z-index: 1;
+        color: rgba(0,0,0,.4);
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        position: absolute;
+    }
+
+
+    .slick-track {
+        opacity: 1;
+        width: 1220px;
+        transform: translate3d(0px, 0px, 0px);
+        height: 100%;
+        margin-left: initial;
+    }
+    .study-item-list {
+        width: 224px;
+        height: auto;
+        border-radius: 6px;
+        background-color: #fff;
+        position: relative;
+        cursor: pointer;
+    }
+    .slick-slide {
+        float: left;
+        height: 100%;
+        min-height: 1px;
+    }
+    .slick-slide {
+        margin-right: 20px;
+    }
+    .slick-initialized .slick-slide {
+        display: block;
+    }
+    .study-item-img-wrap {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        border-radius: 4px;
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .study-item-img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -webkit-transition: .2s ease-out;
+        transition: .2s ease-out;
+    }
+    .slick-slide img {
+        display: block;
+    }
+    .study-item-info-cover {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .study-item-tx-wrap {
+        padding: 14px 0;
+    }
+    .missionBox{
+        width: 224px;
+        border-width: thin;
+        border-color: darkgrey;
+        border-style: solid;
+        padding: 10px;
+    }
+    .missionBox:hover{
+        width: 224px;
+        border-width: thin;
+        border-color: #4e73df;
+        border-style: dotted;
+        padding: 10px;
+    }
+    .missionBox:active{
+        width: 224px;
+        border-width: medium;
+        border-color: #4e73df;
+        border-style: solid;
+        padding: 10px;
+    }
+    .missionBox-active{
+        width: 224px;
+        border-width: medium;
+        border-color: #4e73df;
+        border-style: solid;
+        padding: 10px;
+        color: darkslategrey;
+    }
+    .missionDesc{
+        margin-top: 5px;
+    }
+</style>
+
+<body id="page-top">
+
+<script th:inline="javascript">
+    // datepicker 초기화
+    $(function() {
+        //input을 datepicker로 선언
+        $("#startdate").datepicker({
+            dateFormat: 'yy-mm-dd' //달력 날짜 형태
+            , showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+            , showMonthAfterYear: true // 월- 년 순서가아닌 년도 - 월 순서
+            , changeYear: true //option값 년 선택 가능
+            , changeMonth: true //option값  월 선택 가능
+            // , showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시
+            // , buttonImage: "http://images.jautour.com/jautour/images/main/search/btn_cale.gif" //버튼 이미지 경로
+            // , buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
+            , buttonText: "선택" //버튼 호버 텍스트
+            , yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+            , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 텍스트
+            , monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 Tooltip
+            , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] //달력의 요일 텍스트
+            , dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'] //달력의 요일 Tooltip
+            , minDate: "0" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+            , maxDate: "+3M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
+            , onSelect: function (d) {
+                var start = new Date($("#startdate").datepicker("getDate"));
+                var end = new Date($("#enddate").datepicker("getDate"));
+                if (end - start < 0) {
+                    alert('시작일을 종료일보다 늦게 설정할 수 없습니다');
+                    $('#startdate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+                }
+            }
+        })
+        $("#enddate").datepicker({
+            dateFormat: 'yy-mm-dd' //달력 날짜 형태
+            , showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+            , showMonthAfterYear: true // 월- 년 순서가아닌 년도 - 월 순서
+            , changeYear: true //option값 년 선택 가능
+            , changeMonth: true //option값  월 선택 가능
+            // , showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시
+            // , buttonImage: "http://images.jautour.com/jautour/images/main/search/btn_cale.gif" //버튼 이미지 경로
+            // , buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
+            , buttonText: "선택" //버튼 호버 텍스트
+            , yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
+            , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 텍스트
+            , monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 Tooltip
+            , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] //달력의 요일 텍스트
+            , dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'] //달력의 요일 Tooltip
+            , minDate: "0" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+            , maxDate: "+3M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
+            , onSelect: function (d) {
+                var start = new Date($("#startdate").datepicker("getDate"));
+                var end = new Date($("#enddate").datepicker("getDate"));
+                if (end - start < 0) {
+                    alert('시작일을 종료일보다 늦게 설정할 수 없습니다');
+                    $('#enddate').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+                }
+            }
+        });
+
+        //초기값을 오늘 날짜로 설정해줘야 합니다.
+        $('#startdate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+        $('#enddate').datepicker('setDate', '+7D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+
+        // The DOM element you wish to replace with Tagify
+        var input = document.querySelector('input[name=hashTagList]');
+
+        // initialize Tagify on the above input node reference
+        new Tagify(input)
+    })
+
+
+
+
+
+    function readImageMain(input) {
+        // 인풋 태그에 파일이 있는 경우
+        if(input.files && input.files[0]) {
+            if( $("#image_0").val() != "" ){
+                var ext = $('#mainImage').val().split('.').pop().toLowerCase();
+                if($.inArray(ext, ['png','jpg']) == -1) {
+                    alert('이미지 형식은 png, jpg 만 가능합니다');
+                    return;
+                }
+            }
+            // FileReader 인스턴스 생성
+            const reader = new FileReader();
+            // 이미지가 로드가 된 경우
+            reader.onload = e => {
+                var img = new Image();
+                img.src = e.target.result;
+                img.onload = function(){
+                    var w = this.width;
+                    var h = this.height;
+                    if (w != 210 || h != 210) {
+                        alert('210 x 210 크기의 이미지를 권장합니다');
+                    }
+                    const previewImage = document.getElementById("previewImage");
+                    previewImage.src = e.target.result;
+
+                }
+
+
+            }
+            // reader가 이미지 읽도록 하기
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    function checkMission(target){
+        var checkBox = target.getElementsByClassName("checkBox")[0];
+        if(target.classList.contains('missionBox-active')){
+            target.classList.replace('missionBox-active', 'missionBox')
+            checkBox.removeAttribute("checked");
+        }
+        else{
+            target.classList.replace('missionBox','missionBox-active')
+            checkBox.setAttribute("checked", "checked");
+        }
+    }
+
+</script>
+
+
+<!-- Page Wrapper -->
+<div id="wrapper">
+
+    <!-- Sidebar -->
+    <ul sec:authorize="isAuthenticated()" th:replace="fragments/sidebar :: sidebar"/>
+    <!-- End of Sidebar -->
+
+    <!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
+
+        <!-- Main Content -->
+
+        <!-- Topbar -->
+        <nav th:replace="fragments/header :: header"></nav>
+        <!-- End of Topbar -->
+
+        <form action="/study/new" method="post" enctype="multipart/form-data">
+            <div class="room-create">
+                <div class="wrapper">
+                    <div class="create-room-bottom">
+                        <div class="container createRoom">
+                            <div class="createForm">
+                                <div class="create-room-form-basic">
+                                    <div class="formGroup withValidateTx">
+                                        <label class="formLabel input-field-label">스터디 이름</label>
+                                        <div class="formContent">
+                                            <input name="teamName" type="text" placeholder="스터디 이름을 입력하세요" title="스터디 이름을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md" aria-required="true" aria-invalid="false">
+                                        </div>
+                                    </div>
+                                    <div class="formGroup withValidateTx">
+                                        <label class="formLabel">스터디 URL</label>
+                                        <div class="formContent">
+                                            <div class="url-area clearfix">
+                                                <div class="url-front-tx">https://algostudy.com/</div>
+                                                <input name="studyUrl" type="text" placeholder="URL을 입력하세요" title="URL을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="formGroup hashtag">
+                                        <label class="formLabel input-field-label">해시태그</label>
+                                        <div class="formContent">
+                                            <input name="hashTagList" type="text" placeholder="대표하는 키워드를 입력하세요. (최대 3개)" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
+                                        </div>
+                                    </div>
+                                    <div class="formGroup image">
+                                        <label class="formLabel">대표 이미지</label>
+                                        <div class="formContent">
+                                            <div class="create-room-img-area">
+                                                <img id="previewImage" src="https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/madprodo.png" alt="방 대표 이미지">
+                                                <div class="imgEditBtnRec">
+                                                    <label for="mainImage" type="button" class="imgEditBtn">편집</label>
+                                                    <input type="file" name="mainImage" id="mainImage" class="btn btn-outline-dark" style="margin-right: 100px; display: none" accept=".png, .jpg" onchange="readImageMain(this)">
+                                                </div>
+                                            </div>
+                                            <div style=" font-size: small; margin: 5px;">가로: 210px, 세로: 210px 권장</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="create-room-form-detail">
+                                    <div class="formGroup">
+                                        <label class="formLabel input-field-label">기간
+                                            <span class="position-relative">
+                                            <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
+                                        </span>
+                                        </label>
+                                        <div class="formContent clearfix date-div">
+                                            <label for="startdate"></label><input type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="startdate" id="startdate">
+                                            <span class="date-division">~</span>
+                                            <label for="enddate"></label><input type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="enddate" id="enddate">
+                                        </div>
+                                    </div>
+                                    <div class="formGroup clearfix">
+                                        <label class="formLabel mobile-m-b-2">미션 설정
+                                            <span class="position-relative badgeRec">
+                                            <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
+                                        </span>
+                                        </label>
+                                        <div class="formContent">
+                                            <div th:each="mission : ${missionList}" class="study-item-list slick-slide slick-current slick-active missionBox" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 224px;" onclick="checkMission(this)">
+                                                <div class="study-item-img-wrap">
+                                                    <img th:src="${mission.imagePath}" alt="study-img" class="study-item-img">
+                                                    <div class="study-item-info-cover">
+                                                        <div class="study-item-info-badge-wrap"></div>
+                                                        <div class="room-more-view-btn-area"></div>
+                                                    </div>
+                                                </div>
+                                                <div class="study-item-tx-wrap">
+                                                    <div class="study-item-tx" style="font-size: medium" th:text="${mission.missionName}">미션명</div>
+                                                    <div class="study-item-tx missionDesc" style="font-size: small" th:text="${mission.missionDesc}">미션설명</div>
+                                                </div>
+                                                <input type="checkbox" class="checkBox" name="checkedMission" th:id="${mission.id}" style="display: none" th:value="${mission.id}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="formGroup">
+                                        <label for="teamDesc" class="formLabel">스터디 소개</label>
+                                        <div class="formContent textarea">
+                                            <textarea id="teamDesc" name="teamDesc" maxlength="1000" placeholder="스터디를 소개해주세요" title="스터디를 소개해주세요" class="form-control input-md"></textarea>
+                                            <p class="limit-length">( 0 /1000)</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="createBtnRec text-right">
+                                    <button type="submit" class="btn btn-lg btn-skin btn-xs-block create-button">스터디 만들기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <footer th:replace="fragments/footer:: footer" \></footer>
+
+            </div>
+        </form>
+
+
+
+    <!-- Page level plugins -->
+</div>
+</div>
+</body>
+
+</html>
