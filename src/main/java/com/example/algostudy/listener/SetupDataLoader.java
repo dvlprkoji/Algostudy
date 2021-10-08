@@ -46,24 +46,37 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
     @Transactional
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
+
         if (alreadySetup) {
             return;
         }
 
         setupSecurityResources();
-        setupMission();
+        saveMissionIfNotFound();
 
 
         alreadySetup = true;
     }
 
-    private void setupMission() {
+    private void saveMissionIfNotFound() {
+        Mission findMission = missionRepository.findByMissionName("1일 1백준 챌린지");
+        if (findMission != null) {
+            return;
+        }
         Mission mission = new Mission();
         mission.setMissionName("1일 1백준 챌린지");
         mission.setMissionDesc("알고리즘은 꾸준함이 생명! 매일 백준 알고리즘 사이트(acmicpc.net)에서 한문제씩 풀기");
         mission.setImagePath("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/boj210.png");
 
-        Mission save = missionRepository.save(mission);
+        missionRepository.save(mission);
+
+
+        mission = new Mission();
+        mission.setMissionName("내가 알려주지");
+        mission.setMissionDesc("모르는게 있나? 나한테 물어보게나! 선정한 주제에 대해 번갈아가며 실시간으로 강의하기");
+        mission.setImagePath("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/zoom.png");
+
+        missionRepository.save(mission);
     }
 
     private void setupSecurityResources() {
@@ -78,18 +91,18 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         List<Resource> adminResourceList = new ArrayList<>();
         adminResourceList.add(adminAllResource);
 
-        saveRoleWithResourceList(adminRole, adminResourceList);
+        saveRoleWithResourceListIfNotFound(adminRole, adminResourceList);
 
         Role memberRole = createRoleIfNotFound("ROLE_MEMBER", "일반회원");
         List<Resource> memberResourceList = new ArrayList<>();
         memberResourceList.add(memberAllResource);
 
-        saveRoleWithResourceList(memberRole, memberResourceList);
+        saveRoleWithResourceListIfNotFound(memberRole, memberResourceList);
 
-        Member adminMember = newMember(adminRole, "admin", "admin", passwordEncoder.encode("admin"), "koji4321");
-        Member normalMember1 = newMember(memberRole, "member1", "member1", passwordEncoder.encode("member1"), "koji4321");
-        Member normalMember2 = newMember(memberRole, "member2", "member2", passwordEncoder.encode("member2"), "koji4321");
-        Member normalMember3 = newMember(memberRole, "member3", "member3", passwordEncoder.encode("member3"), "koji4321");
+        Member adminMember = createMemberIfNotFound(adminRole, "admin", "admin", passwordEncoder.encode("admin"), "koji4321");
+        Member normalMember1 = createMemberIfNotFound(memberRole, "member1", "member1", passwordEncoder.encode("member1"), "koji4321");
+        Member normalMember2 = createMemberIfNotFound(memberRole, "member2", "member2", passwordEncoder.encode("member2"), "koji4321");
+        Member normalMember3 = createMemberIfNotFound(memberRole, "member3", "member3", passwordEncoder.encode("member3"), "koji4321");
 
 
 
@@ -97,7 +110,11 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
     }
 
-    public Member newMember(Role role, String username, String email, String password, String bojId) {
+    public Member createMemberIfNotFound(Role role, String username, String email, String password, String bojId) {
+        Member findMember = memberRepository.findByUsername(username);
+        if (findMember != null) {
+            return findMember;
+        }
         Member member = Member.builder()
                 .username(username)
                 .password(password)
@@ -133,7 +150,11 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
     }
 
     @Transactional
-    public void saveRoleWithResourceList(Role role, List<Resource> resourceList) {
+    public void saveRoleWithResourceListIfNotFound(Role role, List<Resource> resourceList) {
+        Role findRole = roleRepository.findByRoleName(role.getRoleName());
+        if (findRole != null) {
+            return;
+        }
         for (Resource resource : resourceList) {
             RoleResource roleResource = RoleResource.builder()
                     .role(role)

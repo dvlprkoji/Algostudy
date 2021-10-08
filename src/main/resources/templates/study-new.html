@@ -315,15 +315,20 @@
     .missionDesc{
         margin-top: 5px;
     }
+    .errorMessage{
+        font-size: small;
+        color: red;
+        margin: 6px;
+    }
 </style>
 
 <body id="page-top">
 
 <script th:inline="javascript">
     // datepicker 초기화
-    $(function() {
+    $(function () {
         //input을 datepicker로 선언
-        $("#startdate").datepicker({
+        $("#startDate").datepicker({
             dateFormat: 'yy-mm-dd' //달력 날짜 형태
             , showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
             , showMonthAfterYear: true // 월- 년 순서가아닌 년도 - 월 순서
@@ -341,15 +346,15 @@
             , minDate: "0" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
             , maxDate: "+3M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
             , onSelect: function (d) {
-                var start = new Date($("#startdate").datepicker("getDate"));
-                var end = new Date($("#enddate").datepicker("getDate"));
+                var start = new Date($("#startDate").datepicker("getDate"));
+                var end = new Date($("#endDate").datepicker("getDate"));
                 if (end - start < 0) {
                     alert('시작일을 종료일보다 늦게 설정할 수 없습니다');
-                    $('#startdate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+                    $('#startDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
                 }
             }
         })
-        $("#enddate").datepicker({
+        $("#endDate").datepicker({
             dateFormat: 'yy-mm-dd' //달력 날짜 형태
             , showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
             , showMonthAfterYear: true // 월- 년 순서가아닌 년도 - 월 순서
@@ -367,25 +372,27 @@
             , minDate: "0" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
             , maxDate: "+3M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
             , onSelect: function (d) {
-                var start = new Date($("#startdate").datepicker("getDate"));
-                var end = new Date($("#enddate").datepicker("getDate"));
+                var start = new Date($("#startDate").datepicker("getDate"));
+                var end = new Date($("#endDate").datepicker("getDate"));
                 if (end - start < 0) {
                     alert('시작일을 종료일보다 늦게 설정할 수 없습니다');
-                    $('#enddate').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+                    $('#endDate').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
                 }
             }
         });
 
         //초기값을 오늘 날짜로 설정해줘야 합니다.
-        $('#startdate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-        $('#enddate').datepicker('setDate', '+7D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+        $('#startDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+        $('#endDate').datepicker('setDate', '+7D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
 
         // The DOM element you wish to replace with Tagify
-        var input = document.querySelector('input[name=hashTagList]');
+        var input = document.querySelector('input[name=hashtagList]');
 
         // initialize Tagify on the above input node reference
-        new Tagify(input)
-    })
+        new Tagify(input, {
+            originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
+        })
+    });
 
 
 
@@ -436,6 +443,19 @@
         }
     }
 
+    function checkForm(target) {
+        var missionList = $("input[name=checkedMission]:checked");
+        if (missionList.length == 0) {
+            return true;
+        }
+        var checkedMission = [];
+        $("input[name=checkedMission]:checked").each(function(){
+            checkedMission.push($(this).val());
+        });
+        document.getElementById("checkedMissionList").setAttribute("value", checkedMission);
+        return true;
+    }
+
 </script>
 
 
@@ -455,7 +475,7 @@
         <nav th:replace="fragments/header :: header"></nav>
         <!-- End of Topbar -->
 
-        <form action="/study/new" method="post" enctype="multipart/form-data">
+        <form action="/study/new" method="post" enctype="multipart/form-data" onsubmit="checkForm(this)" th:object="${teamRegisterForm}">
             <div class="room-create">
                 <div class="wrapper">
                     <div class="create-room-bottom">
@@ -465,23 +485,26 @@
                                     <div class="formGroup withValidateTx">
                                         <label class="formLabel input-field-label">스터디 이름</label>
                                         <div class="formContent">
-                                            <input name="teamName" type="text" placeholder="스터디 이름을 입력하세요" title="스터디 이름을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md" aria-required="true" aria-invalid="false">
+                                            <input th:field="*{teamName}" th:value="*{teamName}" name="teamName" type="text" placeholder="스터디 이름을 입력하세요" title="스터디 이름을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md" aria-required="true" aria-invalid="false">
                                         </div>
+                                        <div th:if="${#fields.hasErrors('teamName')}" class="formContent errorMessage" th:errors="*{teamName}">errormessage</div>
                                     </div>
                                     <div class="formGroup withValidateTx">
                                         <label class="formLabel">스터디 URL</label>
                                         <div class="formContent">
                                             <div class="url-area clearfix">
                                                 <div class="url-front-tx">https://algostudy.com/</div>
-                                                <input name="studyUrl" type="text" placeholder="URL을 입력하세요" title="URL을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
+                                                <input th:field="*{studyUrl}" th:value="*{studyUrl}" name="studyUrl" type="text" placeholder="URL을 입력하세요" title="URL을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
                                             </div>
                                         </div>
+                                        <div th:if="${#fields.hasErrors('studyUrl')}" class="formContent errorMessage" th:errors="*{studyUrl}">errormessage</div>
                                     </div>
                                     <div class="formGroup hashtag">
                                         <label class="formLabel input-field-label">해시태그</label>
                                         <div class="formContent">
-                                            <input name="hashTagList" type="text" placeholder="대표하는 키워드를 입력하세요. (최대 3개)" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
+                                            <input th:field="*{hashtagList}" th:value="*{hashtagList}" name="hashtagList" type="text" placeholder="대표하는 키워드를 입력하세요. (최대 3개)" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
                                         </div>
+                                        <div th:if="${#fields.hasErrors('hashtagList')}" class="formContent errorMessage" th:errors="*{hashtagList}">errormessage</div>
                                     </div>
                                     <div class="formGroup image">
                                         <label class="formLabel">대표 이미지</label>
@@ -495,6 +518,7 @@
                                             </div>
                                             <div style=" font-size: small; margin: 5px;">가로: 210px, 세로: 210px 권장</div>
                                         </div>
+<!--                                        <div th:if="${#fields.hasErrors('teamName')}" class="formContent errorMessage" th:errors="*{teamName}">errormessage</div>-->
                                     </div>
                                 </div>
                                 <div class="create-room-form-detail">
@@ -505,39 +529,47 @@
                                         </span>
                                         </label>
                                         <div class="formContent clearfix date-div">
-                                            <label for="startdate"></label><input type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="startdate" id="startdate">
+                                            <label for="startDate"></label><input th:field="*{startDate}" th:value="*{startDate}" type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="startDate" id="startDate">
                                             <span class="date-division">~</span>
-                                            <label for="enddate"></label><input type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="enddate" id="enddate">
+                                            <label for="endDate"></label><input th:field="*{endDate}" th:value="*{endDate}" type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="endDate" id="endDate">
                                         </div>
+<!--                                        <div th:if="${#fields.hasErrors('teamName')}" class="formContent errorMessage" th:errors="*{teamName}">errormessage</div>-->
                                     </div>
                                     <div class="formGroup clearfix">
                                         <label class="formLabel mobile-m-b-2">미션 설정
                                             <span class="position-relative badgeRec">
-                                            <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
-                                        </span>
+                                                <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
+                                            </span>
                                         </label>
-                                        <div class="formContent">
-                                            <div th:each="mission : ${missionList}" class="study-item-list slick-slide slick-current slick-active missionBox" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 224px;" onclick="checkMission(this)">
-                                                <div class="study-item-img-wrap">
-                                                    <img th:src="${mission.imagePath}" alt="study-img" class="study-item-img">
-                                                    <div class="study-item-info-cover">
-                                                        <div class="study-item-info-badge-wrap"></div>
-                                                        <div class="room-more-view-btn-area"></div>
+                                        <div th:object="${missionForm}">
+                                            <div class="formContent">
+                                                <div th:each="mission : ${missionList}" class="study-item-list slick-slide slick-current slick-active missionBox" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 224px;" onclick="checkMission(this)">
+                                                    <div class="study-item-img-wrap">
+                                                        <img th:src="${mission.imagePath}" alt="study-img" class="study-item-img">
+                                                        <div class="study-item-info-cover">
+                                                            <div class="study-item-info-badge-wrap"></div>
+                                                            <div class="room-more-view-btn-area"></div>
+                                                        </div>
                                                     </div>
+                                                    <div class="study-item-tx-wrap">
+                                                        <div class="study-item-tx" style="font-size: medium" th:text="${mission.missionName}">미션명</div>
+                                                        <div class="study-item-tx missionDesc" style="font-size: small" th:text="${mission.missionDesc}">미션설명</div>
+                                                    </div>
+                                                    <input type="checkbox" class="checkBox" name="checkedMission" th:id="${mission.id}" style="display: none" th:value="${mission.id}">
                                                 </div>
-                                                <div class="study-item-tx-wrap">
-                                                    <div class="study-item-tx" style="font-size: medium" th:text="${mission.missionName}">미션명</div>
-                                                    <div class="study-item-tx missionDesc" style="font-size: small" th:text="${mission.missionDesc}">미션설명</div>
-                                                </div>
-                                                <input type="checkbox" class="checkBox" name="checkedMission" th:id="${mission.id}" style="display: none" th:value="${mission.id}">
+                                                <input th:field="*{checkedMissionList}" th:value="*{checkedMissionList}" type="hidden" id="checkedMissionList" name="checkedMissionList">
+                                            </div>
+                                            <div class="formContent" style="display: flex">
+                                                <div th:if="${#fields.hasErrors('checkedMissionList')}" class="errorMessage" th:errors="${missionForm.checkedMissionList}">errormessage</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="formGroup">
                                         <label for="teamDesc" class="formLabel">스터디 소개</label>
                                         <div class="formContent textarea">
-                                            <textarea id="teamDesc" name="teamDesc" maxlength="1000" placeholder="스터디를 소개해주세요" title="스터디를 소개해주세요" class="form-control input-md"></textarea>
+                                            <textarea th:field="*{teamDesc}" th:value="*{teamDesc}" id="teamDesc" name="teamDesc" maxlength="1000" placeholder="스터디를 소개해주세요" title="스터디를 소개해주세요" class="form-control input-md"></textarea>
                                             <p class="limit-length">( 0 /1000)</p>
+                                            <div th:if="${#fields.hasErrors('teamDesc')}" class="errorMessage" th:errors="*{teamDesc}">errormessage</div>
                                         </div>
                                     </div>
                                 </div>

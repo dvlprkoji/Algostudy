@@ -1,8 +1,7 @@
 package com.example.algostudy.controller;
 
-import com.example.algostudy.domain.dto.MemberLoginForm;
 import com.example.algostudy.domain.dto.MemberRegisterForm;
-import com.example.algostudy.service.RegisterService;
+import com.example.algostudy.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +15,7 @@ import javax.validation.Valid;
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
-    private final RegisterService registerService;
+    private final MemberService memberService;
 
     @GetMapping("/register")
     public String register(Model model) {
@@ -31,8 +30,8 @@ public class MemberController {
             System.out.println("bindingResult = " + bindingResult);
             return "register";
         }
-        if (registerService.checkBeforeRegister(form, model)) {
-            registerService.register(form);
+        if (memberService.checkBeforeRegister(form, model)) {
+            memberService.register(form);
             model.addAttribute("registerSuccessMessage", "회원가입이 완료되었습니다");
             return "login";
         }

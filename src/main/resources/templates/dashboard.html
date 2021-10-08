@@ -39,6 +39,522 @@
         margin-top: 50px;
         margin-bottom: 50px;
     }
+    .main {
+        margin-top: 64px;
+        padding-bottom: 120px;
+        background-color: #fff;
+        position: relative;
+    }
+    .mine {
+        padding: 64px 0;
+        background: #fafbfc;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mine-contents {
+        width: 1200px;
+        margin: 0 auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mine-study {
+        width: 468px;
+    }
+    .mine-study-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .mine-study-title {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+    }
+    .controls-btn-wrap {
+        width: 40px;
+        height: 30px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .controls-btn.prev {
+        border:none;
+        background: url(https://gooroomee.com/images/icon/ico_arrowLineLeft.svg) no-repeat center/12px auto;
+    }
+    .controls-btn.next {
+        border:none;
+        margin-left: 4px;
+        background: url(https://gooroomee.com/images/icon/ico_arrowLineRight.svg) no-repeat center/12px auto;
+    }
+    .mine-study-body {
+        height: 248px;
+        margin-top: 22px;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+    .study-item-list-wrap {
+        height: 100%;
+    }
+    .slick-slider {
+        margin-right: -20px;
+    }
+    .study-item-list-wrap {
+        height: 100%;
+    }
+    .slick-slider .slick-track, .slick-slider .slick-list {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .slick-list {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .study-item-list-cover.active {
+        width: 100%;
+        padding: 0 90px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
+    .study-item-list-cover {
+        width: 224px;
+        padding: 0 20px;
+        border-radius: 4px;
+        background: url(https://gooroomee.com/images/main/back_addStudy.svg) no-repeat center/cover;
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        left: 244px;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .study-loading-container.mine, .study-loading-container.recommend-study {
+        background-color: #fafbfc;
+    }
+    .study-item-tx.cover-title.active {
+        font-size: 20px;
+        line-height: 33px;
+    }
+    .study-item-tx.cover-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 25px;
+        word-break: keep-all;
+    }
+    .study-item-tx.cover-sub {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #fff;
+        line-height: 29px;
+        display: none;
+    }
+    .study-loading-container.mine, .study-loading-container.recommend-study {
+        background-color: #fafbfc;
+    }
+    .study-loading-container.ranking, .study-loading-container.mine, .study-loading-container.goal, .study-loading-container.recommend-study {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .study-loading-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .mine {
+        padding: 64px 0;
+        background: #fafbfc;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mine-goal {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        min-width: 0;
+        margin-left: 40px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .mine-goal-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        line-height: 24px;
+        letter-spacing: -1px;
+        margin: 0;
+    }
+    .mine-goal-contents {
+        -webkit-box-flex: 1;
+        flex: 1;
+        margin-top: 22px;
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;
+        padding: 0 30px;
+        background-color: #fff;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        justify-content: center;
+        position: relative;
+    }
+    .mine-goal-record::after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        margin: 30px 0 18px;
+        border-radius: 50px;
+        background-color: #e0e0e0;
+        display: block;
+    }
+    .mine-goal-record-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .mine-goal-record-tx.title {
+        margin: 0;
+        font-weight: 700;
+        font-size: 13px;
+        color: #222;
+        line-height: 18px;
+    }
+    .form-setting, .form-edit {
+        border: none;
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .mine-goal-record-gauge-wrap {
+        height: 10px;
+        margin-top: 16px;
+        background-color: #e0e0e0;
+        position: relative;
+        border-radius: 100px;
+        overflow: hidden;
+    }
+    .mine-goal-record-tx-wrap {
+        margin-top: 12px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+    }
+    .my-contents-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .mine-goal-record-gauge-wrap {
+        height: 10px;
+        margin-top: 16px;
+        background-color: #e0e0e0;
+        position: relative;
+        border-radius: 100px;
+        overflow: hidden;
+    }
+    .my-contents {
+        min-width: 0;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-bottom: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .my-contents-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .my-contents-body {
+        margin-top: 6px;
+        min-width: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .form-setting, .form-edit {
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .my-contents-tx.tx {
+        color: #666;
+        line-height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .my-contents-wrapper .contents-line {
+        width: 1px;
+        height: 100%;
+        margin: 0 30px;
+        background-color: #e0e0e0;
+    }
+    .my-contents-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .my-contents {
+        min-width: 0;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-bottom: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-loading-container.ranking, .study-loading-container.mine, .study-loading-container.goal, .study-loading-container.recommend-study {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .my-contents-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .study-loading-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .study-loading-container.goal {
+        border-radius: 6px;
+        background-color: #fff;
+        left: 0;
+    }
+    .my-contents-tx.title {
+        font-weight: 700;
+        color: #222;
+    }
+    .mine-study-body {
+        height: 290px;
+        margin-top: 18px;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+    .my-contents-tx {
+        font-size: 13px;
+    }
+    .form-setting, .form-edit {
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .my-contents-body {
+        margin-top: 6px;
+        min-width: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .my-contents-tx.tx {
+        color: #666;
+        line-height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .my-contents-wrapper .contents-line {
+        width: 1px;
+        height: 100%;
+        margin: 0 30px;
+        background-color: #e0e0e0;
+    }
+    .my-contents {
+        min-width: 0;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-bottom: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-loading-container.goal {
+        border-radius: 6px;
+        background-color: #fff;
+        left: 0;
+    }
+    .study-loading-container.ranking, .study-loading-container.mine, .study-loading-container.goal, .study-loading-container.recommend-study {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .study-loading-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .sk-fading-circle {
+        margin: 60px auto 40px;
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+    .study-loading-container.ranking .sk-fading-circle, .study-loading-container.mine .sk-fading-circle, .study-loading-container.goal .sk-fading-circle, .study-loading-container.recommend-study .sk-fading-circle {
+        margin: 0 auto;
+    }
 </style>
 
 <body id="page-top">
@@ -60,370 +576,95 @@
             <!-- End of Topbar -->
 
 
-            <!-- Begin Page Content -->
-<!--            <div class="container-fluid">-->
-
-<!--                &lt;!&ndash; Page Heading &ndash;&gt;-->
-<!--                <div class="d-sm-flex align-items-center justify-content-between mb-4"  >-->
-<!--                    <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>-->
-<!--                    <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i-->
-<!--                            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>-->
-<!--                </div>-->
-
-<!--                &lt;!&ndash;                    &lt;!&ndash; Content Row &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <div class="row">&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        &lt;!&ndash; Earnings (Monthly) Card Example &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <div class="col-xl-3 col-md-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="card border-left-primary shadow h-100 py-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="row no-gutters align-items-center">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="col mr-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                Earnings (Monthly)</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="col-auto">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <i class="fas fa-calendar fa-2x text-gray-300"></i>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        &lt;!&ndash; Earnings (Monthly) Card Example &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <div class="col-xl-3 col-md-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="card border-left-success shadow h-100 py-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="row no-gutters align-items-center">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="col mr-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                Earnings (Annual)</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="col-auto">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        &lt;!&ndash; Earnings (Monthly) Card Example &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <div class="col-xl-3 col-md-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="card border-left-info shadow h-100 py-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="row no-gutters align-items-center">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="col mr-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Tasks&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="row no-gutters align-items-center">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                <div class="col-auto">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                <div class="col">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                    <div class="progress progress-sm mr-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                        <div class="progress-bar bg-info" role="progressbar"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                            style="width: 50%" aria-valuenow="50" aria-valuemin="0"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                            aria-valuemax="100"></div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="col-auto">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        &lt;!&ndash; Pending Requests Card Example &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <div class="col-xl-3 col-md-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="card border-left-warning shadow h-100 py-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="row no-gutters align-items-center">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="col mr-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                                Pending Requests</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="col-auto">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <i class="fas fa-comments fa-2x text-gray-300"></i>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                    &lt;!&ndash; Content Row &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <div class="row">&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        &lt;!&ndash; Area Chart &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <div class="col-xl-8 col-lg-7">&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="card shadow mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                &lt;!&ndash; Card Header - Dropdown &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="dropdown no-arrow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="dropdown-menu dropdown-menu-right shadow animated&#45;&#45;fade-in"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            aria-labelledby="dropdownMenuLink">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="dropdown-header">Dropdown Header:</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <a class="dropdown-item" href="#">Action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <a class="dropdown-item" href="#">Another action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="dropdown-divider"></div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <a class="dropdown-item" href="#">Something else here</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                &lt;!&ndash; Card Body &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="chart-area">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <canvas id="myAreaChart"></canvas>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        &lt;!&ndash; Pie Chart &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <div class="col-xl-4 col-lg-5">&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="card shadow mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                &lt;!&ndash; Card Header - Dropdown &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    class="card-header py-3 d-flex flex-row align-items-center justify-content-between">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="dropdown no-arrow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="dropdown-menu dropdown-menu-right shadow animated&#45;&#45;fade-in"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            aria-labelledby="dropdownMenuLink">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="dropdown-header">Dropdown Header:</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <a class="dropdown-item" href="#">Action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <a class="dropdown-item" href="#">Another action</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="dropdown-divider"></div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <a class="dropdown-item" href="#">Something else here</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                &lt;!&ndash; Card Body &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="chart-pie pt-4 pb-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <canvas id="myPieChart"></canvas>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="mt-4 text-center small">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <span class="mr-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <i class="fas fa-circle text-primary"></i> Direct&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </span>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <span class="mr-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <i class="fas fa-circle text-success"></i> Social&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </span>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <span class="mr-2">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <i class="fas fa-circle text-info"></i> Referral&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </span>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    &lt;!&ndash; Content Row &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <div class="row">&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        &lt;!&ndash; Content Column &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                        <div class="col-lg-6 mb-4">&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                            &lt;!&ndash; Project Card Example &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="card shadow mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-header py-3">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h6 class="m-0 font-weight-bold text-primary">Projects</h6>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h4 class="small font-weight-bold">Server Migration <span&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            class="float-right">20%</span></h4>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="progress mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h4 class="small font-weight-bold">Sales Tracking <span&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            class="float-right">40%</span></h4>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="progress mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="progress-bar bg-warning" role="progressbar" style="width: 40%"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h4 class="small font-weight-bold">Customer Database <span&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            class="float-right">60%</span></h4>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="progress mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="progress-bar" role="progressbar" style="width: 60%"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h4 class="small font-weight-bold">Payout Details <span&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            class="float-right">80%</span></h4>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="progress mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="progress-bar bg-info" role="progressbar" style="width: 80%"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h4 class="small font-weight-bold">Account Setup <span&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            class="float-right">Complete!</span></h4>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="progress">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="progress-bar bg-success" role="progressbar" style="width: 100%"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                            &lt;!&ndash; Color System &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="row">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="col-lg-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="card bg-primary text-white shadow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            Primary&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-white-50 small">#4e73df</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="col-lg-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="card bg-success text-white shadow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            Success&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-white-50 small">#1cc88a</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="col-lg-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="card bg-info text-white shadow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            Info&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-white-50 small">#36b9cc</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="col-lg-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="card bg-warning text-white shadow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            Warning&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-white-50 small">#f6c23e</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="col-lg-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="card bg-danger text-white shadow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            Danger&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-white-50 small">#e74a3b</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="col-lg-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="card bg-secondary text-white shadow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            Secondary&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-white-50 small">#858796</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="col-lg-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="card bg-light text-black shadow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            Light&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-black-50 small">#f8f9fc</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="col-lg-6 mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="card bg-dark text-white shadow">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            Dark&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            <div class="text-white-50 small">#5a5c69</div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        <div class="col-lg-6 mb-4">&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                            &lt;!&ndash; Illustrations &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="card shadow mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-header py-3">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <div class="text-center">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;"&ndash;&gt;-->
-<!--                &lt;!&ndash;                                             src="img/undraw_posting_photo.svg" alt="...">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <p>Add some quality, svg illustrations to your project courtesy of <a&ndash;&gt;-->
-<!--                &lt;!&ndash;                                            target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        constantly updated collection of beautiful svg images that you can use&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        completely free and without attribution!</p>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        unDraw &rarr;</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                            &lt;!&ndash; Approach &ndash;&gt;&ndash;&gt;-->
-<!--                &lt;!&ndash;                            <div class="card shadow mb-4">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-header py-3">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                <div class="card-body">&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        CSS bloat and poor page performance. Custom CSS classes are used to create&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        custom components and custom utility classes.</p>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                    <p class="mb-0">Before working with this theme, you should become familiar with the&ndash;&gt;-->
-<!--                &lt;!&ndash;                                        Bootstrap framework, especially the utility classes.</p>&ndash;&gt;-->
-<!--                &lt;!&ndash;                                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                            </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                        </div>&ndash;&gt;-->
-<!--                &lt;!&ndash;                    </div>&ndash;&gt;-->
-
-<!--                &lt;!&ndash;                </div>&ndash;&gt;-->
-<!--                &lt;!&ndash; /.container-fluid &ndash;&gt;-->
-
-<!--            &lt;!&ndash; End of Main Content &ndash;&gt;-->
+            <main sec:authorize="isAuthenticated()" class="main">
+                <section class="mine">
+                    <div class="mine-contents">
+                        <article class="mine-study">
+                            <div class="mine-study-header">
+                                <h3 class="mine-study-title">내 스터디</h3>
+                                <div class="controls-btn-wrap">
+                                    <button class="controls-btn prev"></button>
+                                    <button class="controls-btn next"></button>
+                                </div>
+                            </div>
+                            <div class="mine-study-body">
+                                <div class="study-item-list-wrap slick-initialized slick-slider">
+                                    <div class="slick-list draggable">
+                                        <div class="slick-track" style="opacity: 1; width: 0px; transform: translate3d(0px, 0px, 0px);"></div>
+                                    </div>
+                                </div>
+                                <div class="study-item-list-cover active"><p class="study-item-tx cover-title active">내 스터디는 내가 만든 스터디 또는 초대 받은 스터디가 등록됩니다.</p>
+                                    <p class="study-item-tx cover-sub active">스터디 만들기에서 내 스터디를 만들어 보세요.</p>
+                                </div>
+                                <div class="study-loading-container mine" style="display: none;">
+                                    <div class="sk-fading-circle">
+                                        <div class="sk-circle1 sk-circle"></div>
+                                        <div class="sk-circle2 sk-circle"></div>
+                                        <div class="sk-circle3 sk-circle"></div>
+                                        <div class="sk-circle4 sk-circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                        <article class="mine-goal">
+                            <h3 class="mine-goal-title">내 목표</h3>
+                            <div class="mine-goal-contents">
+                                <div class="mine-goal-record">
+                                    <div class="mine-goal-record-header">
+                                        <h4 class="mine-goal-record-tx title">오늘 공부한 시간 / 내 목표 시간</h4>
+                                        <button class="form-setting">설정</button>
+                                    </div>
+                                    <div class="mine-goal-record-body">
+                                        <div class="mine-goal-record-tx-wrap">
+                                            <p class="mine-goal-record-tx time">0시간 0분
+                                                <span class="mine-goal-record-tx total"> / 0시간 0분</span>
+                                            </p>
+                                            <p class="mine-goal-record-tx none">내 목표시간을 설정해보세요.</p>
+                                        </div>
+                                        <div class="mine-goal-record-gauge-wrap">
+                                            <span class="mine-goal-record-gauge" style="width: 0%;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="my-contents-wrapper">
+                                    <div class="my-contents resolution">
+                                        <div class="my-contents-header">
+                                            <h4 class="my-contents-tx">내 각오</h4>
+                                            <button class="form-edit">설정</button>
+                                        </div>
+                                        <div class="my-contents-body">
+                                            <p class="my-contents-tx tx">나의 꿈과 목표는 30자 이내로 작성 가능합니다.</p>
+                                        </div>
+                                    </div>
+                                    <span class="contents-line"></span>
+                                    <div class="my-contents d-day">
+                                        <div class="my-contents-header">
+                                            <h4 class="my-contents-tx">내 디데이</h4>
+                                            <button class="form-edit">설정</button>
+                                        </div>
+                                        <div class="my-contents-body">
+                                            <p class="d-day-tx tx">디데이를 설정해주세요</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="study-loading-container goal" style="display: none;">
+                                    <div class="sk-fading-circle">
+                                        <div class="sk-circle1 sk-circle">
+                                        </div>
+                                        <div class="sk-circle2 sk-circle"></div>
+                                        <div class="sk-circle3 sk-circle"></div>
+                                        <div class="sk-circle4 sk-circle"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </section>
+            </main>
 
             <!-- Footer -->
             <footer th:replace="fragments/footer:: footer" \></footer>
 
-<!--                &lt;!&ndash; End of Footer &ndash;&gt;-->
-
-<!--                &lt;!&ndash; End of Content Wrapper &ndash;&gt;-->
-<!--    </div>-->
-        <!-- End of Page Wrapper -->
-
-<!--    &lt;!&ndash; Scroll to Top Button&ndash;&gt;-->
-<!--    <a class="scroll-to-top rounded" href="#page-top">-->
-<!--        <i class="fas fa-angle-up"></i>-->
-<!--    </a>-->
-
-<!--    &lt;!&ndash; Logout Modal&ndash;&gt;-->
-<!--    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"-->
-<!--        aria-hidden="true">-->
-<!--        <div class="modal-dialog" role="document">-->
-<!--            <div class="modal-content">-->
-<!--                <div class="modal-header">-->
-<!--                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>-->
-<!--                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">-->
-<!--                        <span aria-hidden="true">×</span>-->
-<!--                    </button>-->
-<!--                </div>-->
-<!--                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>-->
-<!--                <div class="modal-footer">-->
-<!--                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>-->
-<!--                    <a class="btn btn-primary" href="login.html">Logout</a>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--    </div>-->
         </div>
 
     <!-- Bootstrap core JavaScript-->

@@ -2,6 +2,7 @@ package com.example.algostudy.controller;
 
 import com.example.algostudy.domain.dto.MemberLoginDto;
 import com.example.algostudy.domain.entity.Member;
+import com.example.algostudy.domain.entity.Team;
 import com.example.algostudy.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.lang.Nullable;
@@ -26,6 +27,8 @@ public class HomeController {
         if (member != null) {
             MemberLoginDto memberLoginDto = memberService.toMemberLoginDto(member);
             model.addAttribute("member", memberLoginDto);
+            Team team = member.getTeam();
+
             return "dashboard";
         }
 
