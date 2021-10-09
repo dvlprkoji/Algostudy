@@ -82,4 +82,7 @@ public class ImageService {
         return imageRepository.save(image);
     }
 
+    public Image getDefaultTeamImage() {
+        return imageRepository.findByImageUrl("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/5c5da6d9-bd40-4e39-a488-eac2778ff8e1.png");
+    }
 }

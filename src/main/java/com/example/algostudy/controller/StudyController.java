@@ -70,8 +70,14 @@ public class StudyController {
             return "study-new";
         }
 
-        String path = imageService.upload(mainImage, "algostudy");
-        Image saveImage = imageService.saveImage(mainImage, path);
+        Image saveImage;
+        if (!mainImage.isEmpty()) {
+            String path = imageService.upload(mainImage, "algostudy");
+            saveImage = imageService.saveImage(mainImage, path);
+        }
+        else{
+            saveImage = imageService.getDefaultTeamImage();
+        }
 
         teamService.createTeam(member, teamRegisterForm, missionForm, saveImage);
 
@@ -85,7 +91,7 @@ public class StudyController {
         System.out.println("teamBindingResult = " + teamBindingResult);
         System.out.println("missionBindingResult = " + missionBindingResult);
         System.out.println("mainImage = " + mainImage);
-        return "study-new";
+        return "redirect:/";
     }
 
 
@@ -94,5 +100,13 @@ public class StudyController {
     public String searchStudy(@AuthenticationPrincipal Member member, Model model) {
         model.addAttribute("member", member);
         return "study-search";
+    }
+
+    @GetMapping("/study/mystudy")
+    public String myStudy(@AuthenticationPrincipal Member member, Model model) {
+        if (member.getTeam().getStatus().equals("beforeStart")) {
+            return "recruit";
+        }
+        return "mystudy";
     }
 }

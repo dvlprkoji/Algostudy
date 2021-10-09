@@ -2,6 +2,7 @@ package com.example.algostudy.listener;
 
 import com.example.algostudy.domain.entity.*;
 import com.example.algostudy.repository.*;
+import com.example.algostudy.repository.Image.ImageRepository;
 import com.example.algostudy.repository.Member.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
@@ -40,6 +41,9 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
     @Autowired
     private MemberRoleRepository memberRoleRepository;
 
+    @Autowired
+    private ImageRepository imageRepository;
+
     private static AtomicInteger count = new AtomicInteger(0);
 
 
@@ -54,29 +58,12 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         setupSecurityResources();
         saveMissionIfNotFound();
 
-
         alreadySetup = true;
     }
 
+
     private void saveMissionIfNotFound() {
-        Mission findMission = missionRepository.findByMissionName("1일 1백준 챌린지");
-        if (findMission != null) {
-            return;
-        }
-        Mission mission = new Mission();
-        mission.setMissionName("1일 1백준 챌린지");
-        mission.setMissionDesc("알고리즘은 꾸준함이 생명! 매일 백준 알고리즘 사이트(acmicpc.net)에서 한문제씩 풀기");
-        mission.setImagePath("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/boj210.png");
 
-        missionRepository.save(mission);
-
-
-        mission = new Mission();
-        mission.setMissionName("내가 알려주지");
-        mission.setMissionDesc("모르는게 있나? 나한테 물어보게나! 선정한 주제에 대해 번갈아가며 실시간으로 강의하기");
-        mission.setImagePath("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/zoom.png");
-
-        missionRepository.save(mission);
     }
 
     private void setupSecurityResources() {
@@ -104,8 +91,32 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         Member normalMember2 = createMemberIfNotFound(memberRole, "member2", "member2", passwordEncoder.encode("member2"), "koji4321");
         Member normalMember3 = createMemberIfNotFound(memberRole, "member3", "member3", passwordEncoder.encode("member3"), "koji4321");
 
+        Mission findMission = missionRepository.findByMissionName("1일 1백준 챌린지");
+        if (findMission != null) {
+            return;
+        }
+        Mission bojMission = new Mission();
+        bojMission.setMissionName("1일 1백준 챌린지");
+        bojMission.setMissionDesc("알고리즘은 꾸준함이 생명! 매일 백준 알고리즘 사이트(acmicpc.net)에서 한문제씩 풀기");
+        bojMission.setImagePath("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/boj210.png");
+
+        missionRepository.save(bojMission);
 
 
+        Mission zoomMission = new Mission();
+        zoomMission.setMissionName("내가 알려주지");
+        zoomMission.setMissionDesc("모르는게 있나? 나한테 물어보게나! 선정한 주제에 대해 번갈아가며 실시간으로 강의하기");
+        zoomMission.setImagePath("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/zoom.png");
+
+        missionRepository.save(zoomMission);
+
+
+        Image defaultImage = Image.builder()
+                .imagePath("/home/koji/Algostudy/savedImages/madprodo.png")
+                .imageUrl("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/5c5da6d9-bd40-4e39-a488-eac2778ff8e1.png")
+                .build();
+
+        imageRepository.save(defaultImage);
 
 
     }

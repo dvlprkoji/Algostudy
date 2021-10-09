@@ -32,7 +32,7 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<MemberRole> memberRoleList;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "team_id")
     private Team team;
 }

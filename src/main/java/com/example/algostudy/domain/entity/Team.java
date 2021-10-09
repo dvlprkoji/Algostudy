@@ -35,6 +35,6 @@ public class Team {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "team")
     private List<Member> memberList;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "team")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "team")
     private List<Mission> missionList;
 }

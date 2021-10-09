@@ -555,6 +555,240 @@
     .study-loading-container.ranking .sk-fading-circle, .study-loading-container.mine .sk-fading-circle, .study-loading-container.goal .sk-fading-circle, .study-loading-container.recommend-study .sk-fading-circle {
         margin: 0 auto;
     }
+    .slick-slider {
+        margin-right: -20px;
+    }
+    .study-item-list-wrap {
+        height: 100%;
+    }
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .slick-slider .slick-track, .slick-slider .slick-list {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .slick-list {
+        height: 100%;
+    }
+    .slick-list {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    .slick-slider .slick-track, .slick-slider .slick-list {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .slick-track {
+        height: 100%;
+        margin-left: initial;
+    }
+    .slick-track {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .study-item-list.my {
+        width: 222px;
+        height: 100%;
+        border: 1px solid #d0d0d0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-item-list:first-of-type {
+        margin-left: 0;
+    }
+    .slick-initialized .slick-slide {
+        display: block;
+    }
+    .slick-slide {
+        margin-right: 20px;
+    }
+    .study-item-list {
+        width: 224px;
+        height: auto;
+        border-radius: 6px;
+        background-color: #fff;
+        position: relative;
+        cursor: pointer;
+    }
+    .slick-slide {
+        display: none;
+        float: left;
+        height: 100%;
+        min-height: 1px;
+    }
+    .study-item-img-wrap.my {
+        width: calc(100% - -2px);
+        margin: -1px 0 0 -1px;
+        border-radius: 6px 6px 0 0;
+    }
+    .study-item-img-wrap {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        border-radius: 4px;
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .slick-slide img {
+        display: block;
+    }
+    .study-item-img {
+        height: 220px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -webkit-transition: .2s ease-out;
+        transition: .2s ease-out;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .study-item-info-cover {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .study-item-info-badge-wrap {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    .study-item-info-personnel-wrap {
+        padding-left: 18px;
+        background: url(../../../../../images/icon/ico_user02_white.svg) no-repeat center left/auto 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #fff;
+    }
+    .room-more-view-btn-area {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+    .room-more-view-btn {
+        width: 30px;
+        height: 50px;
+        background: url(../images/icon/ico_more-meu.svg) no-repeat center / auto 48%;
+        opacity: .4;
+        transition: .1s ease-out;
+    }
+    .room-more-item-list-layer {
+        position: absolute;
+        top: 30px;
+        right: 4px;
+        z-index: 3;
+    }
+    .room-more-item-list {
+        padding: 6px 0;
+        border-radius: 2px;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
+    }
+    .room-more-item {
+        padding: 0 12px;
+        text-align: left;
+        font-size: 13px;
+        color: #3d3d3d;
+        line-height: 30px;
+        user-select: none;
+        pointer-events: auto;
+        transition: .1s ease-out;
+    }
+    .study-item-tx-wrap.my {
+        height: 100%;
+        padding: 30px 15px 30px 0px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-item-tx.title {
+        margin-top: 5px;
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+        line-height: 19px;
+        word-break: keep-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    .study-item-tx-hashtag-wrap {
+        margin-top: 4px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .study-item-tx.hashtag:first-of-type {
+        margin-left: 0;
+    }
+    .study-item-tx.hashtag {
+        margin-left: 6px;
+        font-size: 13px;
+        color: #a1a1a1;
+        line-height: 22px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 </style>
 
 <body id="page-top">
@@ -587,7 +821,7 @@
                                     <button class="controls-btn next"></button>
                                 </div>
                             </div>
-                            <div class="mine-study-body">
+                            <div th:if="${team eq null}" class="mine-study-body">
                                 <div class="study-item-list-wrap slick-initialized slick-slider">
                                     <div class="slick-list draggable">
                                         <div class="slick-track" style="opacity: 1; width: 0px; transform: translate3d(0px, 0px, 0px);"></div>
@@ -596,12 +830,47 @@
                                 <div class="study-item-list-cover active"><p class="study-item-tx cover-title active">내 스터디는 내가 만든 스터디 또는 초대 받은 스터디가 등록됩니다.</p>
                                     <p class="study-item-tx cover-sub active">스터디 만들기에서 내 스터디를 만들어 보세요.</p>
                                 </div>
-                                <div class="study-loading-container mine" style="display: none;">
-                                    <div class="sk-fading-circle">
-                                        <div class="sk-circle1 sk-circle"></div>
-                                        <div class="sk-circle2 sk-circle"></div>
-                                        <div class="sk-circle3 sk-circle"></div>
-                                        <div class="sk-circle4 sk-circle"></div>
+                            </div>
+                            <div th:if="${team ne null}" class="mine-study-body active" onclick="location.href='/study/mystudy'">
+                                <div class="study-item-list-wrap slick-initialized slick-slider">
+                                    <div class="slick-list draggable">
+                                        <div class="slick-track" style="opacity: 1; margin:0; width: 470px; transform: translate3d(0px, 0px, 0px);">
+                                            <div class="study-item-list my slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 468px; display: flex; flex-direction: row; justify-content: space-around">
+                                                <div class="study-item-img-wrap my">
+                                                    <img th:src="${team.getMainImage().getImageUrl()}" alt="study-img" class="study-item-img">
+                                                    <div class="study-item-info-cover">
+                                                        <div class="study-item-info-badge-wrap"></div>
+                                                        <div class="study-item-info-personnel-wrap">
+                                                            <span class="study-item-info-personnel present">0</span>
+                                                            <span class="study-item-info-personnel maximum">4</span>
+                                                        </div>
+                                                        <div class="room-more-item-list-layer" style="display: none;">
+                                                            <ul class="room-more-item-list">
+                                                                <li class="room-more-item" style="cursor: pointer;">삭제하기</li>
+                                                                </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div th:object="${team}" class="study-item-tx-wrap my" style="flex: 0.75">
+                                                    <div style="margin-bottom: 8px">
+                                                        <button th:if="*{getStatus() eq 'beforeStart'}" class="form-setting">
+                                                            <i class="fas fa-exclamation-triangle" style="color: gold; margin-right: 3px"></i>
+                                                            스터디를 시작해주세요</button>
+                                                        <button th:if="*{getStatus() eq 'onProgress'}" class="form-setting" >
+                                                            <i class="fas fa-fire-alt" style="color: red; margin-right: 3px"></i>
+                                                            스터디 순항 중!</button>
+                                                        <button th:if="*{getStatus() eq 'end'}" class="form-setting">
+                                                            <i class="fas fa-check-circle" style="margin-right: 3px"></i>
+                                                            종료</button>
+                                                    </div>
+                                                    <div th:text="*{getTeamName()}" class="study-item-tx title">teamname</div>
+                                                    <div class="study-item-tx-hashtag-wrap" style="margin-top: 15px">
+                                                        <p th:each="tag : *{getHashtagList()}" th:text="'#'+${tag.getName()}" class="study-item-tx hashtag">#tagname</p>
+                                                    </div>
+                                                    <div th:text="*{getTeamDesc()}" style="margin-top: 15px">team description</div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

@@ -57,6 +57,7 @@ public class TeamService {
     }
 
     public void createTeam(Member member, TeamRegisterForm teamRegisterForm, MissionForm missionForm, Image image) {
+        member = memberRepository.findById(member.getId()).get();
 
         List<Member> memberList = new ArrayList<>();
         memberList.add(member);
@@ -84,6 +85,8 @@ public class TeamService {
                                             .map(hashtagRepository::findByNameOrSave).collect(Collectors.toList());
         hashtagList.forEach(tag -> tag.setTeam(newTeam));
         newTeam.setHashtagList(hashtagList);
+
+
 
         member.setTeam(newTeam);
 
