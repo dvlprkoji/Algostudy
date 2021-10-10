@@ -6,8 +6,10 @@ import com.example.algostudy.domain.entity.*;
 import com.example.algostudy.repository.Hashtag.HashtagRepository;
 import com.example.algostudy.repository.Image.ImageRepository;
 import com.example.algostudy.repository.Member.MemberRepository;
+import com.example.algostudy.repository.MessageRepository;
 import com.example.algostudy.repository.MissionRepository;
 import com.example.algostudy.repository.Team.TeamRepository;
+import com.example.algostudy.repository.TeamMissionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -22,6 +24,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -32,10 +35,11 @@ public class TeamService {
 
     private final TeamRepository teamRepository;
     private final ImageRepository imageRepository;
+    private final TeamMissionRepository teamMissionRepository;
     private final MemberRepository memberRepository;
     private final HashtagRepository hashtagRepository;
     private final MissionRepository missionRepository;
-
+    private final MessageRepository messageRepository;
 
 
     public boolean checkUrl(TeamRegisterForm teamRegisterForm, BindingResult teamBindingResult) {
@@ -95,7 +99,28 @@ public class TeamService {
                                                                                 .split(","))
                                                                         .map(Long::parseLong)
                                                                         .collect(Collectors.toList()));
-        newTeam.setMissionList(missionList);
+        List<TeamMission> teamMissionList = missionList.stream().map(mission -> new TeamMission(newTeam, mission)).collect(Collectors.toList());
+        teamMissionRepository.saveAll(teamMissionList);
+        newTeam.setTeamMissionList(teamMissionList);
+        missionList.stream().forEach(m -> m.setTeamMissionList(teamMissionList));
+        newTeam.setAdminMember(member);
         teamRepository.save(newTeam);
+    }
+
+    public void sendInvitation(Team team, Member member) {
+        InviteTeamMember inviteTeamMember = InviteTeamMember.builder()
+                .team(team)
+                .member(member)
+                .build();
+        team.getInviteTeamMemberList().add(inviteTeamMember);
+        member.getInviteTeamMemberList().add(inviteTeamMember);
+        List<Message> messageQueue = member.getMessageQueue();
+        InvitationMessage invitationMessage = InvitationMessage.builder().team(team).member(member).build();
+        InvitationMessage saveMessage = messageRepository.save(invitationMessage);
+        messageQueue.add(saveMessage);
+    }
+
+    public Team refresh(Team team) {
+        return teamRepository.findById(team.getId()).get();
     }
 }

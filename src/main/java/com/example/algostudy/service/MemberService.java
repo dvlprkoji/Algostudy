@@ -13,10 +13,13 @@ import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 
 import java.util.List;
+import java.util.Optional;
 
+@Transactional
 @Service
 @RequiredArgsConstructor
 public class MemberService {
@@ -50,5 +53,18 @@ public class MemberService {
 
     private String encodePassword(String password) {
         return passwordEncoder.encode(password);
+    }
+
+    public List<Member> findMemberByUsername(String memberNm) {
+        return memberRepository.findByUsernameStartsWith(memberNm);
+    }
+
+    public Member findMemberById(long memberId) {
+        return memberRepository.findById(memberId).get();
+    }
+
+    public void refresh(Member member) {
+        member.getTeam();
+        member.getInviteTeamMemberList();
     }
 }

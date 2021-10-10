@@ -7,8 +7,11 @@ import com.example.algostudy.domain.dto.TeamRegisterForm;
 import com.example.algostudy.domain.entity.Image;
 import com.example.algostudy.domain.entity.Member;
 import com.example.algostudy.domain.entity.Mission;
+import com.example.algostudy.mapper.MemberMapper;
 import com.example.algostudy.mapper.MissionMapper;
+import com.example.algostudy.mapper.TeamMapper;
 import com.example.algostudy.service.ImageService;
+import com.example.algostudy.service.MemberService;
 import com.example.algostudy.service.MissionService;
 import com.example.algostudy.service.TeamService;
 import lombok.RequiredArgsConstructor;
@@ -17,10 +20,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -34,6 +34,9 @@ import java.util.stream.Collectors;
 public class StudyController {
 
     private final MissionMapper missionMapper = Mappers.getMapper(MissionMapper.class);
+    private final MemberMapper memberMapper = Mappers.getMapper(MemberMapper.class);
+    private final TeamMapper teamMapper = Mappers.getMapper(TeamMapper.class);
+    private final MemberService memberService;
     private final MissionService missionService;
     private final ImageService imageService;
     private final CommonTools commonTools;
@@ -41,7 +44,7 @@ public class StudyController {
 
     @GetMapping("/study/new")
     public String addStudy(@AuthenticationPrincipal Member member, Model model) {
-        model.addAttribute("member", member);
+        model.addAttribute("member", memberMapper.toDto(member));
         List<Mission> missionList = missionService.findAll();
         List<MissionDto> missionDtoList = missionList.stream().map(missionMapper::toDto).collect(Collectors.toList());
         model.addAttribute("missionList", missionDtoList);
@@ -58,7 +61,7 @@ public class StudyController {
                            @Valid @ModelAttribute("missionForm") MissionForm missionForm,
                            BindingResult missionBindingResult,
                            HttpServletRequest request, Model model) throws IOException {
-        model.addAttribute("member", member);
+        model.addAttribute("member", memberMapper.toDto(member));
         if (teamBindingResult.hasErrors() || missionBindingResult.hasErrors()) {
             List<Mission> missionList = missionService.findAll();
             List<MissionDto> missionDtoList = missionList.stream().map(missionMapper::toDto).collect(Collectors.toList());
@@ -74,15 +77,11 @@ public class StudyController {
         if (!mainImage.isEmpty()) {
             String path = imageService.upload(mainImage, "algostudy");
             saveImage = imageService.saveImage(mainImage, path);
-        }
-        else{
+        } else {
             saveImage = imageService.getDefaultTeamImage();
         }
 
         teamService.createTeam(member, teamRegisterForm, missionForm, saveImage);
-
-
-
 
 
         commonTools.printParams(request);
@@ -91,22 +90,35 @@ public class StudyController {
         System.out.println("teamBindingResult = " + teamBindingResult);
         System.out.println("missionBindingResult = " + missionBindingResult);
         System.out.println("mainImage = " + mainImage);
+        member = commonTools.refresh(member);
         return "redirect:/";
     }
 
 
-
     @GetMapping("/study/search")
     public String searchStudy(@AuthenticationPrincipal Member member, Model model) {
-        model.addAttribute("member", member);
+        model.addAttribute("member", memberMapper.toDto(member));
         return "study-search";
     }
 
     @GetMapping("/study/mystudy")
     public String myStudy(@AuthenticationPrincipal Member member, Model model) {
+        model.addAttribute("member", memberMapper.toDto(member));
         if (member.getTeam().getStatus().equals("beforeStart")) {
+            member.setTeam(teamService.refresh(member.getTeam()));
+            model.addAttribute("team", teamMapper.teamToTeamDto(member.getTeam()));
             return "recruit";
         }
         return "mystudy";
+    }
+
+
+
+    @ResponseBody
+    @GetMapping("/study/invite/new")
+    public void invite(@AuthenticationPrincipal Member member
+                        ,@RequestParam(name = "memberId") String memberId) {
+        Member findMember = memberService.findMemberById(Long.parseLong(memberId));
+        teamService.sendInvitation(member.getTeam(), findMember);
     }
 }

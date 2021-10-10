@@ -32,9 +32,19 @@ public class Team {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "team")
     private List<Hashtag> hashtagList;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "team")
+    @OneToMany(mappedBy = "team")
     private List<Member> memberList;
 
+
+    @OneToMany(mappedBy = "team")
+    private List<InviteTeamMember> inviteTeamMemberList;
+
+
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "team")
-    private List<Mission> missionList;
+    private List<TeamMission> teamMissionList;
+
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "admin_member_id")
+    private Member adminMember;
 }

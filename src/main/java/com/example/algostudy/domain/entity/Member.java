@@ -1,9 +1,13 @@
 package com.example.algostudy.domain.entity;
 
 import lombok.*;
+import lombok.experimental.SuperBuilder;
 
 import javax.persistence.*;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,4 +39,11 @@ public class Member {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "team_id")
     private Team team;
+
+    @OneToMany(mappedBy = "member")
+    private List<InviteTeamMember> inviteTeamMemberList;
+
+    @OneToMany(mappedBy = "member")
+    private List<Message> messageQueue = new LinkedList<>();
+
 }

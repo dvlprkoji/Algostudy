@@ -13,29 +13,8 @@
             rel="stylesheet">
 
     <!-- Custom styles for this template-->
-    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="/js/sb-admin-2.min.js"></script>
-
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-
-    <!-- Tagify -->
-    <script src="https://unpkg.com/@yaireo/tagify"></script>
-    <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
-    <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
-
-
+    <link href="/
+    css/sb-admin-2.min.css" rel="stylesheet">
 
 </head>
 <style>
@@ -60,171 +39,602 @@
         margin-top: 50px;
         margin-bottom: 50px;
     }
-    .container.createRoom {
-        width: 800px;
-    }
-    .createForm {
-        padding: 20px 0 40px;
-    }
-    .formGroup:first-child {
-        border: 0;
-    }
-    .formGroup {
+    .main {
+        margin-top: 64px;
+        padding-bottom: 120px;
+        background-color: #fff;
         position: relative;
-        padding: 20px 0;
-        border-top: 1px dashed rgba(0,0,0,0.1);
     }
-    .formLabel.input-field-label {
-        line-height: 44px;
-    }
-    .formLabel {
-        position: absolute;
-        top: 20px;
-        left: 0;
-        width: 140px;
-        margin: 0;
-        font-size: .95rem;
-        font-weight: 500;
-        color: #333;
-        line-height: 1.1;
-    }
-    .formContent {
-        position: relative;
-        padding-left: 140px;
-    }
-    .createForm input[type="text"], .createForm textarea {
-        border-color: #ccc;
-    }
-    .input-md {
-        height: 44px;
-        border-color: #d5dce3;
-    }
-    .formContent .url-front-tx {
-        padding-bottom: 10px;
-        font-size: .85rem;
-        color: #9fa6ad;
-        letter-spacing: 0;
-        line-height: 1.4;
-        user-select: none;
-    }
-    .detailInfoBtnRec {
-        margin-top: 30px;
-        text-align: center;
-        border-top: 1px solid rgba(0,0,0,0.06);
-        line-height: 1;
-    }
-    .createBtnRec {
-        margin-top: 20px;
-    }
-    .createForm input[type="text"]:focus, .createForm textarea:focus {
-        border-color: #1f90ff;
-        box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
-    }
-    .createForm input[type="text"], .createForm textarea {
-        border-color: #ccc;
-    }
-    .formContent .inputDate {
-        width: 48%;
-        max-width: 150px;
-        text-align: center;
-        color: #333;
-    }
-    .formContent .inputField, .formContent .inputDate, .formContent .dateDivision, .formContent .selectBox {
-        float: left;
-        background-color: white;
-    }
-    .form-control:hover, .form-control:focus, .form-control:active {
-        border-color: #51a9fe;
-    }
-    .date-division{
-        width: 4%;
-        text-align: center;
-        line-height: 44px;
-    }
-    .create-button{
-        background-color: #4e73df;
-        font-size: medium;
-        color: white;
-    }
-    .create-button:hover {
-        background-color: dodgerblue;
-        font-size: medium;
-        color: white;
-    }
-    .formContent .limit-length {
-        padding-top: 8px;
-        font-size: 12px;
-        color: #999;
-        line-height: 1;
-    }
-    .imgEditBtnRec {
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        padding-top: 16px;
-        background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.2));
-        line-height: 0;
-    }
-    .imgEditBtnRec .imgEditBtn {
-        margin-bottom: 0px;
-        border: none;
-        height: 30px;
-        padding: 0 10px 0 32px;
-        background: rgba(0,0,0,0.3) url(https://findicons.com/files/icons/2778/maki/36/camera_18_2x.png) 5px 6px no-repeat;
-        background-size: auto 70%;
-        border-top-right-radius: 4px;
-        font-size: .8rem;
-        color: white;
-        overflow: hidden;
-        transition: 200ms ease-out;
-        line-height: 30px;
-    }
-    .imgEditBtnRec .imgEditBtn:hover {
-        margin-bottom: 0px;
-        border: none;
-        height: 30px;
-        padding: 0 10px 0 32px;
-        background: #4e73df url(https://findicons.com/files/icons/2778/maki/36/camera_18_2x.png) 5px 6px no-repeat;
-        background-size: auto 70%;
-        border-top-right-radius: 4px;
-        font-size: .8rem;
-        color: white;
-        overflow: hidden;
-        transition: 200ms ease-out;
-        line-height: 30px;
-    }
-    .create-room-img-area {
-        position: relative;
-        width: 210px;
-        height: 210px;
-        border-radius: 4px;
-        overflow: hidden;
-    }
-    .date-div {
+    .mine {
+        padding: 64px 0;
+        background: #fafbfc;
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
-
+        flex-direction: column;
     }
-    .tagify__input::before {
-        content: attr(data-placeholder);
-        height: 1em;
-        line-height: 1.5rem;
-        margin: auto 0;
-        z-index: 1;
-        color: rgba(0,0,0,.4);
-        white-space: nowrap;
-        pointer-events: none;
-        opacity: 0;
+    .mine-contents {
+        width: 1200px;
+        margin: 0 auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mine-study {
+        width: 468px;
+    }
+    .mine-study-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .mine-study-title {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+    }
+    .controls-btn-wrap {
+        width: 40px;
+        height: 30px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .controls-btn.prev {
+        border:none;
+        background: url(https://gooroomee.com/images/icon/ico_arrowLineLeft.svg) no-repeat center/12px auto;
+    }
+    .controls-btn.next {
+        border:none;
+        margin-left: 4px;
+        background: url(https://gooroomee.com/images/icon/ico_arrowLineRight.svg) no-repeat center/12px auto;
+    }
+    .mine-study-body {
+        height: 248px;
+        margin-top: 22px;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+    .study-item-list-wrap {
+        height: 100%;
+    }
+    .slick-slider {
+        margin-right: -20px;
+    }
+    .study-item-list-wrap {
+        height: 100%;
+    }
+    .slick-slider .slick-track, .slick-slider .slick-list {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .slick-list {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .study-item-list-cover.active {
+        width: 100%;
+        padding: 0 90px;
         position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
     }
+    .study-item-list-cover {
+        width: 224px;
+        padding: 0 20px;
+        border-radius: 4px;
+        background: url(https://gooroomee.com/images/main/back_addStudy.svg) no-repeat center/cover;
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        left: 244px;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .study-loading-container.mine, .study-loading-container.recommend-study {
+        background-color: #fafbfc;
+    }
+    .study-item-tx.cover-title.active {
+        font-size: 20px;
+        line-height: 33px;
+    }
+    .study-item-tx.cover-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 25px;
+        word-break: keep-all;
+    }
+    .study-item-tx.cover-sub {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #fff;
+        line-height: 29px;
+        display: none;
+    }
+    .study-loading-container.mine, .study-loading-container.recommend-study {
+        background-color: #fafbfc;
+    }
+    .study-loading-container.ranking, .study-loading-container.mine, .study-loading-container.goal, .study-loading-container.recommend-study {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .study-loading-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .mine {
+        padding: 64px 0;
+        background: #fafbfc;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mine-goal {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        min-width: 0;
+        margin-left: 40px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .mine-goal-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        line-height: 24px;
+        letter-spacing: -1px;
+        margin: 0;
+    }
+    .mine-goal-contents {
+        -webkit-box-flex: 1;
+        flex: 1;
+        margin-top: 22px;
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;
+        padding: 0 30px;
+        background-color: #fff;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        justify-content: center;
+        position: relative;
+    }
+    /*.mine-goal-record::after {*/
+    /*    content: '';*/
+    /*    width: 100%;*/
+    /*    height: 1px;*/
+    /*    margin: 30px 0 18px;*/
+    /*    border-radius: 50px;*/
+    /*    background-color: #e0e0e0;*/
+    /*    display: block;*/
+    /*}*/
 
-
+    .mine-goal-record-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .mine-goal-record-tx.title {
+        margin: 0;
+        font-weight: 700;
+        font-size: 13px;
+        color: #222;
+        line-height: 18px;
+    }
+    .form-setting, .form-edit {
+        border: none;
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .mine-goal-record-gauge-wrap {
+        height: 10px;
+        margin-top: 16px;
+        background-color: #e0e0e0;
+        position: relative;
+        border-radius: 100px;
+        overflow: hidden;
+    }
+    .mine-goal-record-tx-wrap {
+        margin-top: 12px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+    }
+    .my-contents-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .mine-goal-record-gauge-wrap {
+        height: 10px;
+        margin-top: 16px;
+        background-color: #e0e0e0;
+        position: relative;
+        border-radius: 100px;
+        overflow: hidden;
+    }
+    .my-contents {
+        min-width: 0;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-bottom: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .my-contents-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .my-contents-body {
+        margin-top: 6px;
+        min-width: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .form-setting, .form-edit {
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .my-contents-tx.tx {
+        margin: 0;
+        color: #666;
+        line-height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .my-contents-wrapper .contents-line {
+        width: 1px;
+        height: 100%;
+        margin: 0 30px;
+        background-color: #e0e0e0;
+    }
+    .my-contents-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .my-contents {
+        min-width: 0;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-bottom: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-loading-container.ranking, .study-loading-container.mine, .study-loading-container.goal, .study-loading-container.recommend-study {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .my-contents-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .study-loading-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .study-loading-container.goal {
+        border-radius: 6px;
+        background-color: #fff;
+        left: 0;
+    }
+    .my-contents-tx.title {
+        font-weight: 700;
+        color: #222;
+    }
+    .mine-study-body {
+        height: 290px;
+        margin-top: 18px;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+    .my-contents-tx {
+        font-size: 13px;
+    }
+    .form-setting, .form-edit {
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .my-contents-body {
+        margin-top: 6px;
+        min-width: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .my-contents-tx.tx {
+        margin: 0;
+        color: #666;
+        line-height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .my-contents-wrapper .contents-line {
+        width: 1px;
+        height: 100%;
+        margin: 0 30px;
+        background-color: #e0e0e0;
+    }
+    .my-contents {
+        min-width: 0;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-bottom: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-loading-container.goal {
+        border-radius: 6px;
+        background-color: #fff;
+        left: 0;
+    }
+    .study-loading-container.ranking, .study-loading-container.mine, .study-loading-container.goal, .study-loading-container.recommend-study {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .study-loading-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .sk-fading-circle {
+        margin: 60px auto 40px;
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+    .study-loading-container.ranking .sk-fading-circle, .study-loading-container.mine .sk-fading-circle, .study-loading-container.goal .sk-fading-circle, .study-loading-container.recommend-study .sk-fading-circle {
+        margin: 0 auto;
+    }
+    .slick-slider {
+        margin-right: -20px;
+    }
+    .study-item-list-wrap {
+        height: 100%;
+    }
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .slick-slider .slick-track, .slick-slider .slick-list {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .slick-list {
+        height: 100%;
+    }
+    .slick-list {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    .slick-slider .slick-track, .slick-slider .slick-list {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
     .slick-track {
-        opacity: 1;
-        width: 1220px;
-        transform: translate3d(0px, 0px, 0px);
         height: 100%;
         margin-left: initial;
+    }
+    .slick-track {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .study-item-list.my {
+        width: 222px;
+        height: 100%;
+        border: 1px solid #d0d0d0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-item-list:first-of-type {
+        margin-left: 0;
+    }
+    .slick-initialized .slick-slide {
+        display: block;
+    }
+    .slick-slide {
+        margin-right: 20px;
     }
     .study-item-list {
         width: 224px;
@@ -235,15 +645,15 @@
         cursor: pointer;
     }
     .slick-slide {
+        display: none;
         float: left;
         height: 100%;
         min-height: 1px;
     }
-    .slick-slide {
-        margin-right: 20px;
-    }
-    .slick-initialized .slick-slide {
-        display: block;
+    .study-item-img-wrap.my {
+        width: calc(100% - -2px);
+        margin: -1px 0 0 -1px;
+        border-radius: 6px 6px 0 0;
     }
     .study-item-img-wrap {
         -webkit-box-flex: 1;
@@ -262,15 +672,19 @@
         align-items: center;
         overflow: hidden;
     }
+    .slick-slide img {
+        display: block;
+    }
     .study-item-img {
-        height: 200px;
+        height: 220px;
         -o-object-fit: cover;
         object-fit: cover;
         -webkit-transition: .2s ease-out;
         transition: .2s ease-out;
     }
-    .slick-slide img {
-        display: block;
+    img {
+        max-width: 100%;
+        height: auto;
     }
     .study-item-info-cover {
         width: 100%;
@@ -279,184 +693,229 @@
         bottom: 0;
         left: 0;
     }
-    .study-item-tx-wrap {
-        padding: 14px 0;
+    .study-item-info-badge-wrap {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        top: 10px;
+        left: 10px;
     }
-    .missionBox{
-        width: 224px;
-        border-width: thin;
-        border-color: darkgrey;
-        border-style: solid;
-        padding: 10px;
+    .study-item-info-personnel-wrap {
+        padding-left: 18px;
+        background: url(../../../../../images/icon/ico_user02_white.svg) no-repeat center left/auto 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #fff;
     }
-    .missionBox:hover{
-        width: 224px;
-        border-width: thin;
-        border-color: #4e73df;
-        border-style: dotted;
-        padding: 10px;
+    .room-more-view-btn-area {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
     }
-    .missionBox:active{
-        width: 224px;
-        border-width: medium;
-        border-color: #4e73df;
-        border-style: solid;
-        padding: 10px;
+    .room-more-view-btn {
+        width: 30px;
+        height: 50px;
+        background: url(../images/icon/ico_more-meu.svg) no-repeat center / auto 48%;
+        opacity: .4;
+        transition: .1s ease-out;
     }
-    .missionBox-active{
-        width: 224px;
-        border-width: medium;
-        border-color: #4e73df;
-        border-style: solid;
-        padding: 10px;
-        color: darkslategrey;
+    .room-more-item-list-layer {
+        position: absolute;
+        top: 30px;
+        right: 4px;
+        z-index: 3;
     }
-    .missionDesc{
+    .room-more-item-list {
+        padding: 6px 0;
+        border-radius: 2px;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
+    }
+    .room-more-item {
+        padding: 0 12px;
+        text-align: left;
+        font-size: 13px;
+        color: #3d3d3d;
+        line-height: 30px;
+        user-select: none;
+        pointer-events: auto;
+        transition: .1s ease-out;
+    }
+    .study-item-tx-wrap.my {
+        height: 100%;
+        padding: 30px 15px 30px 0px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-item-tx.title {
         margin-top: 5px;
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+        line-height: 19px;
+        word-break: keep-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
     }
-    .errorMessage{
-        font-size: small;
-        color: red;
-        margin: 6px;
+    .study-item-tx-hashtag-wrap {
+        margin-top: 4px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
     }
+    .study-item-tx.hashtag:first-of-type {
+        margin-left: 0;
+    }
+    .study-item-tx.hashtag {
+        margin-left: 6px;
+        font-size: 13px;
+        color: #a1a1a1;
+        line-height: 22px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .search-form{
+        margin-top: 10px;
+        height: 36px;
+        line-height: 48px;
+        width: 100%;
+        border: 1px solid #e6e2f5;
+        padding: 0px 20px;
+        color: #333;
+        border-radius: 6px;
+        font-weight: 400;
+    }
+    .member-list{
+        margin-top: 7px;
+        place-self: normal;
+        display: flex;
+        place-content: space-between;
+        place-items: flex-start;
+    }
+    .member-search-list{
+        padding-top: 5px;
+        height: 180px;
+        width: 100%;
+        margin-top: 10px;
+        border: 1px solid #e6e2f5;
+        border-radius: 6px;
+    }
+    .button-cancel:hover{
+        font-weight: 500;
+        color: white;
+        background-color: red;
+        border: none;
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        font-size: 11px;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .button-cancel{
+        border: none;
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .create-button {
+        background-color: #4e73df;
+        font-size: medium;
+        color: white;
+
+    }
+    .create-button:hover {
+        font-size: medium;
+        color: white;
+        background-color: #1f90ff;
+    }
+    .createBtnRec {
+        width: 1200px;
+        margin: 0 13%;
+        margin-top: 65px;
+    }
+
 </style>
 
 <body id="page-top">
-
 <script th:inline="javascript">
-    // datepicker 초기화
-    $(function () {
-        //input을 datepicker로 선언
-        $("#startDate").datepicker({
-            dateFormat: 'yy-mm-dd' //달력 날짜 형태
-            , showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-            , showMonthAfterYear: true // 월- 년 순서가아닌 년도 - 월 순서
-            , changeYear: true //option값 년 선택 가능
-            , changeMonth: true //option값  월 선택 가능
-            // , showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시
-            // , buttonImage: "http://images.jautour.com/jautour/images/main/search/btn_cale.gif" //버튼 이미지 경로
-            // , buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
-            , buttonText: "선택" //버튼 호버 텍스트
-            , yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
-            , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 텍스트
-            , monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 Tooltip
-            , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] //달력의 요일 텍스트
-            , dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'] //달력의 요일 Tooltip
-            , minDate: "0" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-            , maxDate: "+3M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
-            , onSelect: function (d) {
-                var start = new Date($("#startDate").datepicker("getDate"));
-                var end = new Date($("#endDate").datepicker("getDate"));
-                if (end - start < 0) {
-                    alert('시작일을 종료일보다 늦게 설정할 수 없습니다');
-                    $('#startDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-                }
-            }
-        })
-        $("#endDate").datepicker({
-            dateFormat: 'yy-mm-dd' //달력 날짜 형태
-            , showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-            , showMonthAfterYear: true // 월- 년 순서가아닌 년도 - 월 순서
-            , changeYear: true //option값 년 선택 가능
-            , changeMonth: true //option값  월 선택 가능
-            // , showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시
-            // , buttonImage: "http://images.jautour.com/jautour/images/main/search/btn_cale.gif" //버튼 이미지 경로
-            // , buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
-            , buttonText: "선택" //버튼 호버 텍스트
-            , yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
-            , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 텍스트
-            , monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 Tooltip
-            , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] //달력의 요일 텍스트
-            , dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'] //달력의 요일 Tooltip
-            , minDate: "0" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-            , maxDate: "+3M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
-            , onSelect: function (d) {
-                var start = new Date($("#startDate").datepicker("getDate"));
-                var end = new Date($("#endDate").datepicker("getDate"));
-                if (end - start < 0) {
-                    alert('시작일을 종료일보다 늦게 설정할 수 없습니다');
-                    $('#endDate').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-                }
+    function cancelInvitation(target) {
+
+    }
+
+    var memberList;
+    function sendInvitation(target) {
+        var selectMember = memberList[parseInt(target.id)];
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/study/invite/new?memberId=' + selectMember.id.toString(),
+            error: function (request, err) {
+                console.log('code:' + request.status + '\n' + 'message: ' + request.responseText + '\n' + 'error: ' + err);
+            },
+            success: function () {
+                console.log('초대 성공');
+                $("#memberList").empty();
+                $('#inviteMemberList').append(
+                    "<div class='member-list'>"
+                        +"<p class='my-contents-tx tx'>"+selectMember.username+"</p>"
+                        +"<button id="+selectMember.id+" class='button-cancel' onclick='cancelInvitation(this)'>"+"취소"+"</button>"
+                    +"</div>"
+                );
             }
         });
-
-        //초기값을 오늘 날짜로 설정해줘야 합니다.
-        $('#startDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-        $('#endDate').datepicker('setDate', '+7D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-
-        // The DOM element you wish to replace with Tagify
-        var input = document.querySelector('input[name=hashtagList]');
-
-        // initialize Tagify on the above input node reference
-        new Tagify(input, {
-            originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
-        })
-    });
-
-
-
-
-
-    function readImageMain(input) {
-        // 인풋 태그에 파일이 있는 경우
-        if(input.files && input.files[0]) {
-            if( $("#image_0").val() != "" ){
-                var ext = $('#mainImage').val().split('.').pop().toLowerCase();
-                if($.inArray(ext, ['png','jpg']) == -1) {
-                    alert('이미지 형식은 png, jpg 만 가능합니다');
-                    return;
-                }
-            }
-            // FileReader 인스턴스 생성
-            const reader = new FileReader();
-            // 이미지가 로드가 된 경우
-            reader.onload = e => {
-                var img = new Image();
-                img.src = e.target.result;
-                img.onload = function(){
-                    var w = this.width;
-                    var h = this.height;
-                    if (w != 210 || h != 210) {
-                        alert('210 x 210 크기의 이미지를 권장합니다');
+    }
+    function search(target) {
+        var word = target.value;
+        var encodeWord = encodeURI(word);
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: 'http://localhost:8080/search/member?memberNm=' + word,
+            error: function (err) {
+                console.log('실행중 오류가 발생했습니다');
+            },
+            success: function (dataList) {
+                console.log('dataList : ' + dataList);
+                $("#memberList").empty();
+                memberList = dataList;
+                if(dataList.length > 0){
+                    for (var i=0;i<dataList.length;i++){
+                        $("#memberList").append(
+                            "<li style=\"display:flex; justify-content: space-between; padding: 10px 5px 2px 5px; margin-right: 15px; margin-left:15px; font-size: 14px; \" value='"+dataList[i].username+"'>"+
+                            "<a>"+dataList[i].username+"</a>"+
+                            "<button class=\"form-edit\" id='"+i+"' value='"+dataList[i].id+"' onclick='sendInvitation(this)'>초대</button>"+
+                            "</li>"
+                        )
                     }
-                    const previewImage = document.getElementById("previewImage");
-                    previewImage.src = e.target.result;
-
                 }
-
-
             }
-            // reader가 이미지 읽도록 하기
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    function checkMission(target){
-        var checkBox = target.getElementsByClassName("checkBox")[0];
-        if(target.classList.contains('missionBox-active')){
-            target.classList.replace('missionBox-active', 'missionBox')
-            checkBox.removeAttribute("checked");
-        }
-        else{
-            target.classList.replace('missionBox','missionBox-active')
-            checkBox.setAttribute("checked", "checked");
-        }
-    }
-
-    function checkForm(target) {
-        var missionList = $("input[name=checkedMission]:checked");
-        if (missionList.length == 0) {
-            return true;
-        }
-        var checkedMission = [];
-        $("input[name=checkedMission]:checked").each(function(){
-            checkedMission.push($(this).val());
         });
-        document.getElementById("checkedMissionList").setAttribute("value", checkedMission);
-        return true;
     }
-
 </script>
-
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -474,122 +933,88 @@
         <nav th:replace="fragments/header :: header"></nav>
         <!-- End of Topbar -->
 
-        <form action="/study/new" method="post" enctype="multipart/form-data" onsubmit="checkForm(this)" th:object="${teamRegisterForm}">
-            <div class="room-create">
-                <div class="wrapper">
-                    <div class="create-room-bottom">
-                        <div class="container createRoom">
-                            <div class="createForm">
-                                <div class="create-room-form-basic">
-                                    <div class="formGroup withValidateTx">
-                                        <label class="formLabel input-field-label">스터디 이름</label>
-                                        <div class="formContent">
-                                            <input th:field="*{teamName}" th:value="*{teamName}" name="teamName" type="text" placeholder="스터디 이름을 입력하세요" title="스터디 이름을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md" aria-required="true" aria-invalid="false">
-                                        </div>
-                                        <div th:if="${#fields.hasErrors('teamName')}" class="formContent errorMessage" th:errors="*{teamName}">errormessage</div>
+
+        <main sec:authorize="isAuthenticated()" class="main">
+            <section class="mine">
+                <div class="mine-contents">
+                    <article class="mine-goal">
+                        <h3 class="mine-goal-title">크루 초대하기</h3>
+                        <div class="mine-goal-contents" style="justify-content: unset">
+                            <div class="my-contents-wrapper" style="margin-top: 20px;">
+                                <div class="my-contents resolution">
+                                    <div class="my-contents-header">
+                                        <h4 class="mine-goal-record-tx title">회원 검색</h4>
                                     </div>
-                                    <div class="formGroup withValidateTx">
-                                        <label class="formLabel">스터디 URL</label>
-                                        <div class="formContent">
-                                            <div class="url-area clearfix">
-                                                <div class="url-front-tx">https://algostudy.com/</div>
-                                                <input th:field="*{studyUrl}" th:value="*{studyUrl}" name="studyUrl" type="text" placeholder="URL을 입력하세요" title="URL을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
-                                            </div>
-                                        </div>
-                                        <div th:if="${#fields.hasErrors('studyUrl')}" class="formContent errorMessage" th:errors="*{studyUrl}">errormessage</div>
-                                    </div>
-                                    <div class="formGroup hashtag">
-                                        <label class="formLabel input-field-label">해시태그</label>
-                                        <div class="formContent">
-                                            <input th:field="*{hashtagList}" th:value="*{hashtagList}" name="hashtagList" type="text" placeholder="대표하는 키워드를 입력하세요. (최대 3개)" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
-                                        </div>
-                                        <div th:if="${#fields.hasErrors('hashtagList')}" class="formContent errorMessage" th:errors="*{hashtagList}">errormessage</div>
-                                    </div>
-                                    <div class="formGroup image">
-                                        <label class="formLabel">대표 이미지</label>
-                                        <div class="formContent">
-                                            <div class="create-room-img-area">
-                                                <img id="previewImage" src="https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/madprodo.png" alt="방 대표 이미지">
-                                                <div class="imgEditBtnRec">
-                                                    <label for="mainImage" type="button" class="imgEditBtn">편집</label>
-                                                    <input type="file" name="mainImage" id="mainImage" class="btn btn-outline-dark" style="margin-right: 100px; display: none" accept=".png, .jpg" onchange="readImageMain(this)">
-                                                </div>
-                                            </div>
-                                            <div style=" font-size: small; margin: 5px;">가로: 210px, 세로: 210px 권장</div>
-                                        </div>
-<!--                                        <div th:if="${#fields.hasErrors('teamName')}" class="formContent errorMessage" th:errors="*{teamName}">errormessage</div>-->
-                                    </div>
-                                </div>
-                                <div class="create-room-form-detail">
-                                    <div class="formGroup">
-                                        <label class="formLabel input-field-label">기간
-                                            <span class="position-relative">
-                                            <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
-                                        </span>
-                                        </label>
-                                        <div class="formContent clearfix date-div">
-                                            <label for="startDate"></label><input th:field="*{startDate}" th:value="*{startDate}" type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="startDate" id="startDate">
-                                            <span class="date-division">~</span>
-                                            <label for="endDate"></label><input th:field="*{endDate}" th:value="*{endDate}" type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="endDate" id="endDate">
-                                        </div>
-<!--                                        <div th:if="${#fields.hasErrors('teamName')}" class="formContent errorMessage" th:errors="*{teamName}">errormessage</div>-->
-                                    </div>
-                                    <div class="formGroup clearfix">
-                                        <label class="formLabel mobile-m-b-2">미션 설정
-                                            <span class="position-relative badgeRec">
-                                                <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
-                                            </span>
-                                        </label>
-                                        <div th:object="${missionForm}">
-                                            <div class="formContent">
-                                                <div th:each="mission : ${missionList}" class="study-item-list slick-slide slick-current slick-active missionBox" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 224px;" onclick="checkMission(this)">
-                                                    <div class="study-item-img-wrap">
-                                                        <img th:src="${mission.imagePath}" alt="study-img" class="study-item-img">
-                                                        <div class="study-item-info-cover">
-                                                            <div class="study-item-info-badge-wrap"></div>
-                                                            <div class="room-more-view-btn-area"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="study-item-tx-wrap">
-                                                        <div class="study-item-tx" style="font-size: medium" th:text="${mission.missionName}">미션명</div>
-                                                        <div class="study-item-tx missionDesc" style="font-size: small" th:text="${mission.missionDesc}">미션설명</div>
-                                                    </div>
-                                                    <input type="checkbox" class="checkBox" name="checkedMission" th:id="${mission.id}" style="display: none" th:value="${mission.id}">
-                                                </div>
-                                                <input th:field="*{checkedMissionList}" th:value="*{checkedMissionList}" type="hidden" id="checkedMissionList" name="checkedMissionList">
-                                            </div>
-                                            <div class="formContent" style="display: flex">
-                                                <div th:if="${#fields.hasErrors('checkedMissionList')}" class="errorMessage" th:errors="${missionForm.checkedMissionList}">errormessage</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="formGroup">
-                                        <label for="teamDesc" class="formLabel">스터디 소개</label>
-                                        <div class="formContent textarea">
-                                            <textarea th:field="*{teamDesc}" th:value="*{teamDesc}" id="teamDesc" name="teamDesc" maxlength="1000" placeholder="스터디를 소개해주세요" title="스터디를 소개해주세요" class="form-control input-md"></textarea>
-                                            <p class="limit-length">( 0 /1000)</p>
-                                            <div th:if="${#fields.hasErrors('teamDesc')}" class="errorMessage" th:errors="*{teamDesc}">errormessage</div>
+                                    <div class="my-contents-body" style="display: flex; flex-direction: column;">
+                                        <div class="member-list" style="flex-direction: column">
+                                            <input class="search-form" type="text" id="tag" name="tag" onkeyup="search(this)" placeholder="회원 ID를 입력하세요">
+                                            <div id="memberList" class="member-search-list"></div>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="createBtnRec text-right">
-                                    <button type="submit" class="btn btn-lg btn-skin btn-xs-block create-button">스터디 만들기</button>
+
+
+                            </div>
+
+                        </div>
+                    </article><article class="mine-goal">
+                    <h3 class="mine-goal-title">모집 현황</h3>
+                    <div class="mine-goal-contents" style="justify-content: unset">
+                        <div th:object="${team}" class="my-contents-wrapper" style="margin-top: 20px;">
+                            <div class="my-contents resolution">
+                                <div class="my-contents-header">
+                                    <h4 class="mine-goal-record-tx title">초대한 회원</h4>
+                                </div>
+                                <div th:each="member : *{getInviteMemberList()}"class="my-contents-body" style="display: flex; flex-direction: column;">
+                                    <div class="member-list">
+                                        <p th:text="${member.getUsername()}" class="my-contents-tx tx"></p>
+                                        <button class="button-cancel">취소</button>
+                                    </div>
+                                </div>
+                                <div id="inviteMemberList" class="my-contents-body" style="display: flex; flex-direction: column;">
+                                </div>
+                            </div>
+                            <span class="contents-line"></span>
+                            <div class="my-contents d-day">
+                                <div class="my-contents-header">
+                                    <h4 class="mine-goal-record-tx title">크루 멤버</h4>
+                                </div>
+                                <div  class="my-contents-body" style="display: flex; flex-direction: column;">
+                                    <div th:each="member,index : *{getMemberList()}" class="member-list">
+                                        <p th:text="${member.getUsername()}" class="my-contents-tx tx"></p>
+                                        <button th:if="${index.index eq 0}" class="form-edit" style="background-color: gold">
+                                            <i class="fas fa-crown"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+
                     </div>
+                </article>
                 </div>
+                <div class="createBtnRec text-right">
+                    <button type="submit" class="btn btn-lg btn-skin btn-xs-block create-button">미션 시작하기</button>
+                </div>
+            </section>
+        </main>
 
+        <!-- Footer -->
+        <footer th:replace="fragments/footer:: footer" \></footer>
 
-                <footer th:replace="fragments/footer:: footer" \></footer>
+    </div>
 
-            </div>
-        </form>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
 
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-</div>
 </div>
 </body>
 

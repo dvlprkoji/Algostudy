@@ -3,6 +3,7 @@ package com.example.algostudy.domain.entity;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Getter
@@ -24,9 +25,6 @@ public class Mission {
     @Column(name = "image_path")
     private String imagePath;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "team_id")
-    private Team team;
-
-
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "mission")
+    private List<TeamMission> teamMissionList;
 }
