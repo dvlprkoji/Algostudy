@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+                xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
 
@@ -9,8 +9,8 @@
     <!-- Custom fonts for this template-->
     <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link
-            href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-            rel="stylesheet">
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
 
     <!-- Custom styles for this template-->
     <link href="/
@@ -51,7 +51,6 @@
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
-        flex-direction: column;
     }
     .mine-contents {
         width: 1200px;
@@ -265,16 +264,15 @@
         justify-content: center;
         position: relative;
     }
-    /*.mine-goal-record::after {*/
-    /*    content: '';*/
-    /*    width: 100%;*/
-    /*    height: 1px;*/
-    /*    margin: 30px 0 18px;*/
-    /*    border-radius: 50px;*/
-    /*    background-color: #e0e0e0;*/
-    /*    display: block;*/
-    /*}*/
-
+    .mine-goal-record::after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        margin: 30px 0 18px;
+        border-radius: 50px;
+        background-color: #e0e0e0;
+        display: block;
+    }
     .mine-goal-record-header {
         display: -webkit-box;
         display: -ms-flexbox;
@@ -386,7 +384,6 @@
         transition: .1s;
     }
     .my-contents-tx.tx {
-        margin: 0;
         color: #666;
         line-height: 18px;
         overflow: hidden;
@@ -495,7 +492,6 @@
         align-items: center;
     }
     .my-contents-tx.tx {
-        margin: 0;
         color: #666;
         line-height: 18px;
         overflow: hidden;
@@ -793,223 +789,88 @@
         text-overflow: ellipsis;
         white-space: nowrap;
     }
-    .search-form{
-        margin-top: 10px;
-        height: 36px;
-        line-height: 48px;
-        width: 100%;
-        border: 1px solid #e6e2f5;
-        padding: 0px 20px;
-        color: #333;
-        border-radius: 6px;
-        font-weight: 400;
-    }
-    .member-list{
-        margin-top: 7px;
-        height: 26px;
-        place-self: normal;
-        display: flex;
-        place-content: space-between;
-        place-items: flex-start;
-    }
-    .member-search-list{
-        padding-top: 5px;
-        height: 180px;
-        width: 100%;
-        margin-top: 10px;
-        /*border: 1px solid #e6e2f5;*/
-        border-radius: 6px;
-    }
-    .button-cancel:hover{
-        font-weight: 500;
-        color: white;
-        background-color: red;
-        border: none;
-        border-radius: 100px;
-        padding: 6px 12px 5px;
-        font-size: 11px;
-        line-height: 15px;
-        -webkit-transition: .1s;
-        transition: .1s;
-    }
-    .button-cancel{
-        border: none;
-        border-radius: 100px;
-        padding: 6px 12px 5px;
-        background-color: #f1f1f1;
-        font-size: 11px;
-        color: #666;
-        line-height: 15px;
-        -webkit-transition: .1s;
-        transition: .1s;
-    }
-    .create-button {
+    .create-button{
         background-color: #4e73df;
         font-size: medium;
         color: white;
-
     }
-    .create-button:hover {
-        font-size: medium;
-        color: white;
-        background-color: #1f90ff;
-    }
-    .createBtnRec {
-        width: 1200px;
-        margin: 0 13%;
-        margin-top: 65px;
-    }
-
 </style>
 
 <body id="page-top">
-<script th:inline="javascript">
 
-    function checkBeforeAppend(target){
-        return document.getElementById(target)==null ? true : false;
-    }
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
+        <!-- Sidebar -->
+        <ul sec:authorize="isAuthenticated()" th:replace="fragments/sidebar :: sidebar"/>
+        <!-- End of Sidebar -->
 
-    function cancelInvitation(target) {
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
 
-    }
+            <!-- Main Content -->
 
-    var memberList;
-    function sendInvitation(target) {
-        var selectMember = memberList[parseInt(target.id)];
-        $.ajax({
-            type: 'GET',
-            url: 'http://localhost:8080/study/invite/new?memberId=' + selectMember.id.toString(),
-            error: function (request, err) {
-                console.log('code:' + request.status + '\n' + 'message: ' + request.responseText + '\n' + 'error: ' + err);
-            },
-            success: function () {
-                $("#memberList").empty();
-                if(checkBeforeAppend(selectMember.id)){
-                    console.log('초대 성공');
-                    $('#inviteMemberList').append(
-                        "<div class='member-list'>"
-                        +"<p class='my-contents-tx tx'>"+selectMember.username+"</p>"
-                        +"<button id="+selectMember.id+" class='button-cancel' onclick='cancelInvitation(this)'>"+"취소"+"</button>"
-                        +"</div>"
-                    );
-                }
-            }
-        });
-        $("#tag").empty();
-    }
-    function search(target) {
-        var word = target.value;
-        var encodeWord = encodeURI(word);
-        $.ajax({
-            type: 'GET',
-            dataType: 'json',
-            url: 'http://localhost:8080/search/member?memberNm=' + word,
-            error: function (err) {
-                console.log('실행중 오류가 발생했습니다');
-            },
-            success: function (dataList) {
-                console.log('dataList : ' + dataList);
-                $("#memberList").empty();
-                memberList = dataList;
-                if(dataList.length > 0){
-                    for (var i=0;i<dataList.length;i++){
-                        $("#memberList").append(
-                            "<li style=\"display:flex; justify-content: space-between; padding: 10px 5px 2px 5px; margin-right: 15px; margin-left:15px; font-size: 14px; \" value='"+dataList[i].username+"'>"+
-                            "<a>"+dataList[i].username+"</a>"+
-                            "<button class=\"form-edit\" id='"+i+"' value='"+dataList[i].id+"' onclick='sendInvitation(this)'>초대</button>"+
-                            "</li>"
-                        )
-                    }
-                }
-            }
-        });
-    }
-</script>
-
-<!-- Page Wrapper -->
-<div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul sec:authorize="isAuthenticated()" th:replace="fragments/sidebar :: sidebar"/>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
-
-        <!-- Main Content -->
-
-        <!-- Topbar -->
-        <nav th:replace="fragments/header :: header"></nav>
-        <!-- End of Topbar -->
+            <!-- Topbar -->
+            <nav th:replace="fragments/header :: header"></nav>
+            <!-- End of Topbar -->
 
 
-        <main sec:authorize="isAuthenticated()" class="main">
-            <section class="mine">
-                <div class="mine-contents">
-                    <article class="mine-goal">
-                        <h3 class="mine-goal-title">크루 초대하기</h3>
-                        <div class="mine-goal-contents" style="justify-content: unset">
-                            <div class="my-contents-wrapper" style="margin-top: 20px;">
-                                <div class="my-contents resolution">
-                                    <div class="my-contents-header">
-                                        <h4 class="mine-goal-record-tx title">회원 검색</h4>
-                                    </div>
-                                    <div class="my-contents-body" style="display: flex; flex-direction: column;">
-                                        <div class="member-list" style="flex-direction: column">
-                                            <input class="search-form" type="text" id="tag" name="tag" onkeyup="search(this)" placeholder="회원 ID를 입력하세요">
-                                            <div id="memberList" class="member-search-list"></div>
+            <main sec:authorize="isAuthenticated()" class="main">
+                <section class="mine">
+                    <div class="mine-contents" style="flex-direction: column; align-self: center; height: 500px; justify-content: space-evenly;">
+                        <article class="mine-study" style="align-self: center">
+                            <div class="mine-study-header">
+                                <h3 class="mine-study-title">초대받은 스터디</h3>
+                                <div class="controls-btn-wrap">
+                                    <button class="controls-btn prev"></button>
+                                    <button class="controls-btn next"></button>
+                                </div>
+                            </div>
+                            <div class="mine-study-body active">
+                                <div class="study-item-list-wrap slick-initialized slick-slider">
+                                    <div class="slick-list draggable">
+                                        <div class="slick-track" style="opacity: 1; margin:0; width: 470px; transform: translate3d(0px, 0px, 0px);">
+                                            <div class="study-item-list my slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 468px; display: flex; flex-direction: row; justify-content: space-around">
+                                                <div class="study-item-img-wrap my">
+                                                    <img th:src="${team.getMainImage().getImageUrl()}" alt="study-img" class="study-item-img">
+                                                    <div class="study-item-info-cover">
+                                                        <div class="study-item-info-badge-wrap"></div>
+                                                        <div class="study-item-info-personnel-wrap">
+                                                            <span class="study-item-info-personnel present">0</span>
+                                                            <span class="study-item-info-personnel maximum">4</span>
+                                                        </div>
+                                                        <div class="room-more-item-list-layer" style="display: none;">
+                                                            <ul class="room-more-item-list">
+                                                                <li class="room-more-item" style="cursor: pointer;">삭제하기</li>
+                                                                </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div th:object="${team}" class="study-item-tx-wrap my" style="flex: 0.75">
+                                                    <div th:text="*{getTeamName()}" class="study-item-tx title">teamname</div>
+                                                    <div class="study-item-tx-hashtag-wrap" style="margin-top: 15px">
+                                                        <p th:each="tag : *{getHashtagList()}" th:text="'#'+${tag.getName()}" class="study-item-tx hashtag">#tagname</p>
+                                                    </div>
+                                                    <div th:text="*{getTeamDesc()}" style="margin-top: 15px">team description</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                        </article>
+                        <div class="createBtnRec text-right" style="align-self: center">
+                            <a type="submit" class="btn btn-lg btn-skin btn-xs-block create-button" th:href="@{/study/invite/decision(id=${messageId},accept='n')}" style="margin-right: 30px">거절하기</a>
+                            <a type="submit" class="btn btn-lg btn-skin btn-xs-block create-button" th:href="@{/study/invite/decision(id=${messageId},accept='y')}">수락하기</a>
                         </div>
-                    </article><article class="mine-goal">
-                    <h3 class="mine-goal-title">모집 현황</h3>
-                    <div class="mine-goal-contents" style="justify-content: unset">
-                        <div th:object="${team}" class="my-contents-wrapper" style="margin-top: 20px;">
-                            <div class="my-contents resolution">
-                                <div class="my-contents-header">
-                                    <h4 class="mine-goal-record-tx title">초대한 회원</h4>
-                                </div>
-                                <div th:each="member : *{getInviteMemberList()}"class="my-contents-body" style="display: flex; flex-direction: column;">
-                                    <div class="member-list">
-                                        <p th:text="${member.getUsername()}" class="my-contents-tx tx"></p>
-                                        <button class="button-cancel">취소</button>
-                                    </div>
-                                </div>
-                                <div id="inviteMemberList" class="my-contents-body" style="display: flex; flex-direction: column;">
-                                </div>
-                            </div>
-                            <span class="contents-line"></span>
-                            <div class="my-contents d-day">
-                                <div class="my-contents-header">
-                                    <h4 class="mine-goal-record-tx title">크루 멤버</h4>
-                                </div>
-                                <div  class="my-contents-body" style="display: flex; flex-direction: column;">
-                                    <div th:each="member,index : *{getMemberList()}" class="member-list">
-                                        <p th:text="${member.getUsername()}" class="my-contents-tx tx"></p>
-                                        <button th:if="${index.index eq 0}" class="form-edit" style="background-color: gold">
-                                            <i class="fas fa-crown"></i>
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
                     </div>
-                </article>
-                </div>
-                <div class="createBtnRec text-right">
-                    <button type="submit" class="btn btn-lg btn-skin btn-xs-block create-button">미션 시작하기</button>
-                </div>
-            </section>
-        </main>
+                </section>
+            </main>
 
-        <!-- Footer -->
-        <footer th:replace="fragments/footer:: footer" \></footer>
+            <!-- Footer -->
+            <footer th:replace="fragments/footer:: footer" \></footer>
 
-    </div>
+        </div>
 
     <!-- Bootstrap core JavaScript-->
     <script src="/vendor/jquery/jquery.min.js"></script>
@@ -1022,7 +883,7 @@
     <script src="/js/sb-admin-2.min.js"></script>
 
     <!-- Page level plugins -->
-</div>
+    </div>
 </body>
 
 </html>

@@ -40,7 +40,7 @@ public class Member {
     @JoinColumn(name = "team_id")
     private Team team;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<InviteTeamMember> inviteTeamMemberList;
 
     @OneToMany(mappedBy = "member")

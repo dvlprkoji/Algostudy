@@ -36,7 +36,7 @@ public class Team {
     private List<Member> memberList;
 
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
     private List<InviteTeamMember> inviteTeamMemberList;
 
 

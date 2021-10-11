@@ -1,5 +1,6 @@
 package com.example.algostudy.domain.dto;
 
+import com.example.algostudy.domain.entity.Message;
 import com.example.algostudy.domain.entity.Role;
 import com.example.algostudy.domain.entity.Team;
 import lombok.Data;
@@ -12,4 +13,5 @@ public class MemberLoginDto {
     private String email;
     private Team team;
     private List<Role> roleList;
+    private List<Message> messageQueue;
 }

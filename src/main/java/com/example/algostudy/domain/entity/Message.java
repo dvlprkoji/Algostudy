@@ -14,6 +14,8 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @SuperBuilder
 @AllArgsConstructor
+@Getter
+@Setter
 public class Message {
     @Id
     @GeneratedValue

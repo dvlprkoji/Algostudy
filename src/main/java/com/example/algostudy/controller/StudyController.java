@@ -4,16 +4,11 @@ import com.example.algostudy.common.CommonTools;
 import com.example.algostudy.domain.dto.MissionDto;
 import com.example.algostudy.domain.dto.MissionForm;
 import com.example.algostudy.domain.dto.TeamRegisterForm;
-import com.example.algostudy.domain.entity.Image;
-import com.example.algostudy.domain.entity.Member;
-import com.example.algostudy.domain.entity.Mission;
+import com.example.algostudy.domain.entity.*;
 import com.example.algostudy.mapper.MemberMapper;
 import com.example.algostudy.mapper.MissionMapper;
 import com.example.algostudy.mapper.TeamMapper;
-import com.example.algostudy.service.ImageService;
-import com.example.algostudy.service.MemberService;
-import com.example.algostudy.service.MissionService;
-import com.example.algostudy.service.TeamService;
+import com.example.algostudy.service.*;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -41,6 +36,8 @@ public class StudyController {
     private final ImageService imageService;
     private final CommonTools commonTools;
     private final TeamService teamService;
+    private final InvitationService invitationService;
+
 
     @GetMapping("/study/new")
     public String addStudy(@AuthenticationPrincipal Member member, Model model) {
@@ -120,5 +117,15 @@ public class StudyController {
                         ,@RequestParam(name = "memberId") String memberId) {
         Member findMember = memberService.findMemberById(Long.parseLong(memberId));
         teamService.sendInvitation(member.getTeam(), findMember);
+    }
+
+    @GetMapping("/study/invite/decision")
+    public String invitationDecision(@AuthenticationPrincipal Member member
+                                    ,@RequestParam(name = "id") String messageId
+                                    ,@RequestParam(name = "accept") String accept) {
+        InvitationMessage message = (InvitationMessage) memberService.findMessageById(Long.parseLong(messageId));
+        invitationService.doInvitation(accept, message);
+        return "redirect:/";
+
     }
 }

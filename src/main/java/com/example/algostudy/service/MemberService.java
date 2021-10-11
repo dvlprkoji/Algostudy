@@ -2,12 +2,11 @@ package com.example.algostudy.service;
 
 import com.example.algostudy.domain.dto.MemberLoginDto;
 import com.example.algostudy.domain.dto.MemberRegisterForm;
-import com.example.algostudy.domain.entity.Member;
-import com.example.algostudy.domain.entity.MemberRole;
-import com.example.algostudy.domain.entity.Role;
+import com.example.algostudy.domain.entity.*;
 import com.example.algostudy.mapper.MemberMapper;
 import com.example.algostudy.repository.Member.MemberRepository;
 import com.example.algostudy.repository.MemberRoleRepository;
+import com.example.algostudy.repository.MessageRepository;
 import com.example.algostudy.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
@@ -26,6 +25,7 @@ public class MemberService {
 
     private final MemberMapper memberMapper = Mappers.getMapper(MemberMapper.class);
     private final MemberRepository memberRepository;
+    private final MessageRepository messageRepository;
     private final PasswordEncoder passwordEncoder;
 
     public MemberLoginDto toMemberLoginDto(Member member) {
@@ -67,4 +67,9 @@ public class MemberService {
         member.getTeam();
         member.getInviteTeamMemberList();
     }
+
+    public Message findMessageById(Long id){
+        return messageRepository.findById(id).get();
+    }
+
 }
