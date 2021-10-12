@@ -7,6 +7,7 @@ import com.example.algostudy.domain.entity.InvitationMessage;
 import com.example.algostudy.domain.entity.Member;
 import com.example.algostudy.domain.entity.Message;
 import com.example.algostudy.domain.entity.Team;
+import com.example.algostudy.mapper.InvitationMessageMapper;
 import com.example.algostudy.mapper.MemberMapper;
 import com.example.algostudy.mapper.MissionMapper;
 import com.example.algostudy.mapper.TeamMapper;
@@ -32,6 +33,7 @@ public class MemberController {
     private final MemberService memberService;
     private final MemberMapper memberMapper = Mappers.getMapper(MemberMapper.class);
     private final TeamMapper teamMapper = Mappers.getMapper(TeamMapper.class);
+    private final InvitationMessageMapper invitationMessageMapper = Mappers.getMapper(InvitationMessageMapper.class);
     private final TeamService teamService;
 
 
@@ -83,7 +85,8 @@ public class MemberController {
                     Team team = invitationMessage.getTeam();
                     team = teamService.refresh(team);
                     model.addAttribute("team", team);
-                    model.addAttribute("messageId", message.getId());
+                    model.addAttribute("message", invitationMessageMapper.toDto(invitationMessage));
+//                    model.addAttribute("messageId", message.getId());
                     return "invitation";
                 }
             }

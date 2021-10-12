@@ -821,6 +821,10 @@
                         <article class="mine-study" style="align-self: center">
                             <div class="mine-study-header">
                                 <h3 class="mine-study-title">초대받은 스터디</h3>
+                                <div class="controls-btn-wrap">
+                                    <button class="controls-btn prev"></button>
+                                    <button class="controls-btn next"></button>
+                                </div>
                             </div>
                             <div class="mine-study-body active">
                                 <div class="study-item-list-wrap slick-initialized slick-slider">
@@ -855,14 +859,10 @@
                                 </div>
                             </div>
                         </article>
-                        <div th:if="${message.valid eq 'y'}" class="createBtnRec text-right" style="align-self: center">
-                            <a type="submit" class="btn btn-lg btn-skin btn-xs-block create-button" th:href="@{/study/invite/decision(id=${message.id},accept='n')}" style="margin-right: 30px">거절하기</a>
-                            <a type="submit" class="btn btn-lg btn-skin btn-xs-block create-button" th:href="@{/study/invite/decision(id=${message.id},accept='y')}">수락하기</a>
+                        <div class="createBtnRec text-right" style="align-self: center">
+                            <a type="submit" class="btn btn-lg btn-skin btn-xs-block create-button" th:href="@{/study/invite/decision(id=${messageId},accept='n')}" style="margin-right: 30px">거절하기</a>
+                            <a type="submit" class="btn btn-lg btn-skin btn-xs-block create-button" th:href="@{/study/invite/decision(id=${messageId},accept='y')}">수락하기</a>
                         </div>
-                        <div th:if="${message.valid ne 'y'}" class="createBtnRec text-right" style="align-self: center">
-                            <div>해당 초대 메시지는 취소되었습니다</div>
-                        </div>
-
                     </div>
                 </section>
             </main>

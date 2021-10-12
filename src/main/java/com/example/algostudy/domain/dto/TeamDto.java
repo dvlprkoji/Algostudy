@@ -10,4 +10,5 @@ import java.util.List;
 public class TeamDto {
     private List<Member> inviteMemberList;
     private List<Member> memberList;
+    private Member adminMember;
 }

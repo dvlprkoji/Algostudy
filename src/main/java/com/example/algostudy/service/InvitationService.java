@@ -49,6 +49,8 @@ public class InvitationService {
         }
     }
 
+
+
     @Transactional
     void refresh(InvitationMessage message) {
         message.setTeam((Team) Hibernate.unproxy(message.getTeam()));;
@@ -65,5 +67,21 @@ public class InvitationService {
         member.getMessageQueue().remove(0);
 
         team.getInviteTeamMemberList().remove(0);
+    }
+
+    @Transactional
+    public void cancelInvitation(Team team, Member findMember) {
+        findMember.getMessageQueue().stream().forEach(message -> {
+            if (message instanceof InvitationMessage) {
+                InvitationMessage invitationMessage = (InvitationMessage) message;
+                if (((InvitationMessage) message).getTeam().getId().equals(team.getId())) {
+                    invitationMessage.setValid("n");
+                }
+            }
+        });
+        InviteTeamMember inviteTeamMember = inviteTeamMemberRepository.findByTeamAndMember(team, findMember);
+        team.getInviteTeamMemberList().remove(inviteTeamMember);
+        findMember.getInviteTeamMemberList().remove(inviteTeamMember);
+        inviteTeamMemberRepository.delete(inviteTeamMember);
     }
 }

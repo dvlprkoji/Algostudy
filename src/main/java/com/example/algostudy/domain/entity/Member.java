@@ -2,12 +2,14 @@ package com.example.algostudy.domain.entity;
 
 import lombok.*;
 import lombok.experimental.SuperBuilder;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
+import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,7 +45,13 @@ public class Member {
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<InviteTeamMember> inviteTeamMemberList;
 
+    @OrderBy("sendDateTime desc")
     @OneToMany(mappedBy = "member")
     private List<Message> messageQueue = new LinkedList<>();
+
+//    @Transactional
+//    public List<Role> getRoleList(){
+//        return memberRoleList.stream().map(MemberRole::getRole).collect(Collectors.toList());
+//    }
 
 }

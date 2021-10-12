@@ -13,6 +13,7 @@ import org.mapstruct.NullValueMappingStrategy;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +25,7 @@ public interface MemberMapper extends GenericMapper<MemberLoginDto, Member>{
     @Mapping(source = "memberRoleList", target = "roleList")
     MemberLoginDto memberToLoginDto(Member member);
 
+//    @Transactional
     public default List<Role> memberRoleListToRoleList(List<MemberRole> memberRoleList) {
         return memberRoleList.stream().map(MemberRole::getRole).collect(Collectors.toList());
     }

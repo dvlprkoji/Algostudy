@@ -10,6 +10,7 @@ import com.example.algostudy.mapper.MissionMapper;
 import com.example.algostudy.mapper.TeamMapper;
 import com.example.algostudy.service.*;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.Hibernate;
 import org.mapstruct.factory.Mappers;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -103,6 +104,7 @@ public class StudyController {
         model.addAttribute("member", memberMapper.toDto(member));
         if (member.getTeam().getStatus().equals("beforeStart")) {
             member.setTeam(teamService.refresh(member.getTeam()));
+            member.getTeam().setAdminMember((Member)Hibernate.unproxy(member.getTeam().getAdminMember()));
             model.addAttribute("team", teamMapper.teamToTeamDto(member.getTeam()));
             return "recruit";
         }
@@ -117,6 +119,14 @@ public class StudyController {
                         ,@RequestParam(name = "memberId") String memberId) {
         Member findMember = memberService.findMemberById(Long.parseLong(memberId));
         teamService.sendInvitation(member.getTeam(), findMember);
+    }
+
+    @ResponseBody
+    @GetMapping("/study/invite/cancel")
+    public void invitationCancel(@AuthenticationPrincipal Member member
+            ,@RequestParam(name = "memberId") String memberId) {
+        Member findMember = memberService.findMemberById(Long.parseLong(memberId));
+        invitationService.cancelInvitation(member.getTeam(), findMember);
     }
 
     @GetMapping("/study/invite/decision")

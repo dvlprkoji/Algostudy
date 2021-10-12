@@ -18,4 +18,7 @@ public class InvitationMessage extends Message {
 
     @Builder.Default
     private String message = "초대 메시지가 도착했습니다";
+
+    @Builder.Default
+    private String valid = "y";
 }

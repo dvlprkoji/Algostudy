@@ -233,6 +233,7 @@
         flex: 1;
         min-width: 0;
         margin-left: 40px;
+        min-height: 350px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -366,7 +367,7 @@
         align-items: center;
     }
     .my-contents-body {
-        margin-top: 6px;
+        margin-top: 15px;
         min-width: 0;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -485,7 +486,7 @@
         transition: .1s;
     }
     .my-contents-body {
-        margin-top: 6px;
+        margin-top: 15px;
         min-width: 0;
         display: -webkit-box;
         display: -ms-flexbox;
@@ -869,12 +870,25 @@
         return document.getElementById(target)==null ? true : false;
     }
 
+    var memberList;
 
     function cancelInvitation(target) {
-
+        var selectMemberId = target.id;
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost:8080/study/invite/cancel?memberId=' + selectMemberId,
+            error: function (request, err) {
+                console.log('code:' + request.status + '\n' + 'message: ' + request.responseText + '\n' + 'error: ' + err);
+            },
+            success: function () {
+                var selectMemberDivId = selectMemberId + "_div";
+                var inviteMemberList = document.getElementById(selectMemberDivId);
+                inviteMemberList.parentNode.removeChild(inviteMemberList);
+            }
+        });
+        $("#tag").empty();
     }
 
-    var memberList;
     function sendInvitation(target) {
         var selectMember = memberList[parseInt(target.id)];
         $.ajax({
@@ -888,7 +902,7 @@
                 if(checkBeforeAppend(selectMember.id)){
                     console.log('초대 성공');
                     $('#inviteMemberList').append(
-                        "<div class='member-list'>"
+                        "<div class='member-list' id="+selectMember.id+"_div>"
                         +"<p class='my-contents-tx tx'>"+selectMember.username+"</p>"
                         +"<button id="+selectMember.id+" class='button-cancel' onclick='cancelInvitation(this)'>"+"취소"+"</button>"
                         +"</div>"
@@ -972,13 +986,11 @@
                                 <div class="my-contents-header">
                                     <h4 class="mine-goal-record-tx title">초대한 회원</h4>
                                 </div>
-                                <div th:each="member : *{getInviteMemberList()}"class="my-contents-body" style="display: flex; flex-direction: column;">
-                                    <div class="member-list">
+                                <div id="inviteMemberList" class="my-contents-body" style="display: flex; flex-direction: column;">
+                                    <div th:each="member : *{getInviteMemberList()}" class="member-list" th:id="${member.getId()} + '_div'">
                                         <p th:text="${member.getUsername()}" class="my-contents-tx tx"></p>
                                         <button class="button-cancel">취소</button>
                                     </div>
-                                </div>
-                                <div id="inviteMemberList" class="my-contents-body" style="display: flex; flex-direction: column;">
                                 </div>
                             </div>
                             <span class="contents-line"></span>
@@ -1000,7 +1012,7 @@
                     </div>
                 </article>
                 </div>
-                <div class="createBtnRec text-right">
+                <div th:if="${team.getAdminMember().getId() eq member.getId()}" class="createBtnRec text-right">
                     <button type="submit" class="btn btn-lg btn-skin btn-xs-block create-button">미션 시작하기</button>
                 </div>
             </section>

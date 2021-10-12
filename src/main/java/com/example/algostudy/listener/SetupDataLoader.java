@@ -112,7 +112,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
 
 
         Image defaultImage = Image.builder()
-                .imagePath("/home/koji/Algostudy/savedImages/madprodo.png")
+                .imagePath("/home/koji/Spring Projects/Algostudy/savedImages/madprodo.png")
                 .imageUrl("https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/5c5da6d9-bd40-4e39-a488-eac2778ff8e1.png")
                 .build();
 
