@@ -68,37 +68,36 @@ public class TeamService {
 
 
         Team newTeam = Team.builder()
-                        .mainImage(image)
-                        .teamName(teamRegisterForm.getTeamName())
-                        .teamDesc(teamRegisterForm.getTeamDesc())
-                        .startDateTime(
-                                LocalDateTime.of(
-                                        LocalDate.parse(teamRegisterForm.getStartDate()),
-                                        LocalTime.of(0,0,0,0)))
-                        .endDateTime(
-                                LocalDateTime.of(
-                                        LocalDate.parse(teamRegisterForm.getEndDate()),
-                                        LocalTime.of(23,59,59,59)))
-                        .mainImage(image)
-                        .memberList(memberList)
-                        .status("beforeStart")
-                        .studyUrl("https://algostudy.com/"+teamRegisterForm.getStudyUrl())
-                        .build();
+                .mainImage(image)
+                .teamName(teamRegisterForm.getTeamName())
+                .teamDesc(teamRegisterForm.getTeamDesc())
+                .startDateTime(
+                        LocalDateTime.of(
+                                LocalDate.parse(teamRegisterForm.getStartDate()),
+                                LocalTime.of(0, 0, 0, 0)))
+                .endDateTime(
+                        LocalDateTime.of(
+                                LocalDate.parse(teamRegisterForm.getEndDate()),
+                                LocalTime.of(23, 59, 59, 59)))
+                .mainImage(image)
+                .memberList(memberList)
+                .status("beforeStart")
+                .studyUrl("https://algostudy.com/" + teamRegisterForm.getStudyUrl())
+                .build();
 
         List<Hashtag> hashtagList = Arrays.stream(teamRegisterForm.getHashtagList().split(","))
-                                            .map(hashtagRepository::findByNameOrSave).collect(Collectors.toList());
+                .map(hashtagRepository::findByNameOrSave).collect(Collectors.toList());
         hashtagList.forEach(tag -> tag.setTeam(newTeam));
         newTeam.setHashtagList(hashtagList);
-
 
 
         member.setTeam(newTeam);
 
         List<Mission> missionList = missionRepository.findAllById(Arrays.stream(missionForm
-                                                                                .getCheckedMissionList()
-                                                                                .split(","))
-                                                                        .map(Long::parseLong)
-                                                                        .collect(Collectors.toList()));
+                .getCheckedMissionList()
+                .split(","))
+                .map(Long::parseLong)
+                .collect(Collectors.toList()));
         List<TeamMission> teamMissionList = missionList.stream().map(mission -> new TeamMission(newTeam, mission)).collect(Collectors.toList());
         teamMissionRepository.saveAll(teamMissionList);
         newTeam.setTeamMissionList(teamMissionList);
@@ -123,6 +122,7 @@ public class TeamService {
     public Team refresh(Team team) {
         return teamRepository.findById(team.getId()).get();
     }
+
 
 
 }

@@ -5,10 +5,8 @@ import lombok.experimental.SuperBuilder;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.time.LocalDateTime;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @NoArgsConstructor
@@ -49,9 +47,8 @@ public class Member {
     @OneToMany(mappedBy = "member")
     private List<Message> messageQueue = new LinkedList<>();
 
-//    @Transactional
-//    public List<Role> getRoleList(){
-//        return memberRoleList.stream().map(MemberRole::getRole).collect(Collectors.toList());
-//    }
+    @Builder.Default
+    @OneToMany(mappedBy = "member")
+    private List<MissionCalander> missionCalanderList = new ArrayList<>();
 
 }

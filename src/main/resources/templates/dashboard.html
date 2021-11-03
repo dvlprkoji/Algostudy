@@ -268,7 +268,7 @@
         content: '';
         width: 100%;
         height: 1px;
-        margin: 30px 0 18px;
+        margin: 25px 0 15px;
         border-radius: 50px;
         background-color: #e0e0e0;
         display: block;
@@ -311,7 +311,7 @@
         overflow: hidden;
     }
     .mine-goal-record-tx-wrap {
-        margin-top: 12px;
+        margin-top: 25px;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -353,6 +353,8 @@
         flex-direction: column;
     }
     .my-contents-header {
+        margin-bottom: 5px
+    ;
         display: -webkit-box;
         display: -ms-flexbox;
         display: flex;
@@ -880,17 +882,17 @@
                             <div class="mine-goal-contents">
                                 <div class="mine-goal-record">
                                     <div class="mine-goal-record-header">
-                                        <h4 class="mine-goal-record-tx title">오늘 공부한 시간 / 내 목표 시간</h4>
+                                        <h4 class="mine-goal-record-tx title">미션 달성 횟수 / 전체 미션 횟수</h4>
                                         <button class="form-setting">설정</button>
                                     </div>
                                     <div class="mine-goal-record-body">
                                         <div class="mine-goal-record-tx-wrap">
-                                            <p class="mine-goal-record-tx time">0시간 0분
-                                                <span class="mine-goal-record-tx total"> / 0시간 0분</span>
-                                            </p>
-                                            <p class="mine-goal-record-tx none">내 목표시간을 설정해보세요.</p>
+                                            <div class="mine-goal-record-tx time">0회
+                                                <span class="mine-goal-record-tx total"> / 0회</span>
+                                            </div>
+                                            <div class="mine-goal-record-tx none" style="font-weight: 800; font-size: larger; color: black">100%</div>
                                         </div>
-                                        <div class="mine-goal-record-gauge-wrap">
+                                        <div class="mine-goal-record-gauge-wrap" style="background-color: limegreen">
                                             <span class="mine-goal-record-gauge" style="width: 0%;"></span>
                                         </div>
                                     </div>
@@ -898,7 +900,7 @@
                                 <div class="my-contents-wrapper">
                                     <div class="my-contents resolution">
                                         <div class="my-contents-header">
-                                            <h4 class="my-contents-tx">내 각오</h4>
+                                            <div class="my-contents-tx">내 각오</div>
                                             <button class="form-edit">설정</button>
                                         </div>
                                         <div class="my-contents-body">
@@ -908,11 +910,11 @@
                                     <span class="contents-line"></span>
                                     <div class="my-contents d-day">
                                         <div class="my-contents-header">
-                                            <h4 class="my-contents-tx">내 디데이</h4>
+                                            <div class="my-contents-tx">내 디데이</div>
                                             <button class="form-edit">설정</button>
                                         </div>
                                         <div class="my-contents-body">
-                                            <p class="d-day-tx tx">디데이를 설정해주세요</p>
+                                            <p class="my-contents-tx tx">디데이를 설정해주세요</p>
                                         </div>
                                     </div>
                                 </div>

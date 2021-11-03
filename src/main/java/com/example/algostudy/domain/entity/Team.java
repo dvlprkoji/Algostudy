@@ -5,6 +5,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Getter
@@ -47,4 +48,8 @@ public class Team {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "admin_member_id")
     private Member adminMember;
+
+    public List<Mission> getMissionList() {
+        return this.getTeamMissionList().stream().map(TeamMission::getMission).collect(Collectors.toList());
+    }
 }

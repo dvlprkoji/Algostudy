@@ -10,6 +10,7 @@ import com.example.algostudy.repository.MessageRepository;
 import com.example.algostudy.repository.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.mapstruct.factory.Mappers;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -72,4 +73,7 @@ public class MemberService {
         return messageRepository.findById(id).get();
     }
 
+    public Member fetchMissionCalanderList(Member member) {
+        return memberRepository.fetchWithMissionCalanderList(member.getId());
+    }
 }
