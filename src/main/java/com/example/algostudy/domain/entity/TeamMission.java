@@ -1,12 +1,14 @@
 package com.example.algostudy.domain.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
 @NoArgsConstructor
+@Getter
 public class TeamMission {
     @Id @GeneratedValue
     private Long id;

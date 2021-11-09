@@ -1,4 +1,4 @@
-package com.example.algostudy.security.authorize.filter;
+package com.example.algostudy.security.authorization.filter;
 
 import org.springframework.security.access.intercept.InterceptorStatusToken;
 import org.springframework.security.web.FilterInvocation;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class PermitAllFilter extends FilterSecurityInterceptor {
 
