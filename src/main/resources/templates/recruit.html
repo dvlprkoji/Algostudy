@@ -876,7 +876,7 @@
         var selectMemberId = target.id;
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:8080/study/invite/cancel?memberId=' + selectMemberId,
+            url: 'http://localhost:8081/study/invite/cancel?memberId=' + selectMemberId,
             error: function (request, err) {
                 console.log('code:' + request.status + '\n' + 'message: ' + request.responseText + '\n' + 'error: ' + err);
             },
@@ -893,7 +893,7 @@
         var selectMember = memberList[parseInt(target.id)];
         $.ajax({
             type: 'GET',
-            url: 'http://localhost:8080/study/invite/new?memberId=' + selectMember.id.toString(),
+            url: 'http://localhost:8081/study/invite/new?memberId=' + selectMember.id.toString(),
             error: function (request, err) {
                 console.log('code:' + request.status + '\n' + 'message: ' + request.responseText + '\n' + 'error: ' + err);
             },
@@ -918,7 +918,7 @@
         $.ajax({
             type: 'GET',
             dataType: 'json',
-            url: 'http://localhost:8080/search/member?memberNm=' + word,
+            url: 'http://localhost:8081/search/member?memberNm=' + word,
             error: function (err) {
                 console.log('실행중 오류가 발생했습니다');
             },
@@ -938,6 +938,17 @@
                 }
             }
         });
+    }
+
+    function checkBeforeStart() {
+        let inviteMemberList = document.getElementById("inviteMemberList");
+        let childElementCount = inviteMemberList.childElementCount;
+        if (childElementCount != 0) {
+            alert("아직 초대를 수락하지 않은 멤버가 있습니다");
+        } else {
+            location.href = "http://localhost:8081/study/start";
+        }
+
     }
 </script>
 
@@ -1013,7 +1024,7 @@
                 </article>
                 </div>
                 <div th:if="${team.getAdminMember().getId() eq member.getId()}" class="createBtnRec text-right">
-                    <button type="submit" class="btn btn-lg btn-skin btn-xs-block create-button">미션 시작하기</button>
+                    <button type="button" class="btn btn-lg btn-skin btn-xs-block create-button" onclick="checkBeforeStart()">미션 시작하기</button>
                 </div>
             </section>
         </main>

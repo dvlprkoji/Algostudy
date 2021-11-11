@@ -35,7 +35,8 @@
     <script src="https://unpkg.com/@yaireo/tagify/dist/tagify.polyfills.min.js"></script>
     <link href="https://unpkg.com/@yaireo/tagify/dist/tagify.css" rel="stylesheet" type="text/css" />
 
-
+    <script src="https://cdn.jsdelivr.net/npm/gantt-schedule-timeline-calendar"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gantt-schedule-timeline-calendar/dist/style.css" />
 
 </head>
 <style>
@@ -321,142 +322,22 @@
     }
 </style>
 
-<body id="page-top">
-
 <script th:inline="javascript">
-    // datepicker 초기화
-    $(function () {
-        //input을 datepicker로 선언
-        $("#startDate").datepicker({
-            dateFormat: 'yy-mm-dd' //달력 날짜 형태
-            , showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-            , showMonthAfterYear: true // 월- 년 순서가아닌 년도 - 월 순서
-            , changeYear: true //option값 년 선택 가능
-            , changeMonth: true //option값  월 선택 가능
-            // , showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시
-            // , buttonImage: "http://images.jautour.com/jautour/images/main/search/btn_cale.gif" //버튼 이미지 경로
-            // , buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
-            , buttonText: "선택" //버튼 호버 텍스트
-            , yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
-            , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 텍스트
-            , monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 Tooltip
-            , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] //달력의 요일 텍스트
-            , dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'] //달력의 요일 Tooltip
-            , minDate: "0" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-            , maxDate: "+3M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
-            , onSelect: function (d) {
-                var start = new Date($("#startDate").datepicker("getDate"));
-                var end = new Date($("#endDate").datepicker("getDate"));
-                if (end - start < 0) {
-                    alert('시작일을 종료일보다 늦게 설정할 수 없습니다');
-                    $('#startDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-                }
-            }
-        })
-        $("#endDate").datepicker({
-            dateFormat: 'yy-mm-dd' //달력 날짜 형태
-            , showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
-            , showMonthAfterYear: true // 월- 년 순서가아닌 년도 - 월 순서
-            , changeYear: true //option값 년 선택 가능
-            , changeMonth: true //option값  월 선택 가능
-            // , showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시
-            // , buttonImage: "http://images.jautour.com/jautour/images/main/search/btn_cale.gif" //버튼 이미지 경로
-            // , buttonImageOnly: true //버튼 이미지만 깔끔하게 보이게함
-            , buttonText: "선택" //버튼 호버 텍스트
-            , yearSuffix: "년" //달력의 년도 부분 뒤 텍스트
-            , monthNamesShort: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 텍스트
-            , monthNames: ['1월', '2월', '3월', '4월', '5월', '6월', '7월', '8월', '9월', '10월', '11월', '12월'] //달력의 월 부분 Tooltip
-            , dayNamesMin: ['일', '월', '화', '수', '목', '금', '토'] //달력의 요일 텍스트
-            , dayNames: ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'] //달력의 요일 Tooltip
-            , minDate: "0" //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-            , maxDate: "+3M" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후)
-            , onSelect: function (d) {
-                var start = new Date($("#startDate").datepicker("getDate"));
-                var end = new Date($("#endDate").datepicker("getDate"));
-                if (end - start < 0) {
-                    alert('시작일을 종료일보다 늦게 설정할 수 없습니다');
-                    $('#endDate').datepicker('setDate', '+1D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-                }
-            }
-        });
 
-        //초기값을 오늘 날짜로 설정해줘야 합니다.
-        $('#startDate').datepicker('setDate', 'today'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
-        $('#endDate').datepicker('setDate', '+7D'); //(-1D:하루전, -1M:한달전, -1Y:일년전), (+1D:하루후, -1M:한달후, -1Y:일년후)
+    /*<![CDATA[*/
+    var calendarMemberList = [[${calendarMemberList}]];
+    /*]]>*/
 
-        // The DOM element you wish to replace with Tagify
-        var input = document.querySelector('input[name=hashtagList]');
+    /*<![CDATA[*/
+    var calendarDateList = [[${calendarDateList}]];
+    /*]]>*/
 
-        // initialize Tagify on the above input node reference
-        new Tagify(input, {
-            originalInputValueFormat: valuesArr => valuesArr.map(item => item.value).join(',')
-        })
-    });
-
-
-
-
-
-    function readImageMain(input) {
-        // 인풋 태그에 파일이 있는 경우
-        if(input.files && input.files[0]) {
-            if( $("#image_0").val() != "" ){
-                var ext = $('#mainImage').val().split('.').pop().toLowerCase();
-                if($.inArray(ext, ['png','jpg']) == -1) {
-                    alert('이미지 형식은 png, jpg 만 가능합니다');
-                    return;
-                }
-            }
-            // FileReader 인스턴스 생성
-            const reader = new FileReader();
-            // 이미지가 로드가 된 경우
-            reader.onload = e => {
-                var img = new Image();
-                img.src = e.target.result;
-                img.onload = function(){
-                    var w = this.width;
-                    var h = this.height;
-                    if (w != 210 || h != 210) {
-                        alert('210 x 210 크기의 이미지를 권장합니다');
-                    }
-                    const previewImage = document.getElementById("previewImage");
-                    previewImage.src = e.target.result;
-
-                }
-
-
-            }
-            // reader가 이미지 읽도록 하기
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-    function checkMission(target){
-        var checkBox = target.getElementsByClassName("checkBox")[0];
-        if(target.classList.contains('missionBox-active')){
-            target.classList.replace('missionBox-active', 'missionBox')
-            checkBox.removeAttribute("checked");
-        }
-        else{
-            target.classList.replace('missionBox','missionBox-active')
-            checkBox.setAttribute("checked", "checked");
-        }
-    }
-
-    function checkForm(target) {
-        var missionList = $("input[name=checkedMission]:checked");
-        if (missionList.length == 0) {
-            return true;
-        }
-        var checkedMission = [];
-        $("input[name=checkedMission]:checked").each(function(){
-            checkedMission.push($(this).val());
-        });
-        document.getElementById("checkedMissionList").setAttribute("value", checkedMission);
-        return true;
-    }
+    console.log(calendarDateList);
+    console.log(calendarMemberList);
 
 </script>
 
+<body id="page-top">
 
 <!-- Page Wrapper -->
 <div id="wrapper">
@@ -474,122 +355,12 @@
         <nav th:replace="fragments/header :: header"></nav>
         <!-- End of Topbar -->
 
-        <form action="/study/new" method="post" enctype="multipart/form-data" onsubmit="checkForm(this)" th:object="${teamRegisterForm}">
-            <div class="room-create">
-                <div class="wrapper">
-                    <div class="create-room-bottom">
-                        <div class="container createRoom">
-                            <div class="createForm">
-                                <div class="create-room-form-basic">
-                                    <div class="formGroup withValidateTx">
-                                        <label class="formLabel input-field-label">스터디 이름</label>
-                                        <div class="formContent">
-                                            <input th:field="*{teamName}" th:value="*{teamName}" name="teamName" type="text" placeholder="스터디 이름을 입력하세요" title="스터디 이름을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md" aria-required="true" aria-invalid="false">
-                                        </div>
-                                        <div th:if="${#fields.hasErrors('teamName')}" class="formContent errorMessage" th:errors="*{teamName}">errormessage</div>
-                                    </div>
-                                    <div class="formGroup withValidateTx">
-                                        <label class="formLabel">스터디 URL</label>
-                                        <div class="formContent">
-                                            <div class="url-area clearfix">
-                                                <div class="url-front-tx">https://algostudy.com/</div>
-                                                <input th:field="*{studyUrl}" th:value="*{studyUrl}" name="studyUrl" type="text" placeholder="URL을 입력하세요" title="URL을 입력하세요" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
-                                            </div>
-                                        </div>
-                                        <div th:if="${#fields.hasErrors('studyUrl')}" class="formContent errorMessage" th:errors="*{studyUrl}">errormessage</div>
-                                    </div>
-                                    <div class="formGroup hashtag">
-                                        <label class="formLabel input-field-label">해시태그</label>
-                                        <div class="formContent">
-                                            <input th:field="*{hashtagList}" th:value="*{hashtagList}" name="hashtagList" type="text" placeholder="대표하는 키워드를 입력하세요. (최대 3개)" autocomplete="off" maxlength="30" class="form-control input-md url-input-field" aria-required="true" aria-invalid="false">
-                                        </div>
-                                        <div th:if="${#fields.hasErrors('hashtagList')}" class="formContent errorMessage" th:errors="*{hashtagList}">errormessage</div>
-                                    </div>
-                                    <div class="formGroup image">
-                                        <label class="formLabel">대표 이미지</label>
-                                        <div class="formContent">
-                                            <div class="create-room-img-area">
-                                                <img id="previewImage" src="https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/madprodo.png" alt="방 대표 이미지">
-                                                <div class="imgEditBtnRec">
-                                                    <label for="mainImage" type="button" class="imgEditBtn">편집</label>
-                                                    <input type="file" name="mainImage" id="mainImage" class="btn btn-outline-dark" style="margin-right: 100px; display: none" accept=".png, .jpg" onchange="readImageMain(this)">
-                                                </div>
-                                            </div>
-                                            <div style=" font-size: small; margin: 5px;">가로: 210px, 세로: 210px 권장</div>
-                                        </div>
-<!--                                        <div th:if="${#fields.hasErrors('teamName')}" class="formContent errorMessage" th:errors="*{teamName}">errormessage</div>-->
-                                    </div>
-                                </div>
-                                <div class="create-room-form-detail">
-                                    <div class="formGroup">
-                                        <label class="formLabel input-field-label">기간
-                                            <span class="position-relative">
-                                            <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
-                                        </span>
-                                        </label>
-                                        <div class="formContent clearfix date-div">
-                                            <label for="startDate"></label><input th:field="*{startDate}" th:value="*{startDate}" type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="startDate" id="startDate">
-                                            <span class="date-division">~</span>
-                                            <label for="endDate"></label><input th:field="*{endDate}" th:value="*{endDate}" type="text" class="datepicker form-control input-md inputDate text-center flatpickr-input input active" name="endDate" id="endDate">
-                                        </div>
-<!--                                        <div th:if="${#fields.hasErrors('teamName')}" class="formContent errorMessage" th:errors="*{teamName}">errormessage</div>-->
-                                    </div>
-                                    <div class="formGroup clearfix">
-                                        <label class="formLabel mobile-m-b-2">미션 설정
-                                            <span class="position-relative badgeRec">
-                                                <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
-                                            </span>
-                                        </label>
-                                        <div th:object="${missionForm}">
-                                            <div class="formContent">
-                                                <div th:each="mission : ${missionList}" class="study-item-list slick-slide slick-current slick-active missionBox" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 224px;" onclick="checkMission(this)">
-                                                    <div class="study-item-img-wrap">
-                                                        <img th:src="${mission.imagePath}" alt="study-img" class="study-item-img">
-                                                        <div class="study-item-info-cover">
-                                                            <div class="study-item-info-badge-wrap"></div>
-                                                            <div class="room-more-view-btn-area"></div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="study-item-tx-wrap">
-                                                        <div class="study-item-tx" style="font-size: medium" th:text="${mission.missionName}">미션명</div>
-                                                        <div class="study-item-tx missionDesc" style="font-size: small" th:text="${mission.missionDesc}">미션설명</div>
-                                                    </div>
-                                                    <input type="checkbox" class="checkBox" name="checkedMission" th:id="${mission.id}" style="display: none" th:value="${mission.id}">
-                                                </div>
-                                                <input th:field="*{checkedMissionList}" th:value="*{checkedMissionList}" type="hidden" id="checkedMissionList" name="checkedMissionList">
-                                            </div>
-                                            <div class="formContent" style="display: flex">
-                                                <div th:if="${#fields.hasErrors('checkedMissionList')}" class="errorMessage" th:errors="${missionForm.checkedMissionList}">errormessage</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="formGroup">
-                                        <label for="teamDesc" class="formLabel">스터디 소개</label>
-                                        <div class="formContent textarea">
-                                            <textarea th:field="*{teamDesc}" th:value="*{teamDesc}" id="teamDesc" name="teamDesc" maxlength="1000" placeholder="스터디를 소개해주세요" title="스터디를 소개해주세요" class="form-control input-md"></textarea>
-                                            <p class="limit-length">( 0 /1000)</p>
-                                            <div th:if="${#fields.hasErrors('teamDesc')}" class="errorMessage" th:errors="*{teamDesc}">errormessage</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="createBtnRec text-right">
-                                    <button type="submit" class="btn btn-lg btn-skin btn-xs-block create-button">스터디 만들기</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <div id="gstc"></div>
+        <script src="/js/calendar.js" type="module"></script>
+
+    </div>
 
 
-                <footer th:replace="fragments/footer:: footer" \></footer>
-
-            </div>
-        </form>
-
-
-
-    <!-- Page level plugins -->
-</div>
 </div>
 </body>
 

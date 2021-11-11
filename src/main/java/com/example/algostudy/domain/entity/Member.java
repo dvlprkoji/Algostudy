@@ -49,6 +49,6 @@ public class Member {
 
     @Builder.Default
     @OneToMany(mappedBy = "member")
-    private List<MissionCalander> missionCalanderList = new ArrayList<>();
+    private List<MissionCalendar> missionCalendarList = new ArrayList<>();
 
 }

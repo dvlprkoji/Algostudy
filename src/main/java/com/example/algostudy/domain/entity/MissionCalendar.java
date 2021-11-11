@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class MissionCalander {
+public class MissionCalendar {
 
     @Id @GeneratedValue
     private Long id;
@@ -19,7 +19,6 @@ public class MissionCalander {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")
     private Member member;
-
 
     private LocalDate date;
 

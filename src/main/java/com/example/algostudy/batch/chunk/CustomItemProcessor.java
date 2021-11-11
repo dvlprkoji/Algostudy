@@ -1,19 +1,15 @@
 package com.example.algostudy.batch.chunk;
 
-import com.example.algostudy.controller.MissionController;
 import com.example.algostudy.domain.entity.Member;
 import com.example.algostudy.domain.entity.Mission;
-import com.example.algostudy.domain.entity.MissionCalander;
+import com.example.algostudy.domain.entity.MissionCalendar;
 import com.example.algostudy.domain.entity.Team;
 import com.example.algostudy.repository.Member.MemberRepository;
 import com.example.algostudy.service.CrawlingService;
-import com.example.algostudy.service.MemberService;
-import com.example.algostudy.service.MissionCalanderService;
-import lombok.NoArgsConstructor;
+import com.example.algostudy.service.MissionCalendarService;
 import lombok.RequiredArgsConstructor;
 import org.jsoup.nodes.Document;
 import org.springframework.batch.item.ItemProcessor;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
@@ -24,7 +20,7 @@ import java.util.List;
 public class CustomItemProcessor implements ItemProcessor<Team, Team> {
 
     private final CrawlingService crawlingService;
-    private final MissionCalanderService missionCalanderService;
+    private final MissionCalendarService missionCalendarService;
     private final MemberRepository memberRepository;
 
 
@@ -43,23 +39,23 @@ public class CustomItemProcessor implements ItemProcessor<Team, Team> {
                     }
                 }
             }
-            MissionCalander missionCalander;
+            MissionCalendar missionCalendar;
             if (success) {
-                missionCalander = MissionCalander.builder()
+                missionCalendar = MissionCalendar.builder()
                         .date(LocalDate.now().minusDays(1))
                         .successYn("y")
                         .member(member)
                         .build();
             } else {
-                missionCalander = MissionCalander.builder()
+                missionCalendar = MissionCalendar.builder()
                         .date(LocalDate.now().minusDays(1))
                         .successYn("n")
                         .member(member)
                         .build();
             }
-            missionCalanderService.save(missionCalander);
-            member = memberRepository.fetchWithMissionCalanderList(member.getId());
-            member.getMissionCalanderList().add(missionCalander);
+            missionCalendarService.save(missionCalendar);
+            member = memberRepository.fetchWithMissionCalendarList(member.getId());
+            member.getMissionCalendarList().add(missionCalendar);
         }
         return team;
     }

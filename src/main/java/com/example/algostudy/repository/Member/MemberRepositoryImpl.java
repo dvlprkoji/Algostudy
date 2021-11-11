@@ -1,10 +1,7 @@
 package com.example.algostudy.repository.Member;
 
 import com.example.algostudy.domain.dto.MemberRegisterForm;
-import com.example.algostudy.domain.entity.Member;
-import com.example.algostudy.domain.entity.MissionCalander;
-import com.example.algostudy.domain.entity.QMember;
-import com.example.algostudy.domain.entity.QMissionCalander;
+import com.example.algostudy.domain.entity.*;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 
 import javax.persistence.EntityManager;
@@ -12,7 +9,9 @@ import javax.persistence.EntityManager;
 import java.util.List;
 
 import static com.example.algostudy.domain.entity.QMember.member;
-import static com.example.algostudy.domain.entity.QMissionCalander.missionCalander;
+import static com.example.algostudy.domain.entity.QMissionCalendar.missionCalendar;
+import static com.example.algostudy.domain.entity.QTeam.team;
+
 
 public class MemberRepositoryImpl implements MemberRepositoryCustom {
     private JPAQueryFactory qf;
@@ -33,11 +32,25 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
     }
 
     @Override
-    public Member fetchWithMissionCalanderList(Long id) {
+    public Member fetchWithMissionCalendarList(Long id) {
         return qf.selectFrom(member)
-                .leftJoin(member.missionCalanderList, missionCalander)
+                .leftJoin(member.missionCalendarList, missionCalendar)
                 .fetchJoin()
                 .where(member.id.eq(id))
                 .fetchOne();
     }
+
+
+    @Override
+    public List<Member> findByTeam(Team t) {
+        return qf.selectFrom(member)
+                .join(member.team, team).fetchJoin()
+                .fetch();
+
+
+
+
+    }
+
+
 }

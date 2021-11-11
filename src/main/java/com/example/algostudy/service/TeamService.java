@@ -124,5 +124,9 @@ public class TeamService {
     }
 
 
-
+    @Transactional
+    public void start(Team team) {
+        Team findTeam = teamRepository.findById(team.getId()).get();
+        findTeam.setStatus("onProgress");
+    }
 }

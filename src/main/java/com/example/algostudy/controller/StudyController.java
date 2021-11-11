@@ -1,9 +1,7 @@
 package com.example.algostudy.controller;
 
 import com.example.algostudy.common.CommonTools;
-import com.example.algostudy.domain.dto.MissionDto;
-import com.example.algostudy.domain.dto.MissionForm;
-import com.example.algostudy.domain.dto.TeamRegisterForm;
+import com.example.algostudy.domain.dto.*;
 import com.example.algostudy.domain.entity.*;
 import com.example.algostudy.mapper.MemberMapper;
 import com.example.algostudy.mapper.MissionMapper;
@@ -22,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -38,6 +37,7 @@ public class StudyController {
     private final CommonTools commonTools;
     private final TeamService teamService;
     private final InvitationService invitationService;
+    private final MissionCalendarService missionCalendarService;
 
 
     @GetMapping("/study/new")
@@ -102,21 +102,39 @@ public class StudyController {
     @GetMapping("/study/mystudy")
     public String myStudy(@AuthenticationPrincipal Member member, Model model) {
         model.addAttribute("member", memberMapper.toDto(member));
-        if (member.getTeam().getStatus().equals("beforeStart")) {
+        String status = member.getTeam().getStatus();
+        if (status.equals("beforeStart")) {
             member.setTeam(teamService.refresh(member.getTeam()));
             member.getTeam().setAdminMember((Member)Hibernate.unproxy(member.getTeam().getAdminMember()));
             model.addAttribute("team", teamMapper.teamToTeamDto(member.getTeam()));
             return "recruit";
+        } else if (status.equals("onProgress")) {
+            ArrayList<CalendarMember> calendarMemberList = new ArrayList<>();
+            ArrayList<CalendarDate> calendarDateList = new ArrayList<>();
+            joinFetch(member);
+            missionCalendarService.toCalendarDto(calendarDateList, calendarMemberList, member);
+            model.addAttribute("calendarMemberList", calendarMemberList);
+            model.addAttribute("calendarDateList", calendarDateList);
+            return "mystudy";
         }
-        return "mystudy";
+        return "종료된 스터디입니다";
     }
 
+    private void joinFetch(Member member) {
+        memberService.fetchAll(member);
+    }
 
+    @GetMapping("/study/start")
+    public String startStudy(@AuthenticationPrincipal Member member) {
+        teamService.start(member.getTeam());
+        return "redirect:/";
+    }
 
     @ResponseBody
     @GetMapping("/study/invite/new")
     public void invite(@AuthenticationPrincipal Member member
-                        ,@RequestParam(name = "memberId") String memberId) {
+            , @RequestParam(name = "memberId") String memberId) {
+
         Member findMember = memberService.findMemberById(Long.parseLong(memberId));
         teamService.sendInvitation(member.getTeam(), findMember);
     }

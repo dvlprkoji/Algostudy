@@ -29,7 +29,8 @@ public class CrawlingService {
     }
 
     public boolean checkRecent(Document html) {
-        LocalDate yesterday = LocalDate.now().minusDays(1);
+        //LocalDate yesterday = LocalDate.now().minusDays(1);
+        LocalDate yesterday = LocalDate.now();
         ArrayList<Object> objects = new ArrayList<>();
 
         Element table = html.getElementById("status-table");

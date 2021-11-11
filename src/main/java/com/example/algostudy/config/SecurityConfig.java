@@ -19,7 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private String[] ignoredMatcherPattern = {"/error", "/images/**","/vendor/**","/fonts/**","/img/**","/scss/**","/static/**", "/css/**", "/js/**", "/static/css/images/**", "/webjars/**", "/**/favicon.ico"};
+    private String[] ignoredMatcherPattern = {"/error", "/images/**","/vendor/**","/fonts/**","/img/**","/scss/**","/static/**", "/css/**", "/js/**", "/static/css/images/**", "/webjars/**", "/**/favicon.ico", "/templates/**"};
     private String[] permitAllPattern = {"/","/login","/register"};
 
     @Autowired

@@ -55,7 +55,7 @@ public class BatchConfig {
     @Bean
     public ItemWriter<? super Team> teamWriter() {
         return new JpaItemWriterBuilder<Team>()
-                .usePersist(true)
+                .usePersist(false)
                 .entityManagerFactory(entityManagerFactory)
                 .build();
     }
