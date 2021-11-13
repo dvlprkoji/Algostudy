@@ -117,7 +117,7 @@ public class StudyController {
             model.addAttribute("calendarDateList", calendarDateList);
             return "mystudy";
         }
-        return "종료된 스터디입니다";
+        return null;
     }
 
     private void joinFetch(Member member) {

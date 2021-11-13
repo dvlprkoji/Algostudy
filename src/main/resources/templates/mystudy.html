@@ -62,7 +62,7 @@
         margin-bottom: 50px;
     }
     .container.createRoom {
-        width: 800px;
+        width: 80%;
     }
     .createForm {
         padding: 20px 0 40px;
@@ -336,10 +336,294 @@
     console.log(calendarMemberList);
 
 </script>
+<style>
+
+    .index-image {
+        width: 100%;
+        height: 100%;
+        /*text-align: center;*/
+        /*max-width: 1170px;*/
+        /*margin-left: auto;*/
+        /*margin-right: auto;*/
+    }
+    .index-description{
+        padding-top: 60px;
+        padding-bottom: 60px;
+        width: 1170px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .index-description-div{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .container.createRoom {
+        width: 80%;
+    }
+    .createForm {
+        padding: 20px 0 40px;
+    }
+    .formGroup:first-child {
+        border: 0;
+    }
+    .formGroup {
+        position: relative;
+        padding: 20px 0;
+        border-top: 1px dashed rgba(0,0,0,0.1);
+    }
+    .formLabel.input-field-label {
+        line-height: 44px;
+    }
+    .formLabel {
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 140px;
+        margin: 0;
+        font-size: .95rem;
+        font-weight: 500;
+        color: #333;
+        line-height: 1.1;
+    }
+    .formContent {
+        position: relative;
+        padding-left: 140px;
+    }
+    .createForm input[type="text"], .createForm textarea {
+        border-color: #ccc;
+    }
+    .input-md {
+        height: 44px;
+        border-color: #d5dce3;
+    }
+    .formContent .url-front-tx {
+        padding-bottom: 10px;
+        font-size: .85rem;
+        color: #9fa6ad;
+        letter-spacing: 0;
+        line-height: 1.4;
+        user-select: none;
+    }
+    .detailInfoBtnRec {
+        margin-top: 30px;
+        text-align: center;
+        border-top: 1px solid rgba(0,0,0,0.06);
+        line-height: 1;
+    }
+    .createBtnRec {
+        margin-top: 20px;
+    }
+    .createForm input[type="text"]:focus, .createForm textarea:focus {
+        border-color: #1f90ff;
+        box-shadow: 0 1px 4px rgb(0 0 0 / 20%);
+    }
+    .createForm input[type="text"], .createForm textarea {
+        border-color: #ccc;
+    }
+    .formContent .inputDate {
+        width: 48%;
+        max-width: 150px;
+        text-align: center;
+        color: #333;
+    }
+    .formContent .inputField, .formContent .inputDate, .formContent .dateDivision, .formContent .selectBox {
+        float: left;
+        background-color: white;
+    }
+    .form-control:hover, .form-control:focus, .form-control:active {
+        border-color: #51a9fe;
+    }
+    .date-division{
+        width: 4%;
+        text-align: center;
+        line-height: 44px;
+    }
+    .create-button{
+        background-color: #4e73df;
+        font-size: medium;
+        color: white;
+    }
+    .create-button:hover {
+        background-color: dodgerblue;
+        font-size: medium;
+        color: white;
+    }
+    .formContent .limit-length {
+        padding-top: 8px;
+        font-size: 12px;
+        color: #999;
+        line-height: 1;
+    }
+    .imgEditBtnRec {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding-top: 16px;
+        background: linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.2));
+        line-height: 0;
+    }
+    .imgEditBtnRec .imgEditBtn {
+        margin-bottom: 0px;
+        border: none;
+        height: 30px;
+        padding: 0 10px 0 32px;
+        background: rgba(0,0,0,0.3) url(https://findicons.com/files/icons/2778/maki/36/camera_18_2x.png) 5px 6px no-repeat;
+        background-size: auto 70%;
+        border-top-right-radius: 4px;
+        font-size: .8rem;
+        color: white;
+        overflow: hidden;
+        transition: 200ms ease-out;
+        line-height: 30px;
+    }
+    .imgEditBtnRec .imgEditBtn:hover {
+        margin-bottom: 0px;
+        border: none;
+        height: 30px;
+        padding: 0 10px 0 32px;
+        background: #4e73df url(https://findicons.com/files/icons/2778/maki/36/camera_18_2x.png) 5px 6px no-repeat;
+        background-size: auto 70%;
+        border-top-right-radius: 4px;
+        font-size: .8rem;
+        color: white;
+        overflow: hidden;
+        transition: 200ms ease-out;
+        line-height: 30px;
+    }
+    .create-room-img-area {
+        position: relative;
+        width: 210px;
+        height: 210px;
+        border-radius: 4px;
+        overflow: hidden;
+    }
+    .date-div {
+        display: flex;
+
+    }
+    .tagify__input::before {
+        content: attr(data-placeholder);
+        height: 1em;
+        line-height: 1.5rem;
+        margin: auto 0;
+        z-index: 1;
+        color: rgba(0,0,0,.4);
+        white-space: nowrap;
+        pointer-events: none;
+        opacity: 0;
+        position: absolute;
+    }
+
+
+    .slick-track {
+        opacity: 1;
+        width: 1220px;
+        transform: translate3d(0px, 0px, 0px);
+        height: 100%;
+        margin-left: initial;
+    }
+    .study-item-list {
+        width: 224px;
+        height: auto;
+        border-radius: 6px;
+        background-color: #fff;
+        position: relative;
+        cursor: pointer;
+    }
+    .slick-slide {
+        float: left;
+        height: 100%;
+        min-height: 1px;
+    }
+    .slick-slide {
+        margin-right: 20px;
+    }
+    .slick-initialized .slick-slide {
+        display: block;
+    }
+    .study-item-img-wrap {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        border-radius: 4px;
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .study-item-img {
+        height: 200px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -webkit-transition: .2s ease-out;
+        transition: .2s ease-out;
+    }
+    .slick-slide img {
+        display: block;
+    }
+    .study-item-info-cover {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .study-item-tx-wrap {
+        padding: 14px 0;
+    }
+    .missionBox{
+        width: 224px;
+        border-width: thin;
+        border-color: darkgrey;
+        border-style: solid;
+        padding: 10px;
+    }
+    .missionBox:hover{
+        width: 224px;
+        border-width: thin;
+        border-color: #4e73df;
+        border-style: dotted;
+        padding: 10px;
+    }
+    .missionBox:active{
+        width: 224px;
+        border-width: medium;
+        border-color: #4e73df;
+        border-style: solid;
+        padding: 10px;
+    }
+    .missionBox-active{
+        width: 224px;
+        border-width: medium;
+        border-color: #4e73df;
+        border-style: solid;
+        padding: 10px;
+        color: darkslategrey;
+    }
+    .missionDesc{
+        margin-top: 5px;
+    }
+    .errorMessage{
+        font-size: small;
+        color: red;
+        margin: 6px;
+    }
+    .gstc{
+        padding: 15px;
+    }
+</style>
 
 <body id="page-top">
-
-<!-- Page Wrapper -->
 <div id="wrapper">
 
     <!-- Sidebar -->
@@ -355,13 +639,81 @@
         <nav th:replace="fragments/header :: header"></nav>
         <!-- End of Topbar -->
 
-        <div id="gstc"></div>
-        <script src="/js/calendar.js" type="module"></script>
+            <div class="room-create">
+                <div class="wrapper">
+                    <div class="create-room-bottom">
+                        <div class="container createRoom">
+                            <div class="createForm">
+                                <!--
+                               <div class="create-room-form-basic">
+                                    <div class="formGroup clearfix">
+                                        <label class="formLabel mobile-m-b-2">미션 설정
+                                            <span class="position-relative badgeRec">
+                                                <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
+                                            </span>
+                                        </label>
+                                        <div th:object="${missionForm}">
+                                            <div class="formContent">
+                                                <div th:each="mission : ${missionList}" class="study-item-list slick-slide slick-current slick-active missionBox" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 224px;" onclick="checkMission(this)">
+                                                    <div class="study-item-img-wrap">
+                                                        <img th:src="${mission.imagePath}" alt="study-img" class="study-item-img">
+                                                        <div class="study-item-info-cover">
+                                                            <div class="study-item-info-badge-wrap"></div>
+                                                            <div class="room-more-view-btn-area"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="study-item-tx-wrap">
+                                                        <div class="study-item-tx" style="font-size: medium" th:text="${mission.missionName}">미션명</div>
+                                                        <div class="study-item-tx missionDesc" style="font-size: small" th:text="${mission.missionDesc}">미션설명</div>
+                                                    </div>
+                                                    <input type="checkbox" class="checkBox" name="checkedMission" th:id="${mission.id}" style="display: none" th:value="${mission.id}">
+                                                </div>
+                                                <input th:field="*{checkedMissionList}" th:value="*{checkedMissionList}" type="hidden" id="checkedMissionList" name="checkedMissionList">
+                                            </div>
+                                            <div class="formContent" style="display: flex">
+                                                <div th:if="${#fields.hasErrors('checkedMissionList')}" class="errorMessage" th:errors="${missionForm.checkedMissionList}">errormessage</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                -->
+                                <div class="create-room-form-detail">
+                                    <div class="gstc" id="gstc" style="border: 1px solid"></div>
+                                    <script src="/js/calendar.js" type="module"></script>
+                                </div>
+                                <div class="createBtnRec text-right">
+                                    <button type="submit" class="btn btn-lg btn-skin btn-xs-block create-button">스터디 만들기</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+
+        <script th:inline="javascript">
+            window.onload = function(){
+                var items = document.getElementsByClassName("gstc__chart-timeline-items-row-item");
+                for (let i = 0; i < items.length; i++) {
+                    var context = items[i].getElementsByClassName("gstc__chart-timeline-items-row-item-label")[0].innerText;
+                    if (context == 'O') {
+                        items[i].setAttribute("style", "background-color:limegreen; width: 80px; left: 0px; top: 4px; height:32px");
+                    }
+                }
+            }
+
+        </script>
+
+                <footer th:replace="fragments/footer:: footer" \></footer>
+
+
+
+
+
+        <!-- Page level plugins -->
     </div>
-
-
 </div>
+
 </body>
 
 </html>
