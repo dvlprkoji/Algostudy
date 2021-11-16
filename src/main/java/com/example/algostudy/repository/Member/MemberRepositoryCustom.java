@@ -6,6 +6,7 @@ import com.example.algostudy.domain.entity.MissionCalendar;
 import com.example.algostudy.domain.entity.Team;
 
 import java.util.List;
+import java.util.Map;
 
 public interface MemberRepositoryCustom {
     boolean isDuplicate(MemberRegisterForm form);
@@ -14,4 +15,6 @@ public interface MemberRepositoryCustom {
 
 
     List<Member> findByTeam(Team team);
+
+    void bulkMissionCntUpdate(Map<Long, Integer> updateMemberList);
 }

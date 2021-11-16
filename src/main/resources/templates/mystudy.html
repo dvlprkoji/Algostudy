@@ -40,6 +40,780 @@
 
 </head>
 <style>
+
+    .index-image {
+        width: 100%;
+        height: 100%;
+        /*text-align: center;*/
+        /*max-width: 1170px;*/
+        /*margin-left: auto;*/
+        /*margin-right: auto;*/
+    }
+    .index-description{
+        padding-top: 60px;
+        padding-bottom: 60px;
+        width: 1170px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+    }
+    .index-description-div{
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+    .main {
+        margin-top: 64px;
+        padding-bottom: 120px;
+        background-color: #fff;
+        position: relative;
+    }
+    .mine {
+        padding: 64px 0;
+        background: #fafbfc;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mine-contents {
+        width: 1200px;
+        margin: 0 auto;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mine-study {
+        width: 468px;
+    }
+    .mine-study-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .mine-study-title {
+        margin: 0;
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+    }
+    .controls-btn-wrap {
+        width: 40px;
+        height: 30px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .controls-btn.prev {
+        border:none;
+        background: url(https://gooroomee.com/images/icon/ico_arrowLineLeft.svg) no-repeat center/12px auto;
+    }
+    .controls-btn.next {
+        border:none;
+        margin-left: 4px;
+        background: url(https://gooroomee.com/images/icon/ico_arrowLineRight.svg) no-repeat center/12px auto;
+    }
+    .mine-study-body {
+        height: 350px;
+        margin-top: 22px;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+    .study-item-list-wrap {
+        height: 100%;
+    }
+    .slick-slider {
+        margin-right: -20px;
+    }
+    .study-item-list-wrap {
+        height: 100%;
+    }
+    .slick-slider .slick-track, .slick-slider .slick-list {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .slick-list {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .study-item-list-cover.active {
+        width: 100%;
+        padding: 0 90px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+    }
+    .study-item-list-cover {
+        width: 224px;
+        padding: 0 20px;
+        border-radius: 4px;
+        background: url(https://gooroomee.com/images/main/back_addStudy.svg) no-repeat center/cover;
+        text-align: center;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        left: 244px;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .study-loading-container.mine, .study-loading-container.recommend-study {
+        background-color: #fafbfc;
+    }
+    .study-item-tx.cover-title.active {
+        font-size: 20px;
+        line-height: 33px;
+    }
+    .study-item-tx.cover-title {
+        font-size: 15px;
+        font-weight: 700;
+        color: #fff;
+        line-height: 25px;
+        word-break: keep-all;
+    }
+    .study-item-tx.cover-sub {
+        margin-top: 8px;
+        font-size: 14px;
+        color: #fff;
+        line-height: 29px;
+        display: none;
+    }
+    .study-loading-container.mine, .study-loading-container.recommend-study {
+        background-color: #fafbfc;
+    }
+    .study-loading-container.ranking, .study-loading-container.mine, .study-loading-container.goal, .study-loading-container.recommend-study {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .study-loading-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .mine {
+        padding: 64px 0;
+        background: #fafbfc;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .mine-goal {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        min-width: 0;
+        margin-left: 40px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .mine-goal-title {
+        font-size: 22px;
+        font-weight: 700;
+        color: #333;
+        line-height: 24px;
+        letter-spacing: -1px;
+        margin: 0;
+    }
+    .mine-goal-contents {
+        -webkit-box-flex: 1;
+        flex: 1;
+        margin-top: 22px;
+        border: 1px solid #d0d0d0;
+        border-radius: 6px;
+        padding: 0 30px;
+        background-color: #fff;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        flex-direction: column;
+        -webkit-box-pack: center;
+        justify-content: center;
+        position: relative;
+    }
+    .mine-goal-record::after {
+        content: '';
+        width: 100%;
+        height: 1px;
+        margin: 25px 0 15px;
+        border-radius: 50px;
+        background-color: #e0e0e0;
+        display: block;
+    }
+    .mine-goal-record-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .mine-goal-record-tx.title {
+        margin: 0;
+        font-weight: 700;
+        font-size: 13px;
+        color: #222;
+        line-height: 18px;
+    }
+    .form-setting, .form-edit {
+        border: none;
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .mine-goal-record-gauge-wrap {
+        height: 10px;
+        margin-top: 16px;
+        background-color: #e0e0e0;
+        position: relative;
+        border-radius: 100px;
+        overflow: hidden;
+    }
+    .mine-goal-record-tx-wrap {
+        margin-top: 25px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
+        align-items: flex-end;
+    }
+    .my-contents-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .mine-goal-record-gauge-wrap {
+        height: 10px;
+        margin-top: 16px;
+        background-color: #e0e0e0;
+        position: relative;
+        border-radius: 100px;
+        overflow: hidden;
+    }
+    .my-contents {
+        min-width: 0;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-bottom: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .my-contents-header {
+        margin-bottom: 5px
+    ;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .my-contents-body {
+        margin-top: 6px;
+        min-width: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .form-setting, .form-edit {
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .my-contents-tx.tx {
+        color: #666;
+        line-height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .my-contents-wrapper .contents-line {
+        width: 1px;
+        height: 100%;
+        margin: 0 30px;
+        background-color: #e0e0e0;
+    }
+    .my-contents-wrapper {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+    }
+    .my-contents {
+        min-width: 0;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-bottom: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-loading-container.ranking, .study-loading-container.mine, .study-loading-container.goal, .study-loading-container.recommend-study {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .my-contents-header {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .study-loading-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .study-loading-container.goal {
+        border-radius: 6px;
+        background-color: #fff;
+        left: 0;
+    }
+    .my-contents-tx.title {
+        font-weight: 700;
+        color: #222;
+    }
+    .mine-study-body {
+        height: 400px;
+        margin-top: 18px;
+        border-radius: 4px;
+        position: relative;
+        overflow: hidden;
+    }
+    .my-contents-tx {
+        font-size: 13px;
+    }
+    .form-setting, .form-edit {
+        border-radius: 100px;
+        padding: 6px 12px 5px;
+        background-color: #f1f1f1;
+        font-size: 11px;
+        color: #666;
+        line-height: 15px;
+        -webkit-transition: .1s;
+        transition: .1s;
+    }
+    .my-contents-body {
+        margin-top: 6px;
+        min-width: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+    }
+    .my-contents-tx.tx {
+        color: #666;
+        line-height: 18px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .my-contents-wrapper .contents-line {
+        width: 1px;
+        height: 100%;
+        margin: 0 30px;
+        background-color: #e0e0e0;
+    }
+    .my-contents {
+        min-width: 0;
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        padding-bottom: 14px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-loading-container.goal {
+        border-radius: 6px;
+        background-color: #fff;
+        left: 0;
+    }
+    .study-loading-container.ranking, .study-loading-container.mine, .study-loading-container.goal, .study-loading-container.recommend-study {
+        width: 100%;
+        border: 0;
+        padding: 0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        z-index: 2;
+    }
+    .study-loading-container {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+    }
+    .sk-fading-circle {
+        margin: 60px auto 40px;
+        width: 40px;
+        height: 40px;
+        position: relative;
+    }
+    .study-loading-container.ranking .sk-fading-circle, .study-loading-container.mine .sk-fading-circle, .study-loading-container.goal .sk-fading-circle, .study-loading-container.recommend-study .sk-fading-circle {
+        margin: 0 auto;
+    }
+    .slick-slider {
+        margin-right: -20px;
+    }
+    .study-item-list-wrap {
+        height: 100%;
+    }
+    .slick-slider {
+        position: relative;
+        display: block;
+        box-sizing: border-box;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        -webkit-touch-callout: none;
+        -khtml-user-select: none;
+        -ms-touch-action: pan-y;
+        touch-action: pan-y;
+        -webkit-tap-highlight-color: transparent;
+    }
+    .slick-slider .slick-track, .slick-slider .slick-list {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .slick-list {
+        height: 100%;
+    }
+    .slick-list {
+        position: relative;
+        display: block;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+    }
+    .slick-slider .slick-track, .slick-slider .slick-list {
+        -webkit-transform: translate3d(0, 0, 0);
+        -moz-transform: translate3d(0, 0, 0);
+        -ms-transform: translate3d(0, 0, 0);
+        -o-transform: translate3d(0, 0, 0);
+        transform: translate3d(0, 0, 0);
+    }
+    .slick-track {
+        height: 100%;
+        margin-left: initial;
+    }
+    .slick-track {
+        position: relative;
+        top: 0;
+        left: 0;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .study-item-list.my {
+        width: 222px;
+        height: 100%;
+        border: 1px solid #d0d0d0;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-item-list:first-of-type {
+        margin-left: 0;
+    }
+    .slick-initialized .slick-slide {
+        display: block;
+    }
+    .slick-slide {
+        margin-right: 20px;
+    }
+    .study-item-list {
+        width: 224px;
+        height: auto;
+        border-radius: 6px;
+        background-color: #fff;
+        position: relative;
+        cursor: pointer;
+    }
+    .slick-slide {
+        display: none;
+        float: left;
+        height: 100%;
+        min-height: 1px;
+    }
+    .study-item-img-wrap.my {
+        width: calc(100% - -2px);
+        margin: -1px 0 0 -1px;
+        border-radius: 6px 6px 0 0;
+    }
+    .study-item-img-wrap {
+        -webkit-box-flex: 1;
+        -ms-flex: 1;
+        flex: 1;
+        border-radius: 4px;
+        position: relative;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        overflow: hidden;
+    }
+    .slick-slide img {
+        display: block;
+    }
+    .study-item-img {
+        height: 220px;
+        -o-object-fit: cover;
+        object-fit: cover;
+        -webkit-transition: .2s ease-out;
+        transition: .2s ease-out;
+    }
+    img {
+        max-width: 100%;
+        height: auto;
+    }
+    .study-item-info-cover {
+        width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+    }
+    .study-item-info-badge-wrap {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+    }
+    .study-item-info-personnel-wrap {
+        padding-left: 18px;
+        background: url(../../../../../images/icon/ico_user02_white.svg) no-repeat center left/auto 100%;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 12px;
+        font-weight: 500;
+        color: #fff;
+    }
+    .room-more-view-btn-area {
+        display: flex;
+        position: absolute;
+        top: 0;
+        right: 0;
+        z-index: 2;
+    }
+    .room-more-view-btn {
+        width: 30px;
+        height: 50px;
+        background: url(../images/icon/ico_more-meu.svg) no-repeat center / auto 48%;
+        opacity: .4;
+        transition: .1s ease-out;
+    }
+    .room-more-item-list-layer {
+        position: absolute;
+        top: 30px;
+        right: 4px;
+        z-index: 3;
+    }
+    .room-more-item-list {
+        padding: 6px 0;
+        border-radius: 2px;
+        background-color: white;
+        overflow: hidden;
+        box-shadow: 0 10px 20px rgb(0 0 0 / 20%);
+    }
+    .room-more-item {
+        padding: 0 12px;
+        text-align: left;
+        font-size: 13px;
+        color: #3d3d3d;
+        line-height: 30px;
+        user-select: none;
+        pointer-events: auto;
+        transition: .1s ease-out;
+    }
+    .study-item-tx-wrap.my {
+        height: 100%;
+        padding: 30px 15px 30px 0px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    .study-item-tx.title {
+        margin-top: 5px;
+        margin: 0;
+        font-size: 16px;
+        color: #333;
+        line-height: 19px;
+        word-break: keep-all;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+    .study-item-tx-hashtag-wrap {
+        margin-top: 4px;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+    }
+    .study-item-tx.hashtag:first-of-type {
+        margin-left: 0;
+    }
+    .study-item-tx.hashtag {
+        margin-left: 6px;
+        font-size: 13px;
+        color: #a1a1a1;
+        line-height: 22px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
     .index-image {
         width: 100%;
         height: 100%;
@@ -62,7 +836,7 @@
         margin-bottom: 50px;
     }
     .container.createRoom {
-        width: 80%;
+        width: 74% !important;
     }
     .createForm {
         padding: 20px 0 40px;
@@ -360,7 +1134,7 @@
         margin-bottom: 50px;
     }
     .container.createRoom {
-        width: 80%;
+        width: 74% !important;
     }
     .createForm {
         padding: 20px 0 40px;
@@ -562,7 +1336,9 @@
         overflow: hidden;
     }
     .study-item-img {
-        height: 200px;
+        height: 300px;
+        width: 300px;
+        align-self: center;
         -o-object-fit: cover;
         object-fit: cover;
         -webkit-transition: .2s ease-out;
@@ -621,6 +1397,16 @@
     .gstc{
         padding: 15px;
     }
+    .mission{
+        margin-right: 5px;
+        border: 1px solid;
+        padding: 10px;
+        border-radius: 10px;
+        height: 13px;
+        background-color: #4e73df;
+        color: white;
+        font-size: smaller;
+    }
 </style>
 
 <body id="page-top">
@@ -642,47 +1428,59 @@
             <div class="room-create">
                 <div class="wrapper">
                     <div class="create-room-bottom">
-                        <div class="container createRoom">
-                            <div class="createForm">
-                                <!--
-                               <div class="create-room-form-basic">
-                                    <div class="formGroup clearfix">
-                                        <label class="formLabel mobile-m-b-2">미션 설정
-                                            <span class="position-relative badgeRec">
-                                                <a data-toggle="pop-help" class="badge badge-round badge-outline"></a>
-                                            </span>
-                                        </label>
-                                        <div th:object="${missionForm}">
-                                            <div class="formContent">
-                                                <div th:each="mission : ${missionList}" class="study-item-list slick-slide slick-current slick-active missionBox" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 224px;" onclick="checkMission(this)">
-                                                    <div class="study-item-img-wrap">
-                                                        <img th:src="${mission.imagePath}" alt="study-img" class="study-item-img">
-                                                        <div class="study-item-info-cover">
-                                                            <div class="study-item-info-badge-wrap"></div>
-                                                            <div class="room-more-view-btn-area"></div>
+                        <div class="create-room-form-basic">
+
+                            <section class="mine" style="background-color: lightgrey">
+                                <div class="mine-contents" style="width: 1100px">
+                                    <article class="mine-study">
+                                        <div class="mine-study-body active" onclick="location.href='/study/mystudy'">
+                                            <div class="study-item-list-wrap slick-initialized slick-slider">
+                                                <div class="slick-list draggable">
+                                                    <div class="slick-track" style="opacity: 1; margin:0; width: 470px; transform: translate3d(0px, 0px, 0px);">
+                                                        <div class="study-item-list my slick-slide slick-current slick-active" data-slick-index="0" aria-hidden="false" tabindex="0" style="width: 468px; display: flex; flex-direction: row; justify-content: space-around">
+                                                            <img src="https://bucketforkoji.s3.ap-northeast-2.amazonaws.com/algostudy/5c5da6d9-bd40-4e39-a488-eac2778ff8e1.png" alt="study-img" class="study-item-img">
                                                         </div>
                                                     </div>
-                                                    <div class="study-item-tx-wrap">
-                                                        <div class="study-item-tx" style="font-size: medium" th:text="${mission.missionName}">미션명</div>
-                                                        <div class="study-item-tx missionDesc" style="font-size: small" th:text="${mission.missionDesc}">미션설명</div>
-                                                    </div>
-                                                    <input type="checkbox" class="checkBox" name="checkedMission" th:id="${mission.id}" style="display: none" th:value="${mission.id}">
                                                 </div>
-                                                <input th:field="*{checkedMissionList}" th:value="*{checkedMissionList}" type="hidden" id="checkedMissionList" name="checkedMissionList">
                                             </div>
-                                            <div class="formContent" style="display: flex">
-                                                <div th:if="${#fields.hasErrors('checkedMissionList')}" class="errorMessage" th:errors="${missionForm.checkedMissionList}">errormessage</div>
+                                        </div>
+                                    </article>
+                                    <article class="mine-goal">
+                                        <div class="mine-goal-contents">
+                                            <div th:object="${team}" class="formContent" style="padding: 20px; color: black;">
+                                                <h1 th:text="*{teamName}" style="color: black; font-size: xx-large"></h1>
+                                                <span th:each="tag : *{getHashtagList()}" th:text="'#'+${tag.getName()}" class="study-item-tx hashtag" style="font-size: large">#tagname</span>
+                                                <div th:text="*{teamDesc}" style="font-size: large; margin-top: 30px; margin-bottom: 30px">team description</div>
+                                                <span id="startDate" th:text="*{getStartDateTime()}" style="font-size: larger">from</span>
+                                                <span style="font-size: larger"> ~ </span>
+                                                <span id="endDate" th:text="*{getEndDateTime()}" style="font-size: larger">to</span>
+                                                <div style="font-size: larger">
+                                                    <span id="day" style="font-size: xx-large; font-weight: bold">day</span>
+                                                    <span>일째 진행중!</span>
+                                                </div>
+                                                <span>현재 </span><span th:text="${rank}"></span><span>등입니다!</span>
+
                                             </div>
+                                        </div>
+                                    </article>
+                                </div>
+                            </section>
+
+                        </div>
+
+                        <div class="container createRoom">
+                            <div class="createForm">
+                                <div class="create-room-form-basic">
+                                    <div class="formGroup withValidateTx">
+                                        <label class="formLabel" style="margin: 5px">수행중인 미션</label>
+                                        <div class="formContent">
+                                            <span th:each="mission : ${missionList}" th:text="*{mission.getMissionName()}" class="mission">missionname</span>
                                         </div>
                                     </div>
                                 </div>
-                                -->
                                 <div class="create-room-form-detail">
-                                    <div class="gstc" id="gstc" style="border: 1px solid"></div>
+                                    <div class="gstc" id="gstc" style="border: 1px dashed"></div>
                                     <script src="/js/calendar.js" type="module"></script>
-                                </div>
-                                <div class="createBtnRec text-right">
-                                    <button type="submit" class="btn btn-lg btn-skin btn-xs-block create-button">스터디 만들기</button>
                                 </div>
                             </div>
                         </div>
@@ -700,6 +1498,23 @@
                         items[i].setAttribute("style", "background-color:limegreen; width: 80px; left: 0px; top: 4px; height:32px");
                     }
                 }
+                let start = document.getElementById("startDate");
+                let end = document.getElementById("endDate");
+
+                start.innerText = start.innerText.slice(0, 10);
+                end.innerText = end.innerText.slice(0, 10);
+
+                var from = new Date(start.innerText);
+                var to = new Date(new Date().setHours(9,0,0,0));
+
+
+                var dateDiff = (to - from) / (24 * 60 * 60 * 1000) + 1;
+
+                let day = document.getElementById("day");
+                day.innerText = dateDiff;
+
+
+
             }
 
         </script>

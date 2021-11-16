@@ -21,6 +21,41 @@ function listTemplate({ className, styleMap, list, listColumns, actions, slots, 
     );
 }
 
+function chartTimelineItemsRowTemplate({
+                                           classNameCurrent,
+                                           styleMap,
+                                           shouldDetach,
+                                           itemComponents,
+                                           actions,
+                                           slots,
+                                           cache,
+                                           html,
+                                           vido,
+                                           props,
+                                       }) {
+    const detach = shouldDetach || !props || !props.row;
+    return cache(
+        detach
+            ? null
+            : slots.html(
+                "outer",
+                html`
+            <div
+              class=${classNameCurrent}
+              data-gstcid=${props.row.id}
+              data-actions=${actions()}
+              style="width: 830px; height: 40px; --row-height: 80px;"
+            >
+              ${slots.html(
+                    "content",
+                    itemComponents.map((i) => i.html())
+                )}
+            </div>
+          `
+            )
+    );
+}
+
 function listColumnRowTemplate({
                                    classNameCurrent,
                                    classNameContent,
@@ -141,6 +176,7 @@ const config = {
     templates: {
         "list-column-row": listColumnRowTemplate,
         "chart-timeline-items-row-item": chartTimelineItemsRowItemTemplate,
+        "chart-timeline-items-row" : chartTimelineItemsRowTemplate,
     },
     innerHeight: 230,
     list: {

@@ -2,18 +2,14 @@ package com.example.algostudy.mapper;
 
 import com.example.algostudy.domain.dto.MemberLoginDto;
 import com.example.algostudy.domain.dto.MemberSearchDto;
+import com.example.algostudy.domain.dto.Redis.RedisMemberDto;
 import com.example.algostudy.domain.entity.Member;
 import com.example.algostudy.domain.entity.MemberRole;
 import com.example.algostudy.domain.entity.Role;
-import lombok.RequiredArgsConstructor;
-import org.mapstruct.Context;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.NullValueMappingStrategy;
 import org.mapstruct.factory.Mappers;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -24,6 +20,8 @@ public interface MemberMapper extends GenericMapper<MemberLoginDto, Member>{
 
     @Mapping(source = "memberRoleList", target = "roleList")
     MemberLoginDto memberToLoginDto(Member member);
+
+    RedisMemberDto memberToRedisMemberDto(Member member);
 
 //    @Transactional
     public default List<Role> memberRoleListToRoleList(List<MemberRole> memberRoleList) {

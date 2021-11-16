@@ -87,7 +87,7 @@ public class SetupDataLoader implements ApplicationListener<ContextRefreshedEven
         saveRoleWithResourceListIfNotFound(memberRole, memberResourceList);
 
         Member adminMember = createMemberIfNotFound(adminRole, "admin", "admin", passwordEncoder.encode("admin"), "koji4321");
-        Member normalMember1 = createMemberIfNotFound(memberRole, "member1", "member1", passwordEncoder.encode("member1"), "koji4321");
+        Member normalMember1 = createMemberIfNotFound(memberRole, "member1", "member1", passwordEncoder.encode("member1"), "sjoh0704");
         Member normalMember2 = createMemberIfNotFound(memberRole, "member2", "member2", passwordEncoder.encode("member2"), "koji4321");
         Member normalMember3 = createMemberIfNotFound(memberRole, "member3", "member3", passwordEncoder.encode("member3"), "koji4321");
 

@@ -854,7 +854,7 @@
                                                     </div>
                                                 </div>
                                                 <div th:object="${team}" class="study-item-tx-wrap my" style="flex: 0.75">
-                                                    <div style="margin-bottom: 8px">
+                                                    <div style="margin-bottom: 12px; align-self: center ">
                                                         <button th:if="*{getStatus() eq 'beforeStart'}" class="form-setting">
                                                             <i class="fas fa-exclamation-triangle" style="color: gold; margin-right: 3px"></i>
                                                             스터디를 시작해주세요</button>
@@ -863,7 +863,7 @@
                                                             스터디 순항 중!</button>
                                                         <button th:if="*{getStatus() eq 'end'}" class="form-setting">
                                                             <i class="fas fa-check-circle" style="margin-right: 3px"></i>
-                                                            종료</button>
+                                                            종료된 스터디입니다</button>
                                                     </div>
                                                     <div th:text="*{getTeamName()}" class="study-item-tx title">teamname</div>
                                                     <div class="study-item-tx-hashtag-wrap" style="margin-top: 15px">

@@ -7,6 +7,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import javax.persistence.EntityManager;
 
 import java.util.List;
+import java.util.Map;
 
 import static com.example.algostudy.domain.entity.QMember.member;
 import static com.example.algostudy.domain.entity.QMissionCalendar.missionCalendar;
@@ -50,6 +51,16 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
 
 
 
+    }
+
+    @Override
+    public void bulkMissionCntUpdate(Map<Long, Integer> updateMemberList) {
+        for (Long id : updateMemberList.keySet()) {
+            qf.update(member)
+                    .set(member.clearMissionCnt, member.clearMissionCnt.add(updateMemberList.get(id)))
+                    .where(member.id.eq(id))
+                    .execute();
+        }
     }
 
 

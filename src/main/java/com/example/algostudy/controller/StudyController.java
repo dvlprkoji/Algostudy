@@ -38,6 +38,7 @@ public class StudyController {
     private final TeamService teamService;
     private final InvitationService invitationService;
     private final MissionCalendarService missionCalendarService;
+    private final RedisService redisService;
 
 
     @GetMapping("/study/new")
@@ -115,9 +116,25 @@ public class StudyController {
             missionCalendarService.toCalendarDto(calendarDateList, calendarMemberList, member);
             model.addAttribute("calendarMemberList", calendarMemberList);
             model.addAttribute("calendarDateList", calendarDateList);
+
+            Team team = member.getTeam();
+            model.addAttribute("team", team);
+            List<Mission> missionList = getMission(team);
+
+            model.addAttribute("missionList", missionList);
+
+            Integer rank = redisService.getRevRank("member", member.getId().toString());
+
+            model.addAttribute("rank", rank+1);
+
             return "mystudy";
         }
         return null;
+    }
+
+    private List<Mission> getMission(Team team) {
+        List<TeamMission> teamMissionList = team.getTeamMissionList();
+        return teamMissionList.stream().map(teamMission -> (Mission) Hibernate.unproxy(teamMission.getMission())).collect(Collectors.toList());
     }
 
     private void joinFetch(Member member) {

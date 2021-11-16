@@ -27,6 +27,9 @@ public class Member {
 
     private String password;
 
+    @Builder.Default
+    private Integer clearMissionCnt = 0;
+
     @Column(name = "boj_id")
     private String bojId;
 
