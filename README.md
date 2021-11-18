@@ -64,7 +64,7 @@
 - OAuth2.0 (Login)
 - AWS EC2, S3 (Public Cloud)
 - Nginx (Reverse Proxy Server)
-- Javascript, Thymeleaf (Client)
+- Javascript, Thymeleaf, jQuery (Client)
 - Redis (Cache)
 - Apache Kafka (Message Broker) - 미적용
 - Jenkins (CI/CD) - 미적용
